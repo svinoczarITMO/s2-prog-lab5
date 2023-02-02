@@ -13,7 +13,7 @@ class CommandController {
             print("Введите значение элемента: ")
             var element = readln()
         }
-        fun removeKey(element: String) {}
+        fun removeKey(key: String) {}
         fun clear () {}
         fun save () {}
         fun executeScript(fileName: String) {}
@@ -21,6 +21,8 @@ class CommandController {
             exitProcess(0)
         }
         fun removeGreater (element: String) {}
+        fun replaceIfLower (key: String) {}
+        fun removeGreaterKey (key: String) {}
         fun countGreaterThanDescription (description: String) {}
         fun filterLessThanGenre (genre: MusicGenre) {}
         fun printFieldDescendingNumberOfParticipants () {}
