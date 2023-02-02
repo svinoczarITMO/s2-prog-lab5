@@ -3,8 +3,14 @@ class CommandController {
         fun help() {}
         fun info() {}
         fun show() {}
-        fun insert(element: String, ) {}
-        fun update(element: Int) {}
+        fun insert(key: String) {
+            print("Введите значение элемента: ")
+            var element = readln()
+        }
+        fun update(id: Int) {
+            print("Введите значение элемента: ")
+            var element = readln()
+        }
         fun removeKey(element: String) {}
         fun clear() {}
         fun save() {}
