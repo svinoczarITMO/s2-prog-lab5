@@ -24,7 +24,9 @@ class CommandController {
         fun replaceIfLower (key: String) {}
         fun removeGreaterKey (key: String) {}
         fun countGreaterThanDescription (description: String) {}
-        fun filterLessThanGenre (genre: MusicGenre) {}
+        fun filterLessThanGenre (name: String) {
+            var genre = MusicGenre.valueOf(name)
+        }
         fun printFieldDescendingNumberOfParticipants () {}
 
     }
