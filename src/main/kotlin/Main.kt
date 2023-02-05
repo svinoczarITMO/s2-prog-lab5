@@ -5,6 +5,7 @@ fun main(args: Array<String>) {
     while (true){
         val command: List<String> = readln().split(" ")
         when (command[0]) {
+            "add_el" -> CommandController.addEl()
             "help" -> CommandController.help()
             "info" -> CommandController.info()
             "show" -> CommandController.show()
