@@ -5,6 +5,10 @@ fun main(args: Array<String>) {
     while (true){
         val command: List<String> = readln().split(" ")
         when (command[0]) {
+            "/print" -> CommandController.prnt()
+            "/get" -> CommandController.get((command[1]).toInt())
+            "/fadd" -> CommandController.fadd()
+
             "help" -> CommandController.help()
             "info" -> CommandController.info()
             "show" -> CommandController.show()
@@ -27,6 +31,5 @@ fun main(args: Array<String>) {
             else -> println("Такой команды не существует.")
 
         }
-        exitProcess(0)
     }
 }
