@@ -15,3 +15,6 @@ repositories {
 application {
     mainClass.set("MainKt")
 }
+dependencies {
+    implementation(kotlin("reflect"))
+}
