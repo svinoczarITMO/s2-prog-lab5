@@ -1,5 +1,4 @@
 import java.time.ZonedDateTime
-import kotlin.random.Random
 import kotlin.system.exitProcess
 
 class CommandController {
@@ -31,7 +30,7 @@ class CommandController {
             print("Введите bestAlbum: ");
             var bestAlbum: String = readln()
 
-            var musicElement: MusicBand = MusicBand(id, name, coordinates, creationDate, numberOfParticipants, )
+            var musicElement: Person = Person(id, name, coordinates, creationDate, numberOfParticipants, )
 
             id++
         }

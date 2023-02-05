@@ -1,4 +1,6 @@
+import java.util.Vector
+
 class CollectionController {
-    private var musicBand = linkedMapOf<MusicBand,MusicBand>()
+    private var Person = Vector<Person>()
 
 }
