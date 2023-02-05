@@ -1,4 +1,4 @@
-import java.time.ZonedDateTime
+import java.util.Date
 import kotlin.system.exitProcess
 
 class CommandController {
@@ -11,26 +11,44 @@ class CommandController {
 
             print("Введите имя: ");
             var name: String = readln()
+
             print("Введите координату x: ");
             var coordinateX: Float = readln().toFloat()
             print("Введите координату y: ");
-            var coordinateY: Double = readln().toDouble()
+            var coordinateY: Float = readln().toFloat()
             var coordinates: Coordinates = Coordinates(coordinateX, coordinateY)
 
-            var creationDate: java.time.ZonedDateTime = ZonedDateTime.now()
+            var creationDate: Date = Date()
 
-            print("Введите numberOfParticipants: ");
-            var numberOfParticipants: Int = readln().toInt()
-            print("Введите albumsCount: ");
-            var albumsCount: Long = readln().toLong()
-            print("Введите description: ");
-            var description: String = readln()
-            print("Введите genre: ");
-            var genre: String = readln()
-            print("Введите bestAlbum: ");
-            var bestAlbum: String = readln()
+            print("Введите рост: ");
+            var height: Int = readln().toInt()
 
-            var musicElement: Person = Person(id, name, coordinates, creationDate, numberOfParticipants, )
+            print("Введите вес: ");
+            var weight: Long = readln().toLong()
+
+            print("Выберите цвет волос из предложенных: ")
+            for (value in Color.values()) {
+                print(value.toString() + ", " )
+            }
+            println()
+            var hairColor: Color = Color.valueOf(readln())
+
+            print("Выберите страну рождения из предложенных: ")
+            for (value in Country.values()) {
+                print(value.toString() + ", " )
+            }
+            println()
+            var nationality: Country = Country.valueOf(readln())
+
+            print("Введите координату x: ");
+            var locationX: Int = readln().toInt()
+            print("Введите координату y: ");
+            var locationY: Long = readln().toLong()
+            print("Введите координату z: ");
+            var locationZ: Int = readln().toInt()
+            var location: Location = Location(locationX, locationY, locationZ)
+
+            var musicElement: Person = Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
 
             id++
         }
