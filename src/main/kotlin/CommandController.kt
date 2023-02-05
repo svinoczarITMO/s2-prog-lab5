@@ -3,6 +3,27 @@ import kotlin.system.exitProcess
 
 class CommandController {
     companion object {
+        /**
+            Функции разработчика (отладка):
+            /print - выводит в стандартный поток вывода коллекцию "vector"
+            /get - выводит в стандартный поток вывода элемент коллекции "vector" с индексом "index"
+            /fadd - добавляет зараннее созданный объект .Person в "vector"
+        */
+        fun prnt () {
+            println(CollectionController.vector)
+        }
+        fun get (index: Int) {
+            CollectionController.getElement(index)
+        }
+        fun fadd () {
+            var id: Int = 1000
+            var obj: Person = Person(id, "Jesus", Coordinates(0f,0f), Date(), 305, 0, Color.RED, Country.USA, Location(0,0,0))
+            CollectionController.addElement(obj)
+            id++
+        }
+
+        /** __(~_~)-- **/
+
         fun help () {}
         fun info () {}
         fun show () {}
@@ -31,14 +52,14 @@ class CommandController {
                 print(value.toString() + ", " )
             }
             println()
-            var hairColor: Color = Color.valueOf(readln())
+            var hairColor: Color = Color.valueOf(readln().uppercase())
 
             print("Выберите страну рождения из предложенных: ")
             for (value in Country.values()) {
                 print(value.toString() + ", " )
             }
             println()
-            var nationality: Country = Country.valueOf(readln())
+            var nationality: Country = Country.valueOf(readln().uppercase())
 
             print("Введите координату x: ");
             var locationX: Int = readln().toInt()
@@ -48,7 +69,8 @@ class CommandController {
             var locationZ: Int = readln().toInt()
             var location: Location = Location(locationX, locationY, locationZ)
 
-            var musicElement: Person = Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
+            var personElement: Person = Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
+            CollectionController.addElement(personElement)
 
             id++
         }
@@ -71,13 +93,5 @@ class CommandController {
         fun countByHairColor () {}
 
     }
-//    id: Int,
-//    name: String,
-//    coordinates: Coordinates,
-//    creationDate: ZonedDateTime,
-//    numberOfParticipants: Int,
-//    albumsCount: Int,
-//    description: String,
-//    genre: MusicGenre,
-//    bestAlbum: Album
+
 }
