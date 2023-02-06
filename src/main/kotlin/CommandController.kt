@@ -87,7 +87,7 @@ class CommandController {
         }
         fun removeFirst () {}
         fun reorder () {}
-        fun history () {}
+        fun history () {} //TODO убрать (?)
         fun minByWeight () {}
         fun groupCountingByNationality () {}
         fun countByHairColor () {}

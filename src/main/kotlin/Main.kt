@@ -3,7 +3,8 @@ import kotlin.system.exitProcess
 fun main(args: Array<String>) {
 
     while (true){
-        val command: List<String> = readln().split(" ")
+        val command: List<String> = readln().lowercase().split(" ")
+        History.writeInBuffer(command[0])
         when (command[0]) {
             "/print" -> CommandController.prnt()
             "/get" -> CommandController.get((command[1]).toInt())
@@ -21,12 +22,10 @@ fun main(args: Array<String>) {
             "exit" -> CommandController.exit()
             "remove_first" -> CommandController.removeFirst()
             "reorder" -> CommandController.reorder()
-            "history" -> CommandController.history()
+            "history" -> History.printHistory()
             "min_by_weight" -> CommandController.minByWeight()
             "group_counting_by_nationality" -> CommandController.groupCountingByNationality()
             "count_by_hair_color" -> CommandController.countByHairColor()
-
-
 
             else -> println("Такой команды не существует.")
 
