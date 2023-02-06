@@ -24,7 +24,7 @@ class CommandController {
 
         /** __(~_~)-- **/
 
-        fun help () {}
+        fun help () {} //TODO: убрать (?)
         fun info () {}
         fun show () {}
         fun add () {

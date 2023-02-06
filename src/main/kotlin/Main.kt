@@ -9,7 +9,7 @@ fun main(args: Array<String>) {
             "/get" -> CommandController.get((command[1]).toInt())
             "/fadd" -> CommandController.fadd()
 
-            "help" -> CommandController.help()
+            "help" -> Help.help()
             "info" -> CommandController.info()
             "show" -> CommandController.show()
             "add" -> CommandController.add()
