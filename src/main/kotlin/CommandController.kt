@@ -86,7 +86,7 @@ class CommandController {
             exitProcess(0)
         }
         fun removeFirst () {}
-        fun recorder () {}
+        fun reorder () {}
         fun history () {}
         fun minByWeight () {}
         fun groupCountingByNationality () {}

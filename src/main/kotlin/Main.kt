@@ -20,7 +20,7 @@ fun main(args: Array<String>) {
             "execute_script" -> CommandController.executeScript(command[1])
             "exit" -> CommandController.exit()
             "remove_first" -> CommandController.removeFirst()
-            "recorder" -> CommandController.recorder()
+            "reorder" -> CommandController.reorder()
             "history" -> CommandController.history()
             "min_by_weight" -> CommandController.minByWeight()
             "group_counting_by_nationality" -> CommandController.groupCountingByNationality()
