@@ -1,3 +1,5 @@
+package commands
+
 class Help {
     companion object {
         fun help() {

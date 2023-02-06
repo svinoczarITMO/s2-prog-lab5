@@ -1,5 +1,6 @@
+package commands
+
 import java.util.LinkedList
-import java.util.Queue
 
 class History {
     companion object {

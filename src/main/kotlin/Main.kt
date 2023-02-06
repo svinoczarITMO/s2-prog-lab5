@@ -1,3 +1,6 @@
+import commands.Help
+import commands.History
+
 class Main {
     fun main(args: Array<String>) {
 
