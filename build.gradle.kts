@@ -15,6 +15,7 @@ repositories {
 application {
     mainClass.set("MainKt")
 }
+
 dependencies {
-    implementation(kotlin("reflect"))
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.10")
 }
