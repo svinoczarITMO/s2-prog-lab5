@@ -34,6 +34,11 @@ class CollectionController {
                + when { accessability.toString() == "false, " -> "close"
                    else -> "open, " } )
         }
+
+
+        fun clear () {
+            CollectionController.vector.clear()
+        }
     }
 
 }

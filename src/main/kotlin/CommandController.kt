@@ -77,9 +77,6 @@ class CommandController {
             var element = readln()
         }
         fun removeById (id: Int) {}
-        fun clear () {
-
-        }
         fun save () {}
         fun executeScript(fileName: String) {}
         fun exit () {

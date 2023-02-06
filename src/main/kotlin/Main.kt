@@ -18,7 +18,7 @@ fun main() {
             "add" -> CommandController.add()
             "update" -> CommandController.update((command[1]).toInt())
             "remove_by_id" -> CommandController.removeById((command[1]).toInt())
-            "clear" -> CommandController.clear()
+            "clear" -> CollectionController.clear()
             "save" -> CommandController.save()
             "execute_script" -> CommandController.executeScript(command[1])
             "exit" -> CommandController.exit()
