@@ -13,22 +13,21 @@ class CommandController {
             println(CollectionController.vector)
         }
         fun get (index: Int) {
-            CollectionController.getElement(index)
+            CollectionController.getElement(index-1)
         }
         fun fadd () {
-            var id: Int = 1000
+            var id: Int = CollectionController.vector.size + 1001
             var obj: Person = Person(id, "Jesus", Coordinates(0f,0f), Date(), 305, 0, Color.RED, Country.USA, Location(0,0,0))
             CollectionController.addElement(obj)
-            id++
         }
 
         /** __(~_~)-- **/
 
         fun help () {} //TODO: убрать (?)
-        fun info () {}
+        fun info () {} //TODO: убрать (?)
         fun show () {}
         fun add () {
-            var id: Int = 1
+            var id: Int = CollectionController.vector.size + 1
 
             print("Введите имя: ");
             var name: String = readln()
@@ -70,16 +69,17 @@ class CommandController {
             var location: Location = Location(locationX, locationY, locationZ)
 
             var personElement: Person = Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
-            CollectionController.addElement(personElement)
 
-            id++
+            CollectionController.addElement(personElement)
         }
         fun update (id: Int) {
             print("Введите значение элемента: ")
             var element = readln()
         }
         fun removeById (id: Int) {}
-        fun clear () {}
+        fun clear () {
+
+        }
         fun save () {}
         fun executeScript(fileName: String) {}
         fun exit () {
@@ -93,5 +93,6 @@ class CommandController {
         fun countByHairColor () {}
 
     }
+
 
 }
