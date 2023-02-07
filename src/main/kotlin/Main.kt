@@ -1,7 +1,4 @@
-import commands.Help
-import commands.History
-import commands.Info
-import commands.Show
+import commands.*
 
 fun main() {
 
@@ -16,7 +13,7 @@ fun main() {
             "help" -> Help.help()
             "info" -> CollectionController.printInfo()
             "show" -> Show.printAllElementsAsString()
-            "add" -> CommandController.add()
+            "add" -> Add.addNewElement()
             "update" -> CommandController.update((command[1]).toInt())
             "remove_by_id" -> CommandController.removeById((command[1]).toInt())
             "clear" -> CollectionController.clear()
