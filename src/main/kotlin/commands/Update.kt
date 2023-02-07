@@ -3,9 +3,7 @@ package commands
 import CollectionController
 import Color
 import Country
-import Location
 import Person
-import java.util.*
 
 class Update {
     companion object {
