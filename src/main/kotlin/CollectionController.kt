@@ -35,9 +35,12 @@ class CollectionController {
                    else -> "open, " } )
         }
 
-
         fun clear () {
-            CollectionController.vector.clear()
+            vector.clear()
+        }
+
+        fun removeById (id: Int) {
+            vector.removeAt(id-1)
         }
     }
 

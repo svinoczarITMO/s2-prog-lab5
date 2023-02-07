@@ -5,6 +5,7 @@ class CommandController {
     companion object {
         /**
             Функции разработчика (отладка):
+
             /print - выводит в стандартный поток вывода коллекцию "vector"
             /get - выводит в стандартный поток вывода элемент коллекции "vector" с индексом "index"
             /fadd - добавляет зараннее созданный объект .Person в "vector"
@@ -23,14 +24,6 @@ class CommandController {
 
         /** __(~_~)-- **/
 
-        fun help () {} //TODO: убрать (?)
-        fun info () {} //TODO: убрать (?)
-        fun show () {}
-        fun update (id: Int) {
-            print("Введите значение элемента: ")
-            var element = readln()
-        }
-        fun removeById (id: Int) {}
         fun save () {}
         fun executeScript(fileName: String) {}
         fun exit () {
@@ -38,7 +31,6 @@ class CommandController {
         }
         fun removeFirst () {}
         fun reorder () {}
-        fun history () {} //TODO убрать (?)
         fun minByWeight () {}
         fun groupCountingByNationality () {}
         fun countByHairColor () {}
