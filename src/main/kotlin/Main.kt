@@ -1,6 +1,7 @@
 import commands.Help
 import commands.History
 import commands.Info
+import commands.Show
 
 fun main() {
 
@@ -14,7 +15,7 @@ fun main() {
 
             "help" -> Help.help()
             "info" -> CollectionController.printInfo()
-            "show" -> CommandController.show()
+            "show" -> Show.printAllElementsAsString()
             "add" -> CommandController.add()
             "update" -> CommandController.update((command[1]).toInt())
             "remove_by_id" -> CommandController.removeById((command[1]).toInt())
