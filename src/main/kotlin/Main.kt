@@ -14,7 +14,7 @@ fun main() {
             "info" -> CollectionController.printInfo()
             "show" -> Show.printAllElementsAsString()
             "add" -> Add.addNewElement()
-            "update" -> CommandController.update((command[1]).toInt())
+            "update" -> Update.updateElement((command[1]).toInt())
             "remove_by_id" -> CommandController.removeById((command[1]).toInt())
             "clear" -> CollectionController.clear()
             "save" -> CommandController.save()
