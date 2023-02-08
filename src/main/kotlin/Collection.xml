@@ -1,0 +1,15 @@
+<collection id = "Person-Vector">
+    <vector-elements>
+        <element>
+            <id>1</id>
+            <name>"j"</name>
+            <coordinates>"0.0;0.0"</coordinates>
+            <creationDate>"MSK 452.45"</creationDate>
+            <height>456</height>
+            <weight>234</weight>
+            <hairColor>"red"</hairColor>
+            <nationality>"usa</nationality>
+            <location>"24;435;55"</location>
+        </element>
+    </vector-elements>
+</collection>
