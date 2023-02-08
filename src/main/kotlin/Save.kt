@@ -8,28 +8,32 @@ class Save {
         fun readFromFile(){
             var readerBuffer: String = File(pathToFile).readText()
             val pattern = Regex("""<.*?>(.*)<.*?>""")
-            val tag = pattern.find(readerBuffer)?.value
-            readerBuffer.replace("<id>1</id>", "fsasaf ")
-            println(tag)
-            println(readerBuffer)
-//            while (pattern.find(readerBuffer)!=null) {
-//                val tag = pattern.find(readerBuffer)?.value
-//                readerBuffer.replace("$tag", "")
-//                println(tag)
-//            }
+            val tags: MutableList<String> = mutableListOf<String>()
 
+            while (pattern.find(readerBuffer)!=null) {
+                val tagsCouple = pattern.find(readerBuffer)?.groupValues
+                val tagName = tagsCouple?.get(0)
+                val tagValue = tagsCouple?.get(1).toString()
 
+                readerBuffer = readerBuffer.replaceFirst("$tagName", "")
+                tags.add(tagValue)
+                if (tagName?.contains("location") == true){
+                    CollectionController.addElement(Person(
+                        tags[0].toInt(),
+                        tags[1],
+                        Coordinates(tags[2].split(";")[0].toFloat(), tags[2].split(";")[1].toFloat()),
+                        tags[3],
+                        tags[4].toInt(),
+                        tags[5].toLong(),
+                        Color.valueOf(tags[6].uppercase()),
+                        Country.valueOf(tags[7].uppercase()),
+                        Location(tags[8].split(";")[0].toInt(), tags[8].split(";")[1].toLong(), tags[8].split(";")[2].toInt())
+                    ))
+                    tags.clear()
+                }
+            }
+
+            println(tags)
         }
-
-//            sortedTags.add("asd")
-//
-//            for (asd in tags) {
-//                sortedTags = sortedTags.add(asd)
-//            }
-//            for (element in tags) {
-//                println(element)
-//                CollectionController.addElement(Person(element.))
-//            }
-
     }
 }

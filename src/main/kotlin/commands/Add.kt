@@ -52,7 +52,7 @@ class Add {
             var location: Location = Location(locationX, locationY, locationZ)
 
             var personElement: Person =
-                Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
+                Person(id, name, coordinates, creationDate.toString(), height, weight, hairColor, nationality, location)
 
             CollectionController.addElement(personElement)
         }
