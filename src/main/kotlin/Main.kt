@@ -17,7 +17,7 @@ fun main() {
             "update" -> Update.updateElement((command[1]).toInt())
             "remove_by_id" -> CollectionController.removeById((command[1]).toInt())
             "clear" -> CollectionController.clear()
-            "save" -> CommandController.save()
+            "save" -> Save.readFromFile()
             "execute_script" -> CommandController.executeScript(command[1])
             "exit" -> CommandController.exit()
             "remove_first" -> CommandController.removeFirst()
