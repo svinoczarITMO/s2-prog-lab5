@@ -29,9 +29,5 @@ class CommandController {
             exitProcess(0)
         }
         fun groupCountingByNationality () {}
-        fun countByHairColor () {}
-
     }
-
-
 }
