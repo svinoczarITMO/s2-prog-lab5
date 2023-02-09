@@ -1,12 +1,9 @@
 package commands
 
-import CollectionController
-import kotlin.reflect.full.instanceParameter
-import kotlin.reflect.full.valueParameters
-import kotlin.reflect.jvm.reflect
 
 class Info {
     companion object{
+        //TODO: блин, а че делать-то ёлки-палки???
 //    private var reflexVector = CollectionController::vector
 //    private var type = reflexVector.returnType
 //    private var size = reflexVector.valueParameters.size
