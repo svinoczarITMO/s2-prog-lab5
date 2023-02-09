@@ -18,14 +18,14 @@ fun main() {
             "remove_by_id" -> CollectionController.removeById((command[1]).toInt())
             "clear" -> CollectionController.clear()
             "save" -> Save.writeInFile()
-            "execute_script" -> CommandController.executeScript(command[1])
+            "execute_script" -> CommandController.executeScript(command[1]) //TODO: реализовать
             "exit" -> CommandController.exit()
             "remove_first" -> CollectionController.removeFirst()
             "reorder" -> CollectionController.reorder()
             "history" -> History.printHistory()
-            "min_by_weight" -> CommandController.minByWeight()
-            "group_counting_by_nationality" -> CommandController.groupCountingByNationality()
-            "count_by_hair_color" -> CommandController.countByHairColor()
+            "min_by_weight" -> MinByWeight.minWeightElement()
+            "group_counting_by_nationality" -> CommandController.groupCountingByNationality() //TODO: реализовать
+            "count_by_hair_color" -> CommandController.countByHairColor() //TODO: реализовать
 
             else -> println("Такой команды не существует.")
 

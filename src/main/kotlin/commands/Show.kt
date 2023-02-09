@@ -4,7 +4,7 @@ import CollectionController
 
 class Show {
     companion object {
-        fun printAllElementsAsString() {
+        fun printAllElementsAsString() { //TODO: а может нужно выодить все поля???
             val vector = CollectionController.vector
             if (vector.size > 1) {
                 for (i in 0..CollectionController.vector.size - 1) {

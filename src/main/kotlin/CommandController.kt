@@ -24,14 +24,10 @@ class CommandController {
 
         /** __(~_~)-- **/
 
-        fun save () {}
         fun executeScript(fileName: String) {}
         fun exit () {
             exitProcess(0)
         }
-        fun removeFirst () {}
-        fun reorder () {}
-        fun minByWeight () {}
         fun groupCountingByNationality () {}
         fun countByHairColor () {}
 
