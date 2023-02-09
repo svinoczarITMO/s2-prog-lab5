@@ -20,7 +20,7 @@ fun main() {
             "save" -> Save.writeInFile()
             "execute_script" -> CommandController.executeScript(command[1])
             "exit" -> CommandController.exit()
-            "remove_first" -> CommandController.removeFirst()
+            "remove_first" -> CollectionController.removeFirst()
             "reorder" -> CommandController.reorder()
             "history" -> History.printHistory()
             "min_by_weight" -> CommandController.minByWeight()

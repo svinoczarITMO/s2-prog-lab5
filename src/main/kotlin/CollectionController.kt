@@ -42,6 +42,10 @@ class CollectionController {
         fun removeById (id: Int) {
             vector.removeAt(id-1)
         }
+
+        fun removeFirst () {
+            vector.removeFirst()
+        }
     }
 
 }
