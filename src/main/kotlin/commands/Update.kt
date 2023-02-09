@@ -4,6 +4,8 @@ import CollectionController
 import Color
 import Country
 import Person
+import java.util.Date
+
 
 class Update {
     companion object {
@@ -18,7 +20,7 @@ class Update {
             print("Введите новую координату y: ");
             element.coordinates.y = readln().toFloat()
 
-            //element.creationDate = Date() TODO: дата создания обновляется?
+            element.creationDate = Date() //TODO: дата создания обновляется?
 
             print("Введите новый рост: ");
             element.height = readln().toInt()
