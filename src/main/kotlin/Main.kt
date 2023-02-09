@@ -1,7 +1,7 @@
 import commands.*
 
 fun main() {
-
+    Save.readFromFile()
     while (true){
         val command: List<String> = readln().lowercase().split(" ")
         History.writeInBuffer(command[0])
@@ -17,7 +17,7 @@ fun main() {
             "update" -> Update.updateElement((command[1]).toInt())
             "remove_by_id" -> CollectionController.removeById((command[1]).toInt())
             "clear" -> CollectionController.clear()
-            "save" -> Save.readFromFile()
+            "save" -> Save.writeInFile()
             "execute_script" -> CommandController.executeScript(command[1])
             "exit" -> CommandController.exit()
             "remove_first" -> CommandController.removeFirst()
