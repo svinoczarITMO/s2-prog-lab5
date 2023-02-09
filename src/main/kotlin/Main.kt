@@ -21,7 +21,7 @@ fun main() {
             "execute_script" -> CommandController.executeScript(command[1])
             "exit" -> CommandController.exit()
             "remove_first" -> CollectionController.removeFirst()
-            "reorder" -> CommandController.reorder()
+            "reorder" -> CollectionController.reorder()
             "history" -> History.printHistory()
             "min_by_weight" -> CommandController.minByWeight()
             "group_counting_by_nationality" -> CommandController.groupCountingByNationality()

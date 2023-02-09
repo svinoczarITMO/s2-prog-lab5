@@ -46,6 +46,14 @@ class CollectionController {
         fun removeFirst () {
             vector.removeFirst()
         }
+
+        fun reorder () {
+            var bufferVector: Vector<Person> = Vector()
+            for (element in vector) {
+                bufferVector.insertElementAt(element,0)
+            }
+            vector = bufferVector
+        }
     }
 
 }
