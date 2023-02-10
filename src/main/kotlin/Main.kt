@@ -25,7 +25,7 @@ fun main() {
             "history" -> History.printHistory()
             "min_by_weight" -> MinByWeight.minWeightElement()
             "group_counting_by_nationality" -> CommandController.groupCountingByNationality() //TODO: реализовать
-            "count_by_hair_color" -> CountByHairColor.countByHairColor(command[1]) //TODO: реализовать
+            "count_by_hair_color" -> CountByHairColor.countByHairColor(command[1])
 
             else -> println("Такой команды не существует.")
 
