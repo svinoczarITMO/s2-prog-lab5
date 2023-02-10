@@ -1,3 +1,9 @@
+package data
+
+import data.Color
+import data.Coordinates
+import data.Country
+import data.Location
 import java.util.Date
 
 class Person(var id: Int,
@@ -8,6 +14,7 @@ class Person(var id: Int,
              var weight: Long,
              var hairColor: Color,
              var nationality: Country,
-             var location: Location ) {
+             var location: Location
+) {
 
 }

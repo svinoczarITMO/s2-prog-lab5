@@ -1,6 +1,6 @@
 package commands
 
-import CollectionController
+import controllers.CollectionController
 
 class Show {
     fun printAllElementsAsString() { //TODO: а может нужно выодить все поля???

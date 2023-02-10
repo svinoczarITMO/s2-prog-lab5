@@ -1,7 +1,7 @@
 package commands
 
-import CollectionController
-import Country
+import controllers.CollectionController
+import data.Country
 
 class GroupCountingByNationality {
     fun groupByNationality () {

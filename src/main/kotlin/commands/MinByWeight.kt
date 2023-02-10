@@ -1,6 +1,6 @@
 package commands
 
-import CollectionController
+import controllers.CollectionController
 
 
 class MinByWeight {

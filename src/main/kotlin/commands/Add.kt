@@ -1,10 +1,11 @@
 package commands
 
-import Color
-import Coordinates
-import Country
-import Location
-import Person
+import controllers.CollectionController
+import data.Color
+import data.Coordinates
+import data.Country
+import data.Location
+import data.Person
 import java.util.*
 
 class Add {

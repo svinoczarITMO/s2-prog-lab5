@@ -1,3 +1,7 @@
+package controllers
+
+import controllers.CollectionController
+import data.*
 import java.util.Date
 import kotlin.system.exitProcess
 
@@ -7,7 +11,7 @@ class CommandController {
 
         /print - выводит в стандартный поток вывода коллекцию "vector"
         /get - выводит в стандартный поток вывода элемент коллекции "vector" с индексом "index"
-        /fadd - добавляет зараннее созданный объект .Person в "vector"
+        /fadd - добавляет зараннее созданный объект .data.Person в "vector"
     */
     fun prnt () {
         println(CollectionController.vector)

@@ -1,3 +1,6 @@
+package controllers
+
+import data.Person
 import java.util.Vector
 
 //koin

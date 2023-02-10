@@ -1,9 +1,9 @@
 package commands
 
-import CollectionController
-import Color
-import Country
-import Person
+import controllers.CollectionController
+import data.Color
+import data.Country
+import data.Person
 import java.util.Date
 
 

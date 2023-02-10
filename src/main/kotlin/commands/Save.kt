@@ -1,11 +1,11 @@
 package commands
 
-import CollectionController
-import Color
-import Coordinates
-import Country
-import Location
-import Person
+import controllers.CollectionController
+import data.Color
+import data.Coordinates
+import data.Country
+import data.Location
+import data.Person
 import java.io.File
 import java.util.*
 
@@ -48,7 +48,7 @@ class Save {
         }
     }
 
-//      Old tagsString:  val tagsStart: String = "<collection id = \"Person-Vector\">\n\t<vector-elements>\n"
+//      Old tagsString:  val tagsStart: String = "<collection id = \"data.Person-Vector\">\n\t<vector-elements>\n"
 //      Old tagsEnd: val tagsEnd: String = "\t</vector-elements>\n" + "</collection>"
     fun writeInFile() {
         var tags: String = ""
