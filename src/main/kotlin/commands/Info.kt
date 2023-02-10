@@ -1,9 +1,7 @@
 package commands
 
-
 class Info {
-    companion object{
-        //TODO: блин, а че делать-то ёлки-палки???
+    //TODO: блин, а че делать-то ёлки-палки???
 //    private var reflexVector = CollectionController::vector
 //    private var type = reflexVector.returnType
 //    private var size = reflexVector.valueParameters.size
@@ -21,6 +19,4 @@ class Info {
 //                    typeParam.toString() + ", " +
 //                    param.toString() + " " )
 //        }
-    }
-
 }

@@ -4,24 +4,22 @@ import CollectionController
 import Country
 
 class GroupCountingByNationality {
-    companion object {
-        fun groupByNationality () {
-            val copyVector = CollectionController.vector
-            var bufferVector = CollectionController.vector
-            var counter: Int = 0
+    fun groupByNationality () {
+        val copyVector = CollectionController.vector
+        var bufferVector = CollectionController.vector
+        var counter: Int = 0
 
-            for (nationality in Country.values()) {
-                val mainNationality = nationality.toString()
-                var counterOfElementsInGroup: Int = 0
-                for (element in copyVector) {
-                    if (element.nationality.toString() == mainNationality) {
-                        bufferVector.insertElementAt(element,counter)
-                        counter += 1
-                        counterOfElementsInGroup += 1
-                    }
+        for (nationality in Country.values()) {
+            val mainNationality = nationality.toString()
+            var counterOfElementsInGroup: Int = 0
+            for (element in copyVector) {
+                if (element.nationality.toString() == mainNationality) {
+                    bufferVector.insertElementAt(element,counter)
+                    counter += 1
+                    counterOfElementsInGroup += 1
                 }
-                println("В группе $nationality $counterOfElementsInGroup человек")
             }
+            println("В группе $nationality $counterOfElementsInGroup человек")
         }
     }
 }
