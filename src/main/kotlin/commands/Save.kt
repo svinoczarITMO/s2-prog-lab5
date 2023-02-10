@@ -1,6 +1,7 @@
 package commands
 
 import CollectionController
+
 import Color
 import Coordinates
 import Country
@@ -15,7 +16,7 @@ class Save {
         private val pathToFile = "D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\main\\kotlin\\Collection.xml"
         private var readerBuffer: String = File(pathToFile).readText()
         private val pattern = Regex("""<.*?>(.*)<.*?>""")
-        private val tagsList: MutableList<String> = mutableListOf<String>()
+        private val tagsList: MutableList<String> = mutableListOf()
         private var copyVector: Vector<Person> = CollectionController.vector
 
         fun readFromFile() {

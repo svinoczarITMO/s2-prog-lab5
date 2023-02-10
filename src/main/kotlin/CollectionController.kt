@@ -1,6 +1,6 @@
 import java.util.Vector
 
-
+//koin
 class CollectionController {
     companion object {
         var vector = Vector<Person>()

@@ -24,7 +24,7 @@ fun main() {
             "reorder" -> CollectionController.reorder()
             "history" -> History.printHistory()
             "min_by_weight" -> MinByWeight.minWeightElement()
-            "group_counting_by_nationality" -> CommandController.groupCountingByNationality() //TODO: реализовать
+            "group_counting_by_nationality" -> GroupCountingByNationality.groupByNationality()
             "count_by_hair_color" -> CountByHairColor.countByHairColor(command[1])
 
             else -> println("Такой команды не существует.")

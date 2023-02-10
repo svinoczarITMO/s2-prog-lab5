@@ -28,6 +28,5 @@ class CommandController {
         fun exit () {
             exitProcess(0)
         }
-        fun groupCountingByNationality () {}
     }
 }

@@ -9,8 +9,8 @@ class CountByHairColor {
                 if (element.hairColor == Color.valueOf(color.uppercase())) {
                     counter += 1
             }
-            println("Количество людей с цветом волос \"${color.capitalize()}\": $counter")
         }
+            println("Количество людей с цветом волос \"${color.capitalize()}\": $counter")
         }
     }
 }
