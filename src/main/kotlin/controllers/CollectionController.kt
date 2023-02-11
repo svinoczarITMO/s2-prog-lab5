@@ -1,19 +1,14 @@
 package controllers
 
 import data.Person
-import java.util.Vector
+import java.util.*
 
 //koin
 class CollectionController {
-    var vector = Vector<Person>()
+    private var vector = Vector<Person>()
 
-    var reflexVector = ::vector
-    var type = reflexVector.returnType
-    var accessability = reflexVector.isOpen
-
-
-    fun addElement(element: Person) {
-        vector.add(element)
+    fun getVector (): Vector<Person> {
+        return vector
     }
 
     fun getElement (id: Int) { //TODO сделать через рефлексию (?)

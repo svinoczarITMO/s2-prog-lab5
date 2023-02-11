@@ -7,7 +7,7 @@ import java.util.Vector
 import kotlin.system.exitProcess
 
 class CommandController {
-    var copiedVector: Vector<Person> = CommandController.vector
+    var collectionController: CollectionController = CollectionController()
     /**
         Функции разработчика (отладка):
 
@@ -16,15 +16,15 @@ class CommandController {
         /fadd - добавляет зараннее созданный объект .data.Person в "vector"
     */
     fun prnt () {
-        println(CollectionController.vector)
+        println(collectionController.vector)
     }
     fun get (index: Int) {
-        CollectionController.getElement(index-1)
+        collectionController.getElement(index-1)
     }
     fun fadd () {
-        var id: Int = CollectionController.vector.size + 1001
+        var id: Int = collectionController.vector.size + 1001
         var obj: Person = Person(id, "Jesus", Coordinates(0f,0f), Date(), 305, 0, Color.RED, Country.USA, Location(0,0,0))
-        CollectionController.addElement(obj)
+        collectionController.vector.add(obj)
     }
 
     /** __(~_~)-- **/
