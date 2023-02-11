@@ -1,9 +1,5 @@
 package data
 
-import data.Color
-import data.Coordinates
-import data.Country
-import data.Location
 import java.util.Date
 
 class Person(var id: Int,

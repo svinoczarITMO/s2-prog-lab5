@@ -15,7 +15,8 @@ class Add {
         print("Введите имя: ");
         var name: String = readln()
 
-        print("Введите координату x места рождения: ");
+        val s: MutableMap<String,String> = mutableMapOf()
+
         var coordinateX: Float = readln().toFloat()
         print("Введите координату y места рождения: ");
         var coordinateY: Float = readln().toFloat()
@@ -42,6 +43,8 @@ class Add {
         }
         println()
         var nationality: Country = Country.valueOf(readln().uppercase())
+
+        data =
 
         print("Введите координату x примерного текущего местоположения: ");
         var locationX: Int = readln().toInt()

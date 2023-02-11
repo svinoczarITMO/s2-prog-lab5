@@ -3,9 +3,11 @@ package controllers
 import controllers.CollectionController
 import data.*
 import java.util.Date
+import java.util.Vector
 import kotlin.system.exitProcess
 
 class CommandController {
+    var copiedVector: Vector<Person> = CommandController.vector
     /**
         Функции разработчика (отладка):
 

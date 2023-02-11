@@ -7,9 +7,9 @@ import java.util.Vector
 class CollectionController {
     var vector = Vector<Person>()
 
-    private var reflexVector = ::vector
-    private var type = reflexVector.returnType
-    private var accessability = reflexVector.isOpen
+    var reflexVector = ::vector
+    var type = reflexVector.returnType
+    var accessability = reflexVector.isOpen
 
 
     fun addElement(element: Person) {
@@ -29,13 +29,6 @@ class CollectionController {
         + "Местоположение: x = " + obj.location.x + "; y = " + obj.location.y + "; z = " + obj.location.z + "\n")
     }
 
-    fun printInfo () {
-        println(
-           type.toString().split(".")[2] + ", "
-           + "Размер: " + vector.size + ", "
-           + when { accessability.toString() == "false, " -> "close"
-               else -> "open, " } )
-    }
 
     fun clear () {
         vector.clear()
