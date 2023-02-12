@@ -4,7 +4,7 @@ import data.Person
 import java.util.*
 
 //koin
-class CollectionController {
+class CollectionManager {
     private var vector = Vector<Person>()
 
     fun getVector (): Vector<Person> {

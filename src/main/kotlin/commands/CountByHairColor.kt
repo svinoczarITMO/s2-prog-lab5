@@ -1,11 +1,11 @@
 package commands
 
-import utils.CollectionController
+import utils.CollectionManager
 import data.Color
 
 class CountByHairColor: Command {
     fun countByHairColor (color: String) {
-        val copyVector = CollectionController.vector
+        val copyVector = CollectionManager.vector
         var counter: Int = 0
         for (element in copyVector) {
             if (element.hairColor == Color.valueOf(color.uppercase())) {

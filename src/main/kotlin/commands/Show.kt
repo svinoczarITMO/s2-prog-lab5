@@ -1,12 +1,12 @@
 package commands
 
-import utils.CollectionController
+import utils.CollectionManager
 
 class Show: Command {
     fun printAllElementsAsString() { //TODO: а может нужно выодить все поля???
-        val vector = CollectionController.vector
+        val vector = CollectionManager.vector
         if (vector.size > 1) {
-            for (i in 0..CollectionController.vector.size - 1) {
+            for (i in 0..CollectionManager.vector.size - 1) {
                 print("${vector[i].name}, ")
             }
         } else if (vector.size == 1) {

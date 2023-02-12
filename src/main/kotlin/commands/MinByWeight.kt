@@ -1,16 +1,16 @@
 package commands
 
-import utils.CollectionController
+import utils.CollectionManager
 
 
 class MinByWeight: Command {
 fun minWeightElement() {
-    val copyVector = CollectionController.vector
+    val copyVector = CollectionManager.vector
     var minWeightElements: MutableMap<Int, Long> = mutableMapOf()
     for (element in copyVector) {
         minWeightElements.put(element.id, element.weight)
     }
     var minWeightElement = minWeightElements.minBy { it.value }
-    CollectionController.getElement(minWeightElement.key - 1)
+    CollectionManager.getElement(minWeightElement.key - 1)
     }
 }

@@ -1,6 +1,6 @@
 package commands
 
-import utils.CollectionController
+import utils.CollectionManager
 import data.Color
 import data.Coordinates
 import data.Country
@@ -9,18 +9,17 @@ import data.Person
 import java.util.*
 
 class Add: Command {
-    var collectionController: CollectionController = CollectionController()
+    var collectionManager: CollectionManager = CollectionManager()
 
     fun addNewElement() {
-        val id: Int = collectionController.vector.size + 1
+        val id: Int = collectionManager.vector.size + 1
 
-        print("Введите имя: ");
+
         val name: String = readln()
 
         val s: MutableMap<String,String> = mutableMapOf()
 
         val coordinateX: Float = readln().toFloat()
-        print("Введите координату y места рождения: ");
         val coordinateY: Float = readln().toFloat()
         val coordinates: Coordinates = Coordinates(coordinateX, coordinateY)
 
@@ -57,6 +56,6 @@ class Add: Command {
         var personElement: Person =
             Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
 
-        collectionController.getVector().add(personElement)
+        collectionManager.getVector().add(personElement)
     }
 }

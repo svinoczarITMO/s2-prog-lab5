@@ -1,6 +1,6 @@
 package commands
 
-import utils.CollectionController
+import utils.CollectionManager
 import data.Color
 import data.Coordinates
 import data.Country
@@ -15,7 +15,7 @@ class Save: Command {
     private var readerBuffer: String = File(pathToFile).readText()
     private val pattern = Regex("""<.*?>(.*)<.*?>""")
     private val tagsList: MutableList<String> = mutableListOf()
-    private var copyVector: Vector<Person> = CollectionController.vector
+    private var copyVector: Vector<Person> = CollectionManager.vector
 
     fun readFromFile() {
         while (pattern.find(readerBuffer) != null) {
@@ -26,7 +26,7 @@ class Save: Command {
             readerBuffer = readerBuffer.replaceFirst("$tagName", "")
             tagsList.add(tagValue)
             if (tagName?.contains("location") == true) {
-                CollectionController.addElement(
+                CollectionManager.addElement(
                     Person(
                         tagsList[0].toInt(),
                         tagsList[1],

@@ -1,12 +1,12 @@
 package commands
 
-import utils.CollectionController
+import utils.CollectionManager
 import data.Country
 
 class GroupCountingByNationality: Command {
     fun groupByNationality () {
-        val copyVector = CollectionController.vector
-        var bufferVector = CollectionController.vector
+        val copyVector = CollectionManager.vector
+        var bufferVector = CollectionManager.vector
         var counter: Int = 0
 
         for (nationality in Country.values()) {

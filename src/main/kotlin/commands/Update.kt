@@ -1,6 +1,6 @@
 package commands
 
-import utils.CollectionController
+import utils.CollectionManager
 import data.Color
 import data.Country
 import data.Person
@@ -9,7 +9,7 @@ import java.util.Date
 
 class Update: Command {
     fun updateElement(id: Int) {
-        var element: Person = CollectionController.vector.elementAt(id - 1)
+        var element: Person = CollectionManager.vector.elementAt(id - 1)
 
         print("Введите новое имя: ");
         element.name = readln()

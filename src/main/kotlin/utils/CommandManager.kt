@@ -5,7 +5,7 @@ import data.*
 import java.util.Date
 import kotlin.system.exitProcess
 
-class CommandController {
+class CommandManager {
 
     val commands = mapOf<String, Command>(
         "help" to Help(),
@@ -30,7 +30,7 @@ class CommandController {
 
 
 
-    var collectionController: CollectionController = CollectionController()
+    var collectionManager: CollectionManager = CollectionManager()
     /**
         Функции разработчика (отладка):
 
@@ -39,15 +39,15 @@ class CommandController {
         fadd - добавляет зараннее созданный объект .data.Person в "vector"
     */
     fun prnt () {
-        println(collectionController.vector)
+        println(collectionManager.vector)
     }
     fun get (index: Int) {
-        collectionController.getElement(index-1)
+        collectionManager.getElement(index-1)
     }
     fun fadd () {
-        var id: Int = collectionController.vector.size + 1001
+        var id: Int = collectionManager.vector.size + 1001
         var obj: Person = Person(id, "Jesus", Coordinates(0f,0f), Date(), 305, 0, Color.RED, Country.USA, Location(0,0,0))
-        collectionController.vector.add(obj)
+        collectionManager.vector.add(obj)
     }
 
     /** __(~_~)-- **/

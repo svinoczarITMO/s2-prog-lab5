@@ -1,11 +1,11 @@
 package commands
 
-import utils.CollectionController
+import utils.CollectionManager
 
 
 class Info: Command {
-    var collectionController: CollectionController = CollectionController()
-    var reflexVector = collectionController.getVector()
+    var collectionManager: CollectionManager = CollectionManager()
+    var reflexVector = collectionManager.getVector()
     var type = reflexVector.returnType
     var accessability = reflexVector.isOpen
 
@@ -13,8 +13,8 @@ class Info: Command {
     fun info () {
         println(
             type.toString().split(".")[2] + ", "
-                    + "Размер: " + collectionController.getVector().size + ", "
+                    + "Размер: " + collectionManager.getVector().size + ", "
                     + when { accessability.toString() == "false, " -> "close"
-                else -> "open, " } + "Дата инициализации: " + collectionController.getVector(). )
+                else -> "open, " } + "Дата инициализации: " + collectionManager.getVector(). )
     }
 }
