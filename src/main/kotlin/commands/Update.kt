@@ -1,13 +1,13 @@
 package commands
 
-import controllers.CollectionController
+import utils.CollectionController
 import data.Color
 import data.Country
 import data.Person
 import java.util.Date
 
 
-class Update {
+class Update: Command {
     fun updateElement(id: Int) {
         var element: Person = CollectionController.vector.elementAt(id - 1)
 

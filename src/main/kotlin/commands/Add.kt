@@ -1,6 +1,6 @@
 package commands
 
-import controllers.CollectionController
+import utils.CollectionController
 import data.Color
 import data.Coordinates
 import data.Country
@@ -8,7 +8,7 @@ import data.Location
 import data.Person
 import java.util.*
 
-class Add {
+class Add: Command {
     var collectionController: CollectionController = CollectionController()
 
     fun addNewElement() {

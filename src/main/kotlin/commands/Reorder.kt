@@ -1,4 +1,4 @@
 package commands
 
-class Reorder {
+class Reorder: Command {
 }

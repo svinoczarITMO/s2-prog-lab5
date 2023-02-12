@@ -1,4 +1,4 @@
 package commands
 
-class ExecuteScript {
+class ExecuteScript: Command {
 }

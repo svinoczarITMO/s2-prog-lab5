@@ -1,9 +1,9 @@
 package commands
 
-import java.util.LinkedList
+import java.util.*
 
 
-class History {
+class History: Command {
     private var commandBuffer: LinkedList<String> = LinkedList<String>()
     fun writeInBuffer(command: String) {
         if (commandBuffer.size == 7) {

@@ -1,9 +1,9 @@
 package commands
 
-import controllers.CollectionController
+import utils.CollectionController
 
 
-class Info {
+class Info: Command {
     var collectionController: CollectionController = CollectionController()
     var reflexVector = collectionController.getVector()
     var type = reflexVector.returnType

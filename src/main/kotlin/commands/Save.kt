@@ -1,6 +1,6 @@
 package commands
 
-import controllers.CollectionController
+import utils.CollectionController
 import data.Color
 import data.Coordinates
 import data.Country
@@ -10,7 +10,7 @@ import java.io.File
 import java.util.*
 
 
-class Save {
+class Save: Command {
     private val pathToFile = "D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\main\\kotlin\\Collection.xml"
     private var readerBuffer: String = File(pathToFile).readText()
     private val pattern = Regex("""<.*?>(.*)<.*?>""")

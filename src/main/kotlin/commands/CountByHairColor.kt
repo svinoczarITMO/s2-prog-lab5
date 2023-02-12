@@ -1,9 +1,9 @@
 package commands
 
-import controllers.CollectionController
+import utils.CollectionController
 import data.Color
 
-class CountByHairColor {
+class CountByHairColor: Command {
     fun countByHairColor (color: String) {
         val copyVector = CollectionController.vector
         var counter: Int = 0

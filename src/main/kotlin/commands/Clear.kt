@@ -1,4 +1,4 @@
 package commands
 
-class Clear {
+class Clear: Command {
 }

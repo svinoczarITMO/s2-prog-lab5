@@ -1,4 +1,4 @@
 package commands
 
-class Exit {
+class Exit: Command {
 }

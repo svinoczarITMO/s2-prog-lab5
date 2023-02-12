@@ -1,4 +1,4 @@
 package commands
 
-class RemoveFirst {
+class RemoveFirst: Command {
 }

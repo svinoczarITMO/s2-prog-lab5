@@ -1,9 +1,9 @@
 package commands
 
-import controllers.CollectionController
+import utils.CollectionController
 
 
-class MinByWeight {
+class MinByWeight: Command {
 fun minWeightElement() {
     val copyVector = CollectionController.vector
     var minWeightElements: MutableMap<Int, Long> = mutableMapOf()

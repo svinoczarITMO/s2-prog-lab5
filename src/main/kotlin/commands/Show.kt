@@ -1,8 +1,8 @@
 package commands
 
-import controllers.CollectionController
+import utils.CollectionController
 
-class Show {
+class Show: Command {
     fun printAllElementsAsString() { //TODO: а может нужно выодить все поля???
         val vector = CollectionController.vector
         if (vector.size > 1) {

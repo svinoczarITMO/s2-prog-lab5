@@ -1,9 +1,9 @@
 package commands
 
-import controllers.CollectionController
+import utils.CollectionController
 import data.Country
 
-class GroupCountingByNationality {
+class GroupCountingByNationality: Command {
     fun groupByNationality () {
         val copyVector = CollectionController.vector
         var bufferVector = CollectionController.vector
