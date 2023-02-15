@@ -1,21 +1,17 @@
 package commands
 
+import data.*
 import utils.CollectionManager
-import data.Color
-import data.Coordinates
-import data.Country
-import data.Location
-import data.Person
 import java.io.File
 import java.util.*
 
 
 class Save: Command {
-    private val pathToFile = "D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\main\\kotlin\\Collection.xml"
+    private val pathToFile = "D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\main\\kotlin\\data\\Collection.xml"
     private var readerBuffer: String = File(pathToFile).readText()
     private val pattern = Regex("""<.*?>(.*)<.*?>""")
     private val tagsList: MutableList<String> = mutableListOf()
-    private var copyVector: Vector<Person> = CollectionManager.vector
+    private var copyVector: Vector<Person> = CollectionManager().getVector()
 
     fun readFromFile() {
         while (pattern.find(readerBuffer) != null) {
@@ -26,7 +22,7 @@ class Save: Command {
             readerBuffer = readerBuffer.replaceFirst("$tagName", "")
             tagsList.add(tagValue)
             if (tagName?.contains("location") == true) {
-                CollectionManager.addElement(
+                CollectionManager().getVector().addElement(
                     Person(
                         tagsList[0].toInt(),
                         tagsList[1],
@@ -81,5 +77,9 @@ class Save: Command {
                     "\t</element>\n"
         }
         return string
+    }
+
+    override fun execute(command: String) {
+        TODO("Not yet implemented")
     }
 }

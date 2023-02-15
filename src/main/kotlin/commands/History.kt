@@ -20,4 +20,8 @@ class History: Command {
         }
         println()
     }
+
+    override fun execute(command: String) {
+        TODO("Not yet implemented")
+    }
 }

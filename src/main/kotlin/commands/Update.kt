@@ -1,15 +1,15 @@
 package commands
 
-import utils.CollectionManager
 import data.Color
 import data.Country
 import data.Person
-import java.util.Date
+import utils.CollectionManager
+import java.util.*
 
 
 class Update: Command {
     fun updateElement(id: Int) {
-        var element: Person = CollectionManager.vector.elementAt(id - 1)
+        var element: Person = CollectionManager().getVector().elementAt(id - 1)
 
         print("Введите новое имя: ");
         element.name = readln()
@@ -47,5 +47,9 @@ class Update: Command {
         element.location.y = readln().toLong()
         print("Введите новую координату z: ");
         element.location.z = readln().toInt()
+    }
+
+    override fun execute(command: String) {
+        TODO("Not yet implemented")
     }
 }
