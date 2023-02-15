@@ -43,12 +43,9 @@ fun main() {
         writeToConsole.writeToConsole("$")
         val readFromConsole = (readln().lowercase() + " ?").split(" ")
         if (readFromConsole[0] in commands) {
-            val command: Command? = commands.get(readFromConsole[0])
-            if (command != null) {
-                command.execute(readFromConsole[0])
-            } else {
-                writeToConsole.writeToConsole("Введена неверная команда. Используйте help для вывода списка команд.")
-            }
+            commands[readFromConsole[0]]?.execute(readFromConsole[0])
+        } else {
+            writeToConsole.writelnToConsole("Введена неверная команда. Используйте help для вывода списка команд.")
         }
     }
 }

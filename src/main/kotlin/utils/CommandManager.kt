@@ -2,10 +2,10 @@ package utils
 
 import commands.*
 import data.*
-import java.util.Date
+import java.util.*
 import kotlin.system.exitProcess
 
-class CommandManager {
+class CommandManager: Command{
 
     val commands = mapOf<String, Command>(
         "help" to Help(),
@@ -28,8 +28,6 @@ class CommandManager {
 
 
 
-
-
     var collectionManager: CollectionManager = CollectionManager()
     /**
         Функции разработчика (отладка):
@@ -39,21 +37,24 @@ class CommandManager {
         fadd - добавляет зараннее созданный объект .data.Person в "vector"
     */
     fun prnt () {
-        println(collectionManager.vector)
+        println(collectionManager.getVector())
     }
     fun get (index: Int) {
         collectionManager.getElement(index-1)
     }
     fun fadd () {
-        var id: Int = collectionManager.vector.size + 1001
+        var id: Int = collectionManager.getVector().size + 1001
         var obj: Person = Person(id, "Jesus", Coordinates(0f,0f), Date(), 305, 0, Color.RED, Country.USA, Location(0,0,0))
-        collectionManager.vector.add(obj)
+        collectionManager.getVector().add(obj)
     }
 
     /** __(~_~)-- **/
 
-    fun executeScript(fileName: String) {}
     fun exit () {
         exitProcess(0)
+    }
+
+    override fun execute(command: String) {
+        TODO("Not yet implemented")
     }
 }

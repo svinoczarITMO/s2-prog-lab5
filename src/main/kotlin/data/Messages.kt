@@ -1,10 +1,10 @@
 package data
 
 class Messages {
-    val messages = mapOf<String, String>(
+    private val messages = mapOf<String, String>(
         "name" to "Введите имя: ",
-        "coordinatesX" to "Введите координату X места рождения: ",
-        "coordinatesY" to "Введите координату Y места рождения: ",
+        "coordinateX" to "Введите координату X места рождения: ",
+        "coordinateY" to "Введите координату Y места рождения: ",
         "height" to "Введите рост: ",
         "weight" to "Введите вес: ",
         "hairColor" to "Выберите цвет волос из предложенных: ",
@@ -13,4 +13,8 @@ class Messages {
         "locationY" to "Введите координату Y примерного текущего местоположения: ",
         "locationZ" to "Введите координату Z примерного текущего местоположения: "
     )
+
+    fun getMessage (key: String): String? {
+        return messages.get(key)
+    }
 }

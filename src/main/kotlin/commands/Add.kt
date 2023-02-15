@@ -1,59 +1,59 @@
 package commands
 
+import data.*
 import utils.CollectionManager
-import data.Color
-import data.Coordinates
-import data.Country
-import data.Location
-import data.Person
+import utils.PrinterManager
 import java.util.*
 
 class Add: Command {
-    var collectionManager: CollectionManager = CollectionManager()
+    private var collectionManager: CollectionManager = CollectionManager()
+    private val writeToConsole = PrinterManager()
 
-    fun addNewElement() {
-        val id: Int = collectionManager.vector.size + 1
+    override fun execute(command: String) {
+        val message = Messages()
 
+        val id: Int = collectionManager.getVector().size + 1
 
+        writeToConsole.writelnToConsole(message.getMessage("name"))
         val name: String = readln()
 
-        val s: MutableMap<String,String> = mutableMapOf()
-
+        writeToConsole.writelnToConsole(message.getMessage("coordinateX"))
         val coordinateX: Float = readln().toFloat()
+        writeToConsole.writelnToConsole(message.getMessage("coordinateY"))
         val coordinateY: Float = readln().toFloat()
         val coordinates: Coordinates = Coordinates(coordinateX, coordinateY)
 
         val creationDate: Date = Date()
 
-        print("Введите рост: ");
+        writeToConsole.writelnToConsole(message.getMessage("height"))
         val height: Int = readln().toInt()
 
-        print("Введите вес: ");
+        writeToConsole.writelnToConsole(message.getMessage("weight"))
         val weight: Long = readln().toLong()
 
-        print("Выберите цвет волос из предложенных: ")
+        writeToConsole.writelnToConsole(message.getMessage("hairColor"))
         for (value in Color.values()) {
-            print(value.toString() + ", ")
+            print("$value, ")
         }
         println()
         val hairColor: Color = Color.valueOf(readln().uppercase())
 
-        print("Выберите страну рождения из предложенных: ")
+        writeToConsole.writelnToConsole(message.getMessage("nationality"))
         for (value in Country.values()) {
-            print(value.toString() + ", ")
+            print("$value, ")
         }
         println()
         val nationality: Country = Country.valueOf(readln().uppercase())
 
-        print("Введите координату x примерного текущего местоположения: ");
-        var locationX: Int = readln().toInt()
-        print("Введите координату y примерного текущего местоположения: ");
-        var locationY: Long = readln().toLong()
-        print("Введите координату z примерного текущего местоположения: ");
-        var locationZ: Int = readln().toInt()
-        var location: Location = Location(locationX, locationY, locationZ)
+        writeToConsole.writelnToConsole(message.getMessage("locationX"))
+        val locationX: Int = readln().toInt()
+        writeToConsole.writelnToConsole(message.getMessage("locationY"))
+        val locationY: Long = readln().toLong()
+        writeToConsole.writelnToConsole(message.getMessage("locationZ"))
+        val locationZ: Int = readln().toInt()
+        val location: Location = Location(locationX, locationY, locationZ)
 
-        var personElement: Person =
+        val personElement: Person =
             Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
 
         collectionManager.getVector().add(personElement)
