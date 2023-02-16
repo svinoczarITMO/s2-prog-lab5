@@ -5,14 +5,14 @@ import data.Messages
 import utils.CollectionManager
 import utils.PrinterManager
 
-class Get: Command {
+class GetElement: Command {
     private var collectionManager: CollectionManager = CollectionManager()
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(command: String) {
-        val id = command.toInt()
-        val obj = collectionManager.getVector()[id]
+    override fun execute(argument: String) {
+        val id = argument.toInt()
+        val obj = collectionManager.getVector()[id-1]
         writeToConsole.writelnToConsole("Объект ${obj.id}:\n"
                 + "Дата создания: \"" + obj.creationDate + "\" \n"
                 + "Координаты: x = " + obj.coordinates.x + " y = " + obj.coordinates.y + "\n"

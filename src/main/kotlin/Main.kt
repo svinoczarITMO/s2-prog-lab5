@@ -1,5 +1,8 @@
 
 import commands.*
+import commands.dev.FastAdd
+import commands.dev.GetElement
+import commands.dev.PrintCollection
 import utils.PrinterManager
 
 fun main() {
@@ -19,32 +22,39 @@ fun main() {
     val minByWeight: MinByWeight = MinByWeight()
     val groupCountingByNationality:GroupCountingByNationality = GroupCountingByNationality()
     val countByHairColor: CountByHairColor = CountByHairColor()
+    val fastAdd: FastAdd = FastAdd()
+    val printCollection: PrintCollection = PrintCollection()
+    val getElement: GetElement = GetElement()
     val writeToConsole: PrinterManager = PrinterManager()
 
     val commands = mapOf<String, Command>(
-        "help" to Help(),
-        "info" to Info(),
-        "show" to Show(),
-        "add" to Add(),
-        "update" to Update(),
-        "remove_by_id" to RemoveByID(),
-        "clear" to Clear(),
-        "save" to Save(),
-        "execute_script" to ExecuteScript(),
-        "exit" to Exit(),
-        "remove_first" to RemoveFirst(),
-        "reorder" to Reorder(),
-        "history" to History(),
-        "min_by_weight" to MinByWeight(),
-        "group_counting_by_nationality" to GroupCountingByNationality(),
-        "count_by_hair_color" to CountByHairColor())
+        "help" to help,
+        "info" to info,
+        "show" to show,
+        "add" to add,
+        "update" to update,
+        "remove_by_id" to removeById,
+        "clear" to clear,
+        "save" to save,
+        "execute_script" to executeScript,
+        "exit" to exit,
+        "remove_first" to removeFirst,
+        "reorder" to reorder,
+        "history" to history,
+        "min_by_weight" to minByWeight,
+        "group_counting_by_nationality" to groupCountingByNationality,
+        "count_by_hair_color" to countByHairColor,
+        "fadd" to fastAdd,
+        "print" to printCollection,
+        "get" to getElement)
 
-    while (true) {
+    while (true){
         writeToConsole.writeToConsole("$")
         val readFromConsole = (readln().lowercase() + " ?").split(" ")
         if (readFromConsole[0] in commands) {
             val command: Command? = commands.get(readFromConsole[0])
             if (command != null) {
+                History.writeInBuffer(command.toString())
                 command.execute(readFromConsole[1])
             }
         } else {

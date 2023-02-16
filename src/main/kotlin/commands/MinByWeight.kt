@@ -12,7 +12,7 @@ fun minWeightElement() {
 //    CollectionManager.getElement(minWeightElement.key - 1)
     }
 
-    override fun execute(command: String) {
+    override fun execute(argument: String) {
         TODO("Not yet implemented")
     }
 }

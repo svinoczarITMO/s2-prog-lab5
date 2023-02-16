@@ -49,7 +49,7 @@ class Update: Command {
         element.location.z = readln().toInt()
     }
 
-    override fun execute(command: String) {
+    override fun execute(argument: String) {
         TODO("Not yet implemented")
     }
 }

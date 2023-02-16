@@ -9,8 +9,8 @@ class Clear: Command {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(command: String) {
-        writeToConsole.writelnToConsole(message.getMessage(command))
+    override fun execute(argument: String) {
+        writeToConsole.writelnToConsole(message.getMessage("clear"))
         return collectionManager.getVector().clear()
     }
 }

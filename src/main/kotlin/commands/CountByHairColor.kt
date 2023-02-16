@@ -2,21 +2,19 @@ package commands
 
 import data.Color
 import utils.CollectionManager
+import utils.PrinterManager
 
 class CountByHairColor: Command {
-    fun countByHairColor (color: String) {
-        val copyVector = CollectionManager().getVector()
+    private val copyVector = CollectionManager().getVector()
+    private val writeToConsole = PrinterManager()
+    override fun execute(argument: String) {
         var counter: Int = 0
         for (element in copyVector) {
-            if (element.hairColor == Color.valueOf(color.uppercase())) {
+            if (element.hairColor == Color.valueOf(argument.uppercase())) {
                 counter += 1
+            }
         }
-    }
-        println("Количество людей с цветом волос \"${color.capitalize()}\": $counter")
+        writeToConsole.writelnToConsole("Количество людей с цветом волос \"${argument.capitalize()}\": $counter")
 
-    }
-
-    override fun execute(command: String) {
-        TODO("Not yet implemented")
     }
 }

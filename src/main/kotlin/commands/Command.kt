@@ -1,5 +1,5 @@
 package commands
 
 interface Command {
-    fun execute (command: String)
+    fun execute (argument: String)
 }

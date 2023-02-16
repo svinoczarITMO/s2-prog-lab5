@@ -1,7 +1,7 @@
 package commands
 
 class RemoveFirst: Command {
-    override fun execute(command: String) {
+    override fun execute(argument: String) {
         TODO("Not yet implemented")
     }
 }

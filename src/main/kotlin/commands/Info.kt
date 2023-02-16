@@ -1,12 +1,15 @@
 package commands
 
+import data.Messages
 import utils.CollectionManager
+import utils.PrinterManager
 
 
 class Info: Command {
-    var collectionManager: CollectionManager = CollectionManager()
-    var reflexVector = collectionManager.getVector()
-    override fun execute(command: String) {
+    private val collectionManager: CollectionManager = CollectionManager()
+    private val writeToConsole = PrinterManager()
+    private val message = Messages()
+    override fun execute(argument: String) {
         TODO("Not yet implemented")
     }
 //    var type = reflexVector.returnType

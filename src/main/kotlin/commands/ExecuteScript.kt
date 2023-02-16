@@ -1,7 +1,7 @@
 package commands
 
 class ExecuteScript: Command {
-    override fun execute(command: String) {
+    override fun execute(argument: String) {
         TODO("Not yet implemented")
     }
 }

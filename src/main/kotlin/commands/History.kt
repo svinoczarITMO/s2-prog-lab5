@@ -1,27 +1,31 @@
 package commands
 
+import data.Messages
+import utils.PrinterManager
 import java.util.*
 
 
 class History: Command {
-    private var commandBuffer: LinkedList<String> = LinkedList<String>()
-    fun writeInBuffer(command: String) {
-        if (commandBuffer.size == 7) {
-            commandBuffer.pop()
-            commandBuffer.add(command)
-        } else {
-            commandBuffer.add(command)
-        }
-    }
-    fun printHistory () {
+    private val writeToConsole = PrinterManager()
+    private val message = Messages()
+
+    override fun execute(argument: String) {
         println("Последние 7 комманд: ")
         for (command in commandBuffer) {
-            println(command)
+            writeToConsole.writelnToConsole(command)
         }
-        println()
+        writeToConsole.writelnToConsole("")
     }
 
-    override fun execute(command: String) {
-        TODO("Not yet implemented")
+    companion object {
+        private var commandBuffer: LinkedList<String> = LinkedList<String>()
+        fun writeInBuffer(command: String) {
+            if (commandBuffer.size == 7) {
+                commandBuffer.pop()
+                commandBuffer.add(command)
+            } else {
+                commandBuffer.add(command)
+            }
+        }
     }
 }

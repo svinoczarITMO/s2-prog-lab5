@@ -1,7 +1,9 @@
 package commands
 
+import kotlin.system.exitProcess
+
 class Exit: Command {
-    override fun execute(command: String) {
-        TODO("Not yet implemented")
+    override fun execute(argument: String) {
+        exitProcess(1)
     }
 }

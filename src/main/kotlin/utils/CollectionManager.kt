@@ -5,8 +5,9 @@ import java.util.*
 
 //koin
 class CollectionManager {
-    private var vector = Vector<Person>()
-
+    companion object {
+        var vector = Vector<Person>()
+    }
     fun getVector (): Vector<Person> {
         return vector
     }
