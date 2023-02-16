@@ -2,16 +2,17 @@ package data
 
 class Messages {
     private val messages = mapOf<String, String>(
-        "name" to "Введите имя: ",
-        "coordinateX" to "Введите координату X места рождения: ",
-        "coordinateY" to "Введите координату Y места рождения: ",
-        "height" to "Введите рост: ",
-        "weight" to "Введите вес: ",
-        "hairColor" to "Выберите цвет волос из предложенных: ",
-        "nationality" to "Выберите страну рождения из предложенных: ",
-        "locationX" to "Введите координату X примерного текущего местоположения: ",
-        "locationY" to "Введите координату Y примерного текущего местоположения: ",
-        "locationZ" to "Введите координату Z примерного текущего местоположения: "
+        "enter_name" to "Введите имя: ",
+        "enter_coordinateX" to "Введите координату X места рождения: ",
+        "enter_coordinateY" to "Введите координату Y места рождения: ",
+        "enter_height" to "Введите рост: ",
+        "enter_weight" to "Введите вес: ",
+        "enter_hairColor" to "Выберите цвет волос из предложенных: ",
+        "enter_nationality" to "Выберите страну рождения из предложенных: ",
+        "enter_locationX" to "Введите координату X примерного текущего местоположения: ",
+        "enter_locationY" to "Введите координату Y примерного текущего местоположения: ",
+        "enter_locationZ" to "Введите координату Z примерного текущего местоположения: ",
+        "clear" to "Коллекция успешно очищена!"
     )
 
     fun getMessage (key: String): String? {
