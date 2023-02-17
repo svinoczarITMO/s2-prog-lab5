@@ -12,13 +12,6 @@ class CollectionManager {
         return vector
     }
 
-    fun getElement (id: Int) { //TODO сделать через рефлексию (?)
-
-    }
-
-
-
-
     fun removeById (id: Int) {
         vector.removeAt(id-1)
     }
