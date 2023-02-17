@@ -12,7 +12,10 @@ class Messages {
         "enter_locationX" to "Введите координату X примерного текущего местоположения: ",
         "enter_locationY" to "Введите координату Y примерного текущего местоположения: ",
         "enter_locationZ" to "Введите координату Z примерного текущего местоположения: ",
-        "clear" to "Коллекция успешно очищена!"
+        "clear" to "Коллекция успешно очищена!",
+        "by_id" to "Элемент с id = ",
+        "first_element" to "Первый элемент коллекции ",
+        "removed" to " успешно удалён!"
     )
 
     fun getMessage (key: String): String? {
