@@ -32,16 +32,16 @@ class Add: Command {
 
         writeToConsole.writelnToConsole(message.getMessage("enter_hairColor"))
         for (value in Color.values()) {
-            print("$value, ")
+            writeToConsole.writeToConsole("$value, ")
         }
-        println()
+        writeToConsole.writelnToConsole("")
         val hairColor: Color = Color.valueOf(readln().uppercase())
 
         writeToConsole.writelnToConsole(message.getMessage("enter_nationality"))
         for (value in Country.values()) {
-            print("$value, ")
+            writeToConsole.writeToConsole("$value, ")
         }
-        println()
+        writeToConsole.writelnToConsole("")
         val nationality: Country = Country.valueOf(readln().uppercase())
 
         writeToConsole.writelnToConsole(message.getMessage("enter_locationX"))

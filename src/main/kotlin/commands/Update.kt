@@ -2,54 +2,51 @@ package commands
 
 import data.Color
 import data.Country
-import data.Person
+import data.Messages
 import utils.CollectionManager
-import java.util.*
+import utils.PrinterManager
 
 
 class Update: Command {
-    fun updateElement(id: Int) {
-        var element: Person = CollectionManager().getVector().elementAt(id - 1)
+    private val collectionManager: CollectionManager = CollectionManager()
+    private val writeToConsole = PrinterManager()
+    private val message = Messages()
+    override fun execute(argument: String) {
+        val element = collectionManager.getVector().elementAt(argument.toInt() - 1)
 
-        print("Введите новое имя: ");
+        writeToConsole.writelnToConsole(message.getMessage("enter_name"))
         element.name = readln()
 
-        print("Введите новую координату x: ");
+        writeToConsole.writelnToConsole(message.getMessage("enter_coordinateX"))
         element.coordinates.x = readln().toFloat()
-        print("Введите новую координату y: ");
+        writeToConsole.writelnToConsole(message.getMessage("enter_coordinateY"))
         element.coordinates.y = readln().toFloat()
 
-        element.creationDate = Date() //TODO: дата создания обновляется?
-
-        print("Введите новый рост: ");
+        writeToConsole.writelnToConsole(message.getMessage("enter_height"))
         element.height = readln().toInt()
 
-        print("Введите новый вес: ");
+        writeToConsole.writelnToConsole(message.getMessage("enter_weight"))
         element.weight = readln().toLong()
 
-        print("Выберите новый цвет волос из предложенных: ")
+        writeToConsole.writelnToConsole(message.getMessage("enter_hairColor"))
         for (value in Color.values()) {
-            print(value.toString() + ", ")
+            writeToConsole.writeToConsole(value.toString() + ", ")
         }
-        println()
+        writeToConsole.writelnToConsole("")
         element.hairColor = Color.valueOf(readln().uppercase())
 
-        print("Выберите новую страну рождения из предложенных: ")
+        writeToConsole.writelnToConsole(message.getMessage("enter_nationality"))
         for (value in Country.values()) {
-            print(value.toString() + ", ")
+            writeToConsole.writeToConsole(value.toString() + ", ")
         }
-        println()
+        writeToConsole.writelnToConsole("")
         element.nationality = Country.valueOf(readln().uppercase())
 
-        print("Введите новую координату x: ");
+        writeToConsole.writelnToConsole(message.getMessage("enter_locationX"))
         element.location.x = readln().toInt()
-        print("Введите новую координату y: ");
+        writeToConsole.writelnToConsole(message.getMessage("enter_locationY"))
         element.location.y = readln().toLong()
-        print("Введите новую координату z: ");
+        writeToConsole.writelnToConsole(message.getMessage("enter_locationZ"))
         element.location.z = readln().toInt()
-    }
-
-    override fun execute(argument: String) {
-        TODO("Not yet implemented")
     }
 }
