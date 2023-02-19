@@ -3,9 +3,11 @@ import commands.*
 import commands.dev.FastAdd
 import commands.dev.GetElement
 import commands.dev.PrintCollection
+import utils.Loader
 import utils.PrinterManager
 
 fun main() {
+    val loader: Loader = Loader()
     val help: Help = Help()
     val info: Info = Info()
     val show: Show = Show()
@@ -26,7 +28,6 @@ fun main() {
     val printCollection: PrintCollection = PrintCollection()
     val getElement: GetElement = GetElement()
     val writeToConsole: PrinterManager = PrinterManager()
-
     val commands = mapOf<String, Command>(
         "help" to help,
         "info" to info,
@@ -47,6 +48,8 @@ fun main() {
         "fadd" to fastAdd,
         "print" to printCollection,
         "get" to getElement)
+
+    loader.loadFromFile()
 
     while (true){
         writeToConsole.writeToConsole("$")

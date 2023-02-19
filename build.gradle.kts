@@ -19,6 +19,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.10")
     val kotlinVersion = "1.8.0"
     testImplementation(kotlin("test"))
-//    implementation(kotlin("serialization", version = kotlinVersion))
-//    implementation("org.jetbrains.kotlinx:kotlinx-serialization-xml:1.4.1")
+    implementation(kotlin("serialization", version = kotlinVersion))
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0-RC")
 }
