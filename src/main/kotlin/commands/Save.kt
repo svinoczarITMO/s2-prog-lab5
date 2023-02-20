@@ -14,12 +14,11 @@ class Save: Command {
 
     //private val pathToFile = System.getenv("D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\main\\kotlin\\data\\Collection.xml")
     private val pathToFile = "D:\\\\ITMO\\\\2nd-semester\\\\prog-labs\\\\s2-prog-lab5\\\\src\\\\main\\\\kotlin\\\\data\\\\Collection.xml"
-//    private var readerBuffer: String = File(pathToFile).readText()
-    private var copyVector: Vector<Person> = CollectionManager().getVector()
 
-    fun tagsCompilations (rawString: String): String {
+    private fun tagsCompilations (rawString: String): String {
+        val bufferVector: Vector<Person> = CollectionManager().getVector()
         var string: String = rawString
-        val elements = copyVector.elements()
+        val elements = bufferVector.elements()
         for (element in elements) {
             string += "\t<element>\n"
             string += "\t\t<id>${element.id}</id>\n" +
@@ -37,11 +36,11 @@ class Save: Command {
     }
 
     override fun execute(argument: String) {
+        val bufferVector: Vector<Person> = CollectionManager().getVector()
         var tags: String = ""
         val tagsStart: String = "<vector-elements>\n"
         val tagsEnd: String = "</vector-elements>"
-
-        if (copyVector.isNotEmpty()) {
+        if (bufferVector.isNotEmpty()) {
             tags += tagsCompilations(tagsStart+tags)
             tags += tagsEnd
             File(pathToFile).writeText(tags)

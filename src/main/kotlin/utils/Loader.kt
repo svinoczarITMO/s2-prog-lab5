@@ -8,22 +8,19 @@ class Loader {
     //private val pathToFile = System.getenv("D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\main\\kotlin\\data\\Collection.xml")
     private val pathToFile = "D:\\\\ITMO\\\\2nd-semester\\\\prog-labs\\\\s2-prog-lab5\\\\src\\\\main\\\\kotlin\\\\data\\\\Collection.xml"
     private val collectionManager: CollectionManager = CollectionManager()
-
     private var readerBuffer: String = File(pathToFile).readText()
     private val pattern = Regex("""<.*?>(.*)<.*?>""")
     private val tagsList: MutableList<String> = mutableListOf()
-    private var copyVector: Vector<Person> = CollectionManager().getVector()
 
     fun loadFromFile () {
         while (pattern.find(readerBuffer) != null) {
             val tagsCouple = pattern.find(readerBuffer)?.groupValues
             val tagName = tagsCouple?.get(0)
             val tagValue = tagsCouple?.get(1).toString()
-
             readerBuffer = readerBuffer.replaceFirst("$tagName", "")
             tagsList.add(tagValue)
             if (tagName?.contains("location") == true) {
-                collectionManager.getVector().addElement(
+                collectionManager.addObject(
                     Person(
                         tagsList[0].toInt(),
                         tagsList[1],
