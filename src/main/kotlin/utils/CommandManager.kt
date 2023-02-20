@@ -44,8 +44,4 @@ class CommandManager{
                 "fadd" to fastAdd,
                 "print" to printCollection,
                 "get" to getElement)
-
-        fun getCommand (key: String): Command? {
-                return commands[key]
-        }
 }

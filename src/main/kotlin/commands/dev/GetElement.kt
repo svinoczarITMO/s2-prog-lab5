@@ -1,14 +1,12 @@
 package commands.dev
 
 import commands.Command
-import data.Messages
 import utils.CollectionManager
 import utils.PrinterManager
 
 class GetElement: Command {
     private var collectionManager: CollectionManager = CollectionManager()
     private val writeToConsole = PrinterManager()
-    private val message = Messages()
 
     override fun execute(argument: String) {
         val id = argument.toInt()

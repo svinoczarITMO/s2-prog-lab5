@@ -16,6 +16,6 @@ class Reorder: Command {
             bufferVector.insertElementAt(element,0)
         }
         collectionManager.setVector(bufferVector)
-        writeToConsole.writelnToConsole("s")
+        writeToConsole.writelnToConsole(collectionManager.getVector().toString())
     }
 }

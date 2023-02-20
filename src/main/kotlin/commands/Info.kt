@@ -3,24 +3,22 @@ package commands
 import data.Messages
 import utils.CollectionManager
 import utils.PrinterManager
+import kotlin.reflect.full.valueParameters
 
 
 class Info: Command {
     private val collectionManager: CollectionManager = CollectionManager()
+    private val reflexion = collectionManager::getVector
+    private var type = reflexion.returnType
+    private var date = 2
+    private var size = reflexion.valueParameters.size
     private val writeToConsole = PrinterManager()
     private val message = Messages()
     override fun execute(argument: String) {
-        TODO("Not yet implemented")
+        writeToConsole.writelnToConsole(
+            type.toString().split(".")[2] + ", "
+                    + "Размер: " + collectionManager.getVector().size + ", "
+                    + "Дата инициализации: " + collectionManager.getVector())
     }
-//    var type = reflexVector.returnType
-//    var accessability = reflexVector.isOpen
-//
-//    //TODO: блин, а че делать-то ёлки-палки???
-//    fun info () {
-//        println(
-//            type.toString().split(".")[2] + ", "
-//                    + "Размер: " + collectionManager.getVector().size + ", "
-//                    + when { accessability.toString() == "false, " -> "close"
-//                else -> "open, " } + "Дата инициализации: " + collectionManager.getVector(). )
-//    }
+
 }

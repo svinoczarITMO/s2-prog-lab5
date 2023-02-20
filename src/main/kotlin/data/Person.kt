@@ -3,7 +3,6 @@ package data
 import java.util.*
 
 
-//@Serializable
 class Person(
     var id: Int,
     var name: String,

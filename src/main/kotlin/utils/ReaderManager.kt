@@ -3,12 +3,12 @@ package utils
 import java.io.File
 
 class ReaderManager: Reader {
-    override fun readFromConsole() {
-        val string = readln()
+    override fun readFromConsole(): String {
+        return readln()
     }
 
-    override fun readFromFile(pathToFile: String) {
-        val strings = File(pathToFile).readLines()
+    override fun readFromFile(pathToFile: String): List<String> {
+        return File(pathToFile).readLines()
     }
 
 }

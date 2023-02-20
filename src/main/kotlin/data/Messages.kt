@@ -18,7 +18,8 @@ class Messages {
         "removed" to " успешно удалён!",
         "recurision" to "Превышена глубина рекурсии! Выполнение прекращено!",
         "script_start" to "Скрипт выполняется...",
-        "script_end" to "Выполнение скрипта завершено..."
+        "script_end" to "Выполнение скрипта завершено...",
+        "last_commands" to "Последние 7 комманд: "
     )
 
     fun getMessage (key: String): String? {

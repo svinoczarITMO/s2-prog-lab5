@@ -1,4 +1,3 @@
-
 import commands.Command
 import commands.ExecuteScript
 import commands.History
@@ -30,7 +29,9 @@ fun main() {
         }
     }
 
-    //TODO: 1) ExecuteScript
+    //TODO: 1) Info
     //TODO: 2) Show
+    //TODO: 3) MinByWeight
+    //TODO: 4) CountByHairColor
 
 }

@@ -10,7 +10,7 @@ class History: Command {
     private val message = Messages()
 
     override fun execute(argument: String) {
-        println("Последние 7 комманд: ")
+        writeToConsole.writelnToConsole(message.getMessage("last_commands"))
         for (command in commandBuffer) {
             writeToConsole.writelnToConsole(command)
         }

@@ -11,6 +11,6 @@ class Clear: Command {
 
     override fun execute(argument: String) {
         writeToConsole.writelnToConsole(message.getMessage("clear"))
-        return collectionManager.getVector().clear()
+        return collectionManager.clear()
     }
 }
