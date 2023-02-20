@@ -3,10 +3,12 @@ package commands
 import data.*
 import utils.CollectionManager
 import utils.PrinterManager
+import utils.ReaderManager
 import java.util.*
 
 class Add: Command {
     private val collectionManager: CollectionManager = CollectionManager()
+    private val readerManager: ReaderManager = ReaderManager()
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 

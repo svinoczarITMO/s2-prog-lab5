@@ -14,7 +14,7 @@ class Save: Command {
 
     //private val pathToFile = System.getenv("D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\main\\kotlin\\data\\Collection.xml")
     private val pathToFile = "D:\\\\ITMO\\\\2nd-semester\\\\prog-labs\\\\s2-prog-lab5\\\\src\\\\main\\\\kotlin\\\\data\\\\Collection.xml"
-    private var readerBuffer: String = File(pathToFile).readText()
+//    private var readerBuffer: String = File(pathToFile).readText()
     private var copyVector: Vector<Person> = CollectionManager().getVector()
 
     fun tagsCompilations (rawString: String): String {

@@ -17,14 +17,14 @@ class GroupCountingByNationality: Command {
         for (nationality in Country.values()) {
             val mainNationality = nationality.toString()
             var counterOfElementsInGroup: Int = 0
-            for (element in collectionManager.getVector()) {
-                if (element.nationality.toString() == mainNationality) {
-                    bufferVector.insertElementAt(element,counter)
-                    counter += 1
-                    counterOfElementsInGroup += 1
-                }
-            }
-            writeToConsole.writelnToConsole("В группе $nationality $counterOfElementsInGroup человек")
+//            for (element in collectionManager.getVector()) {
+//                if (element.nationality.toString() == mainNationality) {
+//                    bufferVector.insertElementAt(element,counter)
+//                    counter += 1
+//                    counterOfElementsInGroup += 1
+//                }
+//            }
+//            writeToConsole.writelnToConsole("В группе $nationality $counterOfElementsInGroup человек")
         }
     }
 }

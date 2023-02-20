@@ -1,7 +1,7 @@
 package data
 
 class Messages {
-    private val messages = mapOf<String, String>(
+    private val messages = mapOf(
         "enter_name" to "Введите имя: ",
         "enter_coordinateX" to "Введите координату X места рождения: ",
         "enter_coordinateY" to "Введите координату Y места рождения: ",
@@ -15,10 +15,13 @@ class Messages {
         "clear" to "Коллекция успешно очищена!",
         "by_id" to "Элемент с id = ",
         "first_element" to "Первый элемент коллекции ",
-        "removed" to " успешно удалён!"
+        "removed" to " успешно удалён!",
+        "recurision" to "Превышена глубина рекурсии! Выполнение прекращено!",
+        "script_start" to "Скрипт выполняется...",
+        "script_end" to "Выполнение скрипта завершено..."
     )
 
     fun getMessage (key: String): String? {
-        return messages.get(key)
+        return messages[key]
     }
 }

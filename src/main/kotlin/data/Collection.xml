@@ -1,11 +1,24 @@
-<person>
-	<id>1002</id>
-	<name>Jesus</name>
-	<coordinates>0.0;0.0</coordinates>
-	<creationDate>Fri Feb 10 03:03:50 MSK 2023</creationDate>
-	<height>305</height>
-	<weight>0</weight>
-	<hairColor>RED</hairColor>
-	<nationality>USA</nationality>
-	<location>0;0;0</location>
-</person>
+<vector-elements>
+	<element>
+		<id>1002</id>
+		<name>Jesus</name>
+		<coordinates>0.0;0.0</coordinates>
+		<creationDate>Mon Feb 20 00:02:23 MSK 2023</creationDate>
+		<height>305</height>
+		<weight>0</weight>
+		<hairColor>RED</hairColor>
+		<nationality>USA</nationality>
+		<location>0;0;0</location>
+	</element>
+	<element>
+		<id>1002</id>
+		<name>Jesus</name>
+		<coordinates>0.0;0.0</coordinates>
+		<creationDate>Mon Feb 20 00:03:37 MSK 2023</creationDate>
+		<height>305</height>
+		<weight>0</weight>
+		<hairColor>RED</hairColor>
+		<nationality>USA</nationality>
+		<location>0;0;0</location>
+	</element>
+</vector-elements>
