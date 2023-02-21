@@ -29,7 +29,7 @@ fun main() {
         }
     }
 
-    //TODO: 1) Info
+    //TODO: 1) Info (дата инициализации)
     //TODO: 2) Show
     //TODO: 3) MinByWeight
     //TODO: 4) CountByHairColor

@@ -10,7 +10,7 @@ class Info: Command {
     private val collectionManager: CollectionManager = CollectionManager()
     private val reflexion = collectionManager::getVector
     private var type = reflexion.returnType
-    private var date = 2
+    //private var date = collectionManager::class
     private var size = reflexion.valueParameters.size
     private val writeToConsole = PrinterManager()
     private val message = Messages()
