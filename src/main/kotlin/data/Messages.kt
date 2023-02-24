@@ -19,7 +19,8 @@ class Messages {
         "recurision" to "Превышена глубина рекурсии! Выполнение прекращено!",
         "script_start" to "Скрипт выполняется...",
         "script_end" to "Выполнение скрипта завершено...",
-        "last_commands" to "Последние 7 комманд: "
+        "last_commands" to "Последние 7 комманд: ",
+        "min_weight" to "Объект коллекции с минимальным весом:"
     )
 
     fun getMessage (key: String): String? {

@@ -1,6 +1,7 @@
 package commands
 
 import data.*
+import utils.AddPersonFields
 import utils.CollectionManager
 import utils.PrinterManager
 import utils.ReaderManager
@@ -11,19 +12,21 @@ class Add: Command {
     private val readerManager: ReaderManager = ReaderManager()
     private val writeToConsole = PrinterManager()
     private val message = Messages()
+    private val set = AddPersonFields()
 
     override fun execute(argument: String) {
+
         val id: Int = collectionManager.getVector().size+1
 
-        writeToConsole.writelnToConsole(message.getMessage("enter_name"))
-        val name: String = readerManager.readFromConsole()
+        val name: String = set.name()
 
-        writeToConsole.writelnToConsole(message.getMessage("enter_coordinateX"))
-        val coordinateX: Float = readerManager.readFromConsole().toFloat()
-
-        writeToConsole.writelnToConsole(message.getMessage("enter_coordinateY"))
-        val coordinateY: Float = readerManager.readFromConsole().toFloat()
-        val coordinates = Coordinates(coordinateX, coordinateY)
+//        writeToConsole.writelnToConsole(message.getMessage("enter_coordinateX"))
+//        val coordinateX: Float = readerManager.readFromConsole().toFloat()
+//
+//        writeToConsole.writelnToConsole(message.getMessage("enter_coordinateY"))
+//        val coordinateY: Float = readerManager.readFromConsole().toFloat()
+//        val coordinates = Coordinates(coordinateX, coordinateY)
+        val coordinates = Coordinates(set.coordinateX(),set.coordinateY())
 
         val creationDate = Date()
 
@@ -59,4 +62,7 @@ class Add: Command {
             Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
         collectionManager.addObject(personElement)
     }
+
+
+
 }

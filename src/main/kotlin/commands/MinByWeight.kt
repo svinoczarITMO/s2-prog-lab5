@@ -7,30 +7,24 @@ import utils.PrinterManager
 
 
 class MinByWeight: Command {
-//fun minWeightElement() {
-//    val copyVector = CollectionManager.vector
-//    var minWeightElements: MutableMap<Int, Long> = mutableMapOf()
-//    for (element in copyVector) {
-//        minWeightElements.put(element.id, element.weight)
-//    }
-//    var minWeightElement = minWeightElements.minBy { it.value }
-//    CollectionManager.getElement(minWeightElement.key - 1)
-//    }
     private val collectionManager: CollectionManager = CollectionManager()
     private val getElement: GetElement = GetElement()
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
     override fun execute(argument: String) {
-//        val copyVector = collectionManager.getVector()
         val minWeightElements: MutableMap<Int, Long> = mutableMapOf()
-        for (element in collectionManager.getVector()) {
-            minWeightElements.put(element.id, element.weight)
+        if (collectionManager.getVector().size > 1) {
+            for ((counter, element) in collectionManager.getVector().withIndex()) {
+                minWeightElements[counter] = element.weight
+            }
+            val minWeightElement = minWeightElements.minOf {it.key}
+            println(minWeightElement)
+            writeToConsole.writelnToConsole(message.getMessage("min_weight"))
+            getElement.execute((collectionManager.getVector().elementAt(minWeightElement)).toString())
+        } else {
+            writeToConsole.writelnToConsole(message.getMessage("min_weight"))
+            getElement.execute("1")
         }
-        val minWeightElement = minWeightElements.minBy { it.value }
-//        if collectionManager.getVector().elementAt(minWeightElement.key-1).id
-        writeToConsole.writelnToConsole("Объект коллекции с минимальным весом:")
-        getElement.execute((collectionManager.getVector().elementAt(minWeightElement.key - 1)).id.toString())
-    //(minWeightElement.key - 1)
     }
 }

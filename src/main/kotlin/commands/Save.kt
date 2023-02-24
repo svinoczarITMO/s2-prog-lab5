@@ -37,9 +37,9 @@ class Save: Command {
 
     override fun execute(argument: String) {
         val bufferVector: Vector<Person> = CollectionManager().getVector()
-        var tags: String = ""
-        val tagsStart: String = "<vector-elements>\n"
-        val tagsEnd: String = "</vector-elements>"
+        var tags = ""
+        val tagsStart = "<vector-elements>\n"
+        val tagsEnd = "</vector-elements>"
         if (bufferVector.isNotEmpty()) {
             tags += tagsCompilations(tagsStart+tags)
             tags += tagsEnd
