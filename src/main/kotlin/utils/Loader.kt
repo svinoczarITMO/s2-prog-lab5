@@ -25,7 +25,7 @@ class Loader {
                         tagsList[0].toInt(),
                         tagsList[1],
                         Coordinates(tagsList[2].split(";")[0].toFloat(), tagsList[2].split(";")[1].toFloat()),
-                        Date(),
+                        collectionManager.parseDate(tagsList[3]),
                         tagsList[4].toInt(),
                         tagsList[5].toLong(),
                         Color.valueOf(tagsList[6].uppercase()),

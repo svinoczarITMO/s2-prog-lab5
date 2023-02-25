@@ -1,9 +1,7 @@
 
 import commands.ExecuteScript
 import commands.MinByWeight
-import data.Person
 import utils.*
-import java.util.*
 
 
 fun main() {
@@ -15,8 +13,6 @@ fun main() {
     val writeToConsole = PrinterManager()
     val commandManager = CommandManager()
     val commands = commandManager.commands + mapOf("execute_script" to executeScript, "min_by_weight" to minByWeight)
-
-    var vector = Vector<Person>()
 
     loader.loadFromFile(collectionManager)
 

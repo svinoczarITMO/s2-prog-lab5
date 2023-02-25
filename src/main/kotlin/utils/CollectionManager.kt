@@ -1,6 +1,7 @@
 package utils
 
 import data.Person
+import java.text.SimpleDateFormat
 import java.util.*
 
 //koin
@@ -23,4 +24,8 @@ class CollectionManager {
         vector.clear()
     }
 
+    fun parseDate(dateString: String): Date {
+        val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH)
+        return dateFormat.parse(dateString)
+    }
 }
