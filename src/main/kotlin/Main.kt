@@ -1,4 +1,3 @@
-
 import commands.ExecuteScript
 import commands.MinByWeight
 import utils.*
@@ -10,10 +9,12 @@ fun main() {
     val minByWeight = MinByWeight()
     val executeScript = ExecuteScript()
     val loader = Loader()
+    val logger = Logger()
     val writeToConsole = PrinterManager()
     val commandManager = CommandManager()
     val commands = commandManager.commands + mapOf("execute_script" to executeScript, "min_by_weight" to minByWeight)
 
+    logger.initDate(collectionManager)
     loader.loadFromFile(collectionManager)
 
     while (true){
@@ -25,11 +26,8 @@ fun main() {
             writeToConsole.writelnToConsole("Введена неверная команда. Используйте help для вывода списка команд.")
         }
     }
-
     //TODO: 1) Info (дата инициализации)
-    //TODO: 2) Show ☻
+    //TODO: 2) History
     //TODO: 3) MinByWeight
-    //TODO: 4) CountByHairColor ☻
-    //TODO: 5) Обработка ошибок
-
+    //TODO: 4) Обработка ошибок
 }

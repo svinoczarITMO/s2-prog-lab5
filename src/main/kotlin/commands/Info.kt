@@ -1,21 +1,23 @@
 package commands
 
-import data.Messages
 import utils.CollectionManager
+import utils.Logger
 import utils.PrinterManager
 
 
 class Info: Command {
     private val writeToConsole = PrinterManager()
-    private val message = Messages()
+    private val logger = Logger()
 
     override fun execute(args: Array<String>, collectionManager: CollectionManager) {
-        val type = collectionManager::getVector.returnType
+        val typeArray = collectionManager::getVector.returnType.toString().split(".")
+        val type = typeArray[2] + "." + typeArray[3]
         val size = collectionManager.getVector().size
+        val initDate = logger.initDate(collectionManager)
         writeToConsole.writelnToConsole(
-            type.toString().split(".")[2] + ", "
-                    + "Размер: " + size + ", "
-                    + "Дата инициализации: " + collectionManager.getVector().get(0).creationDate)
+                    "Тип: " + type + "\n"
+                    + "Размер: " + size + "\n"
+                    + "Дата инициализации: " + initDate)
     }
 
 }
