@@ -7,12 +7,11 @@ import java.util.*
 class Loader {
     //private val pathToFile = System.getenv("D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\main\\kotlin\\data\\Collection.xml")
     private val pathToFile = "D:\\\\ITMO\\\\2nd-semester\\\\prog-labs\\\\s2-prog-lab5\\\\src\\\\main\\\\kotlin\\\\data\\\\Collection.xml"
-    private val collectionManager = CollectionManager()
     private var readerBuffer: String = File(pathToFile).readText()
     private val pattern = Regex("""<.*?>(.*)<.*?>""")
     private val tagsList: MutableList<String> = mutableListOf()
 
-    fun loadFromFile () {
+    fun loadFromFile (collectionManager: CollectionManager) {
         val bufferVector = Vector<Person>()
         while (pattern.find(readerBuffer) != null) {
             val tagsCouple = pattern.find(readerBuffer)?.groupValues

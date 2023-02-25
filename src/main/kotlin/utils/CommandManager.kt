@@ -18,7 +18,6 @@ class CommandManager{
         private val removeFirst: RemoveFirst = RemoveFirst()
         private val reorder: Reorder = Reorder()
         private val history: History = History()
-        private val minByWeight: MinByWeight = MinByWeight()
         private val groupCountingByNationality: GroupCountingByNationality = GroupCountingByNationality()
         private val countByHairColor: CountByHairColor = CountByHairColor()
         private val fastAdd: FastAdd = FastAdd()
@@ -38,7 +37,6 @@ class CommandManager{
                 "remove_first" to removeFirst,
                 "reorder" to reorder,
                 "history" to history,
-                "min_by_weight" to minByWeight,
                 "group_counting_by_nationality" to groupCountingByNationality,
                 "count_by_hair_color" to countByHairColor,
                 "fadd" to fastAdd,

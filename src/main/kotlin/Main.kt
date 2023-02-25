@@ -1,5 +1,6 @@
 
 import commands.ExecuteScript
+import commands.MinByWeight
 import data.Person
 import utils.*
 import java.util.*
@@ -8,15 +9,16 @@ import java.util.*
 fun main() {
     val collectionManager = CollectionManager()
     val validator = Validator()
+    val minByWeight = MinByWeight()
     val executeScript = ExecuteScript()
     val loader = Loader()
     val writeToConsole = PrinterManager()
     val commandManager = CommandManager()
-    val commands = commandManager.commands + mapOf("execute_script" to executeScript)
+    val commands = commandManager.commands + mapOf("execute_script" to executeScript, "min_by_weight" to minByWeight)
 
     var vector = Vector<Person>()
 
-    loader.loadFromFile()
+    loader.loadFromFile(collectionManager)
 
     while (true){
         writeToConsole.writeToConsole("$")
