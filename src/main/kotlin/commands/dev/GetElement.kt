@@ -5,11 +5,10 @@ import utils.CollectionManager
 import utils.PrinterManager
 
 class GetElement: Command {
-    private var collectionManager: CollectionManager = CollectionManager()
     private val writeToConsole = PrinterManager()
 
-    override fun execute(argument: String) {
-        val id = argument.toInt()
+    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
+        val id = args[0].toInt()
         val obj = collectionManager.getVector()[id-1]
         writeToConsole.writelnToConsole("Объект ${obj.id}:\n"
                 + "Дата создания: \"" + obj.creationDate + "\" \n"

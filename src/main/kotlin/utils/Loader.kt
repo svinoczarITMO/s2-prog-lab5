@@ -7,12 +7,13 @@ import java.util.*
 class Loader {
     //private val pathToFile = System.getenv("D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\main\\kotlin\\data\\Collection.xml")
     private val pathToFile = "D:\\\\ITMO\\\\2nd-semester\\\\prog-labs\\\\s2-prog-lab5\\\\src\\\\main\\\\kotlin\\\\data\\\\Collection.xml"
-    private val collectionManager: CollectionManager = CollectionManager()
+    private val collectionManager = CollectionManager()
     private var readerBuffer: String = File(pathToFile).readText()
     private val pattern = Regex("""<.*?>(.*)<.*?>""")
     private val tagsList: MutableList<String> = mutableListOf()
 
     fun loadFromFile () {
+        val bufferVector = Vector<Person>()
         while (pattern.find(readerBuffer) != null) {
             val tagsCouple = pattern.find(readerBuffer)?.groupValues
             val tagName = tagsCouple?.get(0)
@@ -20,7 +21,7 @@ class Loader {
             readerBuffer = readerBuffer.replaceFirst("$tagName", "")
             tagsList.add(tagValue)
             if (tagName?.contains("location") == true) {
-                collectionManager.addObject(
+                bufferVector.add(
                     Person(
                         tagsList[0].toInt(),
                         tagsList[1],
@@ -40,5 +41,7 @@ class Loader {
                 tagsList.clear()
             }
         }
+//        println(bufferVector)
+        collectionManager.setVector(bufferVector)
     }
 }

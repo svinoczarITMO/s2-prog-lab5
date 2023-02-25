@@ -1,5 +1,7 @@
 package commands
 
+import utils.CollectionManager
+
 interface Command {
-    fun execute (argument: String)
+    fun execute (args: Array<String>, collectionManager: CollectionManager)
 }

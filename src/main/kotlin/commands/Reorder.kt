@@ -7,10 +7,9 @@ import utils.PrinterManager
 import java.util.*
 
 class Reorder: Command {
-    private val collectionManager: CollectionManager = CollectionManager()
     private val writeToConsole = PrinterManager()
     private val message = Messages()
-    override fun execute(argument: String) {
+    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
         val bufferVector: Vector<Person> = Vector()
         for (element in collectionManager.getVector()) {
             bufferVector.insertElementAt(element,0)

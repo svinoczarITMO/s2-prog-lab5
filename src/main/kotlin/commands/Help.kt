@@ -1,12 +1,12 @@
 package commands
 
+import utils.CollectionManager
 import utils.PrinterManager
 
 class Help: Command {
-
     val writeToConsole: PrinterManager = PrinterManager()
 
-    override fun execute(argument: String) {
+    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
             writeToConsole.writelnToConsole(
                     "=========================================================================================================================================\n" +
                     "help - выводит справку по доступным командам\n" +

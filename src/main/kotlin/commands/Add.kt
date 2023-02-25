@@ -2,22 +2,15 @@ package commands
 
 import data.Coordinates
 import data.Location
-import data.Messages
 import data.Person
 import utils.AddPersonFields
 import utils.CollectionManager
-import utils.PrinterManager
-import utils.ReaderManager
 import java.util.*
 
 class Add: Command {
-    private val collectionManager: CollectionManager = CollectionManager()
-    private val readerManager: ReaderManager = ReaderManager()
-    private val writeToConsole = PrinterManager()
-    private val message = Messages()
     private val set = AddPersonFields()
 
-    override fun execute(argument: String) {
+    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
 
         val id: Int = collectionManager.getVector().size+1
 

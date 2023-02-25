@@ -8,10 +8,11 @@ import utils.PrinterManager
 
 
 class Update: Command {
-    private val collectionManager: CollectionManager = CollectionManager()
     private val writeToConsole = PrinterManager()
     private val message = Messages()
-    override fun execute(argument: String) {
+
+    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
+        val argument = args[0]
         val element = collectionManager.getVector().elementAt(argument.toInt() - 1)
 
         writeToConsole.writelnToConsole(message.getMessage("enter_name"))

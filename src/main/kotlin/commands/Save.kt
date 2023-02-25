@@ -1,22 +1,15 @@
 package commands
 
-//import com.sun.org.apache.xml.internal.security.c14n.implementations.CanonicalizerBase.XML
-//import kotlinx.serialization.Serializable
-//import kotlinx.serialization.encodeToString
-//import kotlinx.serialization.json.Json
-//import kotlinx.serialization.json.JsonObject
-import data.Person
 import utils.CollectionManager
 import java.io.File
-import java.util.*
+
 
 class Save: Command {
-
     //private val pathToFile = System.getenv("D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\main\\kotlin\\data\\Collection.xml")
     private val pathToFile = "D:\\\\ITMO\\\\2nd-semester\\\\prog-labs\\\\s2-prog-lab5\\\\src\\\\main\\\\kotlin\\\\data\\\\Collection.xml"
 
-    private fun tagsCompilations (rawString: String): String {
-        val bufferVector: Vector<Person> = CollectionManager().getVector()
+    private fun tagsCompilations (rawString: String, collectionManager: CollectionManager): String {
+        val bufferVector = collectionManager.getVector()
         var string: String = rawString
         val elements = bufferVector.elements()
         for (element in elements) {
@@ -35,13 +28,13 @@ class Save: Command {
         return string
     }
 
-    override fun execute(argument: String) {
-        val bufferVector: Vector<Person> = CollectionManager().getVector()
+    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
+        val bufferVector = collectionManager.getVector()
         var tags = ""
         val tagsStart = "<vector-elements>\n"
         val tagsEnd = "</vector-elements>"
         if (bufferVector.isNotEmpty()) {
-            tags += tagsCompilations(tagsStart+tags)
+            tags += tagsCompilations(tagsStart+tags, collectionManager)
             tags += tagsEnd
             File(pathToFile).writeText(tags)
         } else {
