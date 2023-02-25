@@ -1,17 +1,20 @@
-import commands.Command
+
 import commands.ExecuteScript
-import commands.History
-import utils.CommandManager
-import utils.Loader
-import utils.PrinterManager
+import data.Person
+import utils.*
+import java.util.*
 
 
 fun main() {
+    val collectionManager = CollectionManager()
+    val validator = Validator()
     val executeScript = ExecuteScript()
     val loader = Loader()
     val writeToConsole = PrinterManager()
     val commandManager = CommandManager()
     val commands = commandManager.commands + mapOf("execute_script" to executeScript)
+
+    var vector = Vector<Person>()
 
     loader.loadFromFile()
 
@@ -19,11 +22,7 @@ fun main() {
         writeToConsole.writeToConsole("$")
         val readFromConsole = (readln().lowercase() + " ?").split(" ")
         if (readFromConsole[0] in commands) {
-            val command: Command? = commands[readFromConsole[0]]
-            if (command != null) {
-                History.writeInBuffer(command.toString())
-                command.execute(readFromConsole[1])
-            }
+            validator.validation(readFromConsole.toTypedArray(), collectionManager)
         } else {
             writeToConsole.writelnToConsole("Введена неверная команда. Используйте help для вывода списка команд.")
         }
