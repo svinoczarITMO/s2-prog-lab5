@@ -14,7 +14,6 @@ class ExecuteScript: Command {
     private val messages = Messages()
     private var depth = 0
     private var maxDepth = 8
-    private val commands = commandManager.commands
 
     override fun execute(args: Array<String>, collectionManager: CollectionManager) {
         val argument = args[0]
@@ -23,12 +22,9 @@ class ExecuteScript: Command {
             val strings = File(argument).readLines()
             for (string in strings) {
                 val command = string.split(" ")
-                if (command[0] in commands) {
+                if (commandManager.getCommand(command[0]) != null) {
                     depth++
                     validator.validation(command.toTypedArray(), collectionManager)
-                } else if (command[0] == "execute_script") {
-                   validator.validation(args, collectionManager)
-                    depth++
                 }
             }
         }
