@@ -12,17 +12,24 @@ class MinByWeight: Command {
     private val message = Messages()
 
     override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
+        val tempCollectionManager = CollectionManager()
         val vector = collectionManager.getVector()
         val minWeightElements: MutableMap<Int, Long> = mutableMapOf()
+
         if (vector.size > 1) {
             for ((counter, element) in vector.withIndex()) {
+                println(element.weight)
                 minWeightElements[counter] = element.weight
             }
-            val minWeightElement = minWeightElements.minOf {it.key}
-            println(minWeightElement)
+            val minWeight = minWeightElements.minOf {it.key}
+            val minByWeightElement = vector.get(minWeight)
+            val minByWeightElementId = arrayOf("get", minByWeightElement.id.toString())
             writeToConsole.writelnToConsole(message.getMessage("min_weight"))
-            val temp_args = arrayOf("getElement", vector.elementAt(minWeightElement).toString())
-            validator.validation(temp_args, collectionManager)
+            println(minWeightElements)
+//            println(min)
+            //val id = arrayOf(vector.elementAt(minWeight).toString())
+            //get?.execute(id, collectionManager)
+            validator.validation(minByWeightElementId, tempCollectionManager)
         } else {
             writeToConsole.writelnToConsole(message.getMessage("min_weight"))
             val temp_args = arrayOf("getElement", "1")
