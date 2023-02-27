@@ -10,23 +10,24 @@ class GetElement: Command {
 
     override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
         var obj: Person? = null
-        collectionManager.getVector().forEach {
-            if (it.id == arg[0]) {
-                obj = it
+        for (element in collectionManager.getVector()) {
+            if (element.id == arg[0]) {
+                obj = element
+                break
             }
         }
-        obj!!.let {
+        obj?.let {
             writeToConsole.writelnToConsole(
-                "Объект ${obj?.id}:\n"
-                        + "Дата создания: \"" + obj?.creationDate + "\" \n"
-                        + "Координаты: x = " + obj?.coordinates?.x + " y = " + obj?.coordinates?.y + "\n"
-                        + "Имя: " + obj?.name + "\n"
-                        + "Рост: " + obj?.height + "\n"
-                        + "Вес: " + obj?.weight + "\n"
-                        + "Цвет волос: " + obj?.hairColor + "\n"
-                        + "Национальность: " + obj?.nationality + "\n"
-                        + "Местоположение: x = " + obj?.location?.x + "; y = " + obj?.location?.y + "; z = " + obj?.location?.z
+                "Объект ${it.id}:\n"
+                        + "Дата создания: \"" + it.creationDate + "\" \n"
+                        + "Координаты: x = " + it.coordinates.x + " y = " + it.coordinates.y + "\n"
+                        + "Имя: " + it.name + "\n"
+                        + "Рост: " + it.height + "\n"
+                        + "Вес: " + it.weight + "\n"
+                        + "Цвет волос: " + it.hairColor + "\n"
+                        + "Национальность: " + it.nationality + "\n"
+                        + "Местоположение: x = " + it.location.x + "; y = " + it.location.y + "; z = " + it.location.z
             )
-        }
+        } ?: writeToConsole.writelnToConsole("Объект с указанным id не найден")
     }
 }

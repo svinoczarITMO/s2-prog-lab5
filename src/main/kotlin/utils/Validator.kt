@@ -59,3 +59,23 @@ class Validator {
         command?.execute(validArgument, collectionManager)
     }
 }
+
+//        if (vector.size > 1) {
+//            for ((counter, element) in vector.withIndex()) {
+//                println(element.weight)
+//                minWeightElements[counter] = element.weight
+//            }
+//            val minWeight = minWeightElements.minOf {it.key}
+//            val minByWeightElement = vector.get(minWeight)
+//            val minByWeightElementId = arrayOf("get", minByWeightElement.id.toString())
+//            writeToConsole.writelnToConsole(message.getMessage("min_weight"))
+//            println(minWeightElements)
+////            println(min)
+//            //val id = arrayOf(vector.elementAt(minWeight).toString())
+//            //get?.execute(id, collectionManager)
+//            validator.validation(minByWeightElementId, tempCollectionManager)
+//        } else {
+//            writeToConsole.writelnToConsole(message.getMessage("min_weight"))
+//            val temp_args = arrayOf("getElement", "1")
+//            validator.validation(temp_args, collectionManager)
+//        }
