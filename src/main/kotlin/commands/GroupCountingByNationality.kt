@@ -9,7 +9,7 @@ import java.util.*
 class GroupCountingByNationality: Command {
     private val writeToConsole = PrinterManager()
 
-    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
         val bufferVector = Vector<Person>()
         var counter = 0
 

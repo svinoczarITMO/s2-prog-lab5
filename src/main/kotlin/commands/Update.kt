@@ -11,10 +11,8 @@ class Update: Command {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
-        val argument = args[0]
-        val element = collectionManager.getVector().elementAt(argument.toInt() - 1)
-
+    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
+        val element = collectionManager.getVector().elementAt(arg[0] as Int - 1)
         writeToConsole.writelnToConsole(message.getMessage("enter_name"))
         element.name = readln()
 

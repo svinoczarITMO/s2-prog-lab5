@@ -22,9 +22,13 @@ fun main() {
             writeToConsole.writelnToConsole("Введена неверная команда. Используйте help для вывода списка команд.")
         }
     }
-    //TODO: 2) History
-    //TODO: 3) MinByWeight
-    //TODO: 4) Обработка ошибок
-    //TODO: 5) Новая команда
-    //TODO: 6) переменная окружения
+    //TODO:------------------3)-Validator-----------------------------
+    //TODO:------------------4) переменная окружения------------------
+
+    //TODO: 5) MinByWeight
+    //TODO: 6) ExecuteScript
+    //TODO: 7) Обработка ошибок
+    //TODO: 8) Новая команда
+
+    //linked hash map
 }

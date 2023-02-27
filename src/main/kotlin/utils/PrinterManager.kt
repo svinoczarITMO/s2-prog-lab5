@@ -1,11 +1,11 @@
 package utils
 
 class PrinterManager {
-    fun writeToConsole (message: String?) {
+    fun writeToConsole (message: Any?) {
         print(message)
     }
 
-    fun writelnToConsole (message: String?) {
+    fun writelnToConsole (message: Any?) {
         println(message)
     }
 }

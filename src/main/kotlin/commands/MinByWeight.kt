@@ -11,7 +11,7 @@ class MinByWeight: Command {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
         val vector = collectionManager.getVector()
         val minWeightElements: MutableMap<Int, Long> = mutableMapOf()
         if (vector.size > 1) {

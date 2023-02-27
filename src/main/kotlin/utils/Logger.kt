@@ -9,11 +9,12 @@ class Logger {
     fun initDate(collectionManager: CollectionManager): String {
         val vector = collectionManager.getVector()
         val initDate = Date().toString()
-        if (vector.isEmpty()) {
+        return if (vector.isNotEmpty()) {
+            File(pathToFile).readText().substring(10, initDate.length - 1)
+        } else {
+            (vector.isEmpty())
             File(pathToFile).writeText("InitDate: $initDate")
             return initDate
-        } else {
-            return File(pathToFile).readText().substring(10, initDate.length-1)
         }
     }
 }

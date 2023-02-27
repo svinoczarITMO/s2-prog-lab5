@@ -6,7 +6,7 @@ import utils.PrinterManager
 class Show: Command {
     private val writeToConsole = PrinterManager()
 
-    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
         if (collectionManager.getVector().size > 1) {
             for (i in 0 until collectionManager.getVector().size-1) {
                 writeToConsole.writeToConsole("${collectionManager.getVector()[i].name}, ")

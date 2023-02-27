@@ -8,12 +8,11 @@ class RemoveByID: Command {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
-        val argument = args[0]
-        collectionManager.getVector().removeAt(argument.toInt() - 1)
+    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
+        collectionManager.getVector().removeAt(arg[0] as Int - 1)
         writeToConsole.writelnToConsole(
             message.getMessage("by_id") +
-            argument +
+            arg +
             message.getMessage("removed"))
     }
 }

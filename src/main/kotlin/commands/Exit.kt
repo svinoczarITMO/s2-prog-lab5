@@ -4,7 +4,7 @@ import utils.CollectionManager
 import kotlin.system.exitProcess
 
 class Exit: Command {
-    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
         exitProcess(1)
     }
 }

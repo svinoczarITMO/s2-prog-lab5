@@ -1,6 +1,5 @@
 package commands
 
-import data.Color
 import data.Messages
 import utils.CollectionManager
 import utils.PrinterManager
@@ -9,20 +8,18 @@ class CountByHairColor: Command {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
         val copyVector = collectionManager.getVector()
-        val argument = args[0]
         var counter = 0
         try {
             for (element in copyVector) {
-                if (element.hairColor == Color.valueOf(argument.uppercase())) {
+                if (element.hairColor == arg[0]) {
                     counter += 1
                 }
             }
-            writeToConsole.writelnToConsole("Количество людей с цветом волос \"${argument.capitalize()}\": $counter")
+            writeToConsole.writelnToConsole("Количество людей с цветом волос \"${arg.toString().capitalize()}\": $counter")
         } catch (e: IllegalArgumentException) {
             writeToConsole.writelnToConsole(message.getMessage("IllegalColor"))
         }
     }
-    //linked hash map
 }

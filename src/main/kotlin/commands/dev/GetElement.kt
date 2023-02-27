@@ -7,9 +7,8 @@ import utils.PrinterManager
 class GetElement: Command {
     private val writeToConsole = PrinterManager()
 
-    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
-        val id = args[0].toInt()
-        val obj = collectionManager.getVector()[id-1]
+    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
+        val obj = collectionManager.getVector()[arg[0] as Int - 1]
         writeToConsole.writelnToConsole("Объект ${obj.id}:\n"
                 + "Дата создания: \"" + obj.creationDate + "\" \n"
                 + "Координаты: x = " + obj.coordinates.x + " y = " + obj.coordinates.y + "\n"

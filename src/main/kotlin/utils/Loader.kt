@@ -5,8 +5,8 @@ import java.io.File
 import java.util.*
 
 class Loader {
-    //private val pathToFile = System.getenv("D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\main\\kotlin\\data\\Collection.xml")
-    private val pathToFile = "D:\\\\ITMO\\\\2nd-semester\\\\prog-labs\\\\s2-prog-lab5\\\\src\\\\main\\\\kotlin\\\\data\\\\Collection.xml"
+    private val pathToFile = System.getenv("Collection Var")
+
     private var readerBuffer: String = File(pathToFile).readText()
     private val pattern = Regex("""<.*?>(.*)<.*?>""")
     private val tagsList: MutableList<String> = mutableListOf()

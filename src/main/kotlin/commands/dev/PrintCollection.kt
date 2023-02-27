@@ -8,7 +8,7 @@ class
 PrintCollection: Command {
     private val writeToConsole = PrinterManager()
 
-    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
         writeToConsole.writelnToConsole(collectionManager.getVector().toString())
 //    println(collectionManager.getVector())
     }

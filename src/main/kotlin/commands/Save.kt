@@ -5,8 +5,7 @@ import java.io.File
 
 
 class Save: Command {
-    //private val pathToFile = System.getenv("D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\main\\kotlin\\data\\Collection.xml")
-    private val pathToFile = "D:\\\\ITMO\\\\2nd-semester\\\\prog-labs\\\\s2-prog-lab5\\\\src\\\\main\\\\kotlin\\\\data\\\\Collection.xml"
+    private val pathToFile = System.getenv("Collection Var")
 
     private fun tagsCompilations (rawString: String, collectionManager: CollectionManager): String {
         val bufferVector = collectionManager.getVector()
@@ -28,7 +27,7 @@ class Save: Command {
         return string
     }
 
-    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
         val bufferVector = collectionManager.getVector()
         var tags = ""
         val tagsStart = "<vector-elements>\n"

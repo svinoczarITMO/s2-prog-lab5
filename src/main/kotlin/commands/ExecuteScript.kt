@@ -15,11 +15,12 @@ class ExecuteScript: Command {
     private var depth = 0
     private var maxDepth = 8
 
-    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
-        val argument = args[0]
+    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
+        val argument = arg[0]
+        val s = ""
         writeToConsole.writelnToConsole(messages.getMessage("script_start"))
         if (depth <= maxDepth) {
-            val strings = File(argument).readLines()
+            val strings = File(s).readLines()
             for (string in strings) {
                 val command = string.split(" ")
                 if (commandManager.getCommand(command[0]) != null) {

@@ -9,11 +9,11 @@ class History: Command {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(args: Array<String>, collectionManager: CollectionManager) {
-        val commandBuffer = args
+    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
+        val commandBuffer = arg[0] as List<*>
         writeToConsole.writelnToConsole(message.getMessage("last_commands"))
-        for (c in commandBuffer) {
-            writeToConsole.writelnToConsole(c)
+        for (command in commandBuffer) {
+            writeToConsole.writelnToConsole(command)
         }
         writeToConsole.writelnToConsole("")
     }
