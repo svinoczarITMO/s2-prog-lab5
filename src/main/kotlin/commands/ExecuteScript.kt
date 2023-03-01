@@ -12,24 +12,27 @@ class ExecuteScript: Command {
     private val validator = Validator()
     private val commandManager: CommandManager = CommandManager()
     private val messages = Messages()
+    private val maxDepth = 8
     private var depth = 0
-    private var maxDepth = 8
 
     override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
-        val argument = arg[0]
-        val s = ""
+
+        val scriptFile = File(arg[0] as String)
         writeToConsole.writelnToConsole(messages.getMessage("script_start"))
+        println(depth.toString() + "\n" + maxDepth.toString())
         if (depth <= maxDepth) {
-            val strings = File(s).readLines()
+            val strings = scriptFile.readLines()
             for (string in strings) {
-                val command = string.split(" ")
-                if (commandManager.getCommand(command[0]) != null) {
-                    depth++
-                    validator.validation(command.toTypedArray(), collectionManager)
+                var new_args = string.split(" ")
+                val command = commandManager.getCommand(new_args[0])
+                new_args = new_args.slice(1 until new_args.size)
+                depth += 1
+                command?.execute(new_args.toTypedArray(), collectionManager)
                 }
-            }
+        } else {
+            writeToConsole.writelnToConsole(messages.getMessage("recurision"))
         }
-        depth--
+        depth -= 1
         writeToConsole.writelnToConsole(messages.getMessage("script_end"))
     }
 }

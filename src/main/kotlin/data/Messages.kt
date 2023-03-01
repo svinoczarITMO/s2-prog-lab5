@@ -17,8 +17,11 @@ class Messages {
         "first_element" to "Первый элемент коллекции ",
         "removed" to " успешно удалён!",
         "recurision" to "Превышена глубина рекурсии! Выполнение прекращено!",
+
         "script_start" to "Скрипт выполняется...",
         "script_end" to "Выполнение скрипта завершено...",
+        "script_file_not_found" to "Файл не найден.",
+
         "last_commands" to "Последние 7 комманд: ",
         "min_weight" to "Объект коллекции с минимальным весом:",
         "NumberFormatException" to "Введенное значение должно быть числом! Попробуйте ещё раз.",

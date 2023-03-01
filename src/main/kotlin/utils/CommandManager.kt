@@ -45,7 +45,7 @@ class CommandManager {
                         "fadd" to fastAdd,
                         "print" to printCollection,
                         "get" to getElement,
-                        "executeScript" to executeScript,
+                        "execute_script" to executeScript,
                         "history" to history,
                         "min_by_weight" to minByWeight
                 )

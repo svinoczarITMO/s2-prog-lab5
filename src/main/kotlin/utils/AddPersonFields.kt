@@ -26,7 +26,12 @@ class AddPersonFields {
         writeToConsole.writelnToConsole(message.getMessage("enter_coordinateX"))
         val coordinateX = readerManager.readFromConsole()
         try {
-            return coordinateX.toFloat()
+            if (coordinateX <= 214.toString()) {
+                return coordinateX.toFloat()
+            } else {
+                writeToConsole.writelnToConsole("Координата \"x\" должна быть не больше 214!")
+                return coordinateX()
+            }
         } catch (e: NumberFormatException) {
             writeToConsole.writelnToConsole(message.getMessage("NumberFormatException"))
         }
@@ -37,7 +42,12 @@ class AddPersonFields {
         writeToConsole.writelnToConsole(message.getMessage("enter_coordinateY"))
         val coordinateY = readerManager.readFromConsole()
         try {
-            return coordinateY.toFloat()
+            if (coordinateY <= 794.toString()) {
+                return coordinateY.toFloat()
+            } else {
+                writeToConsole.writelnToConsole("Координата \"y\" должна быть не больше 794!")
+                return coordinateY()
+            }
         } catch (e: NumberFormatException) {
             writeToConsole.writelnToConsole(message.getMessage("NumberFormatException"))
         }
@@ -48,7 +58,12 @@ class AddPersonFields {
         writeToConsole.writelnToConsole(message.getMessage("enter_height"))
         val height = readerManager.readFromConsole()
         try {
-            return height.toInt()
+            if (height > 0.toString()) {
+                return height.toInt()
+            } else {
+                writeToConsole.writelnToConsole("Рост должен быть больше нуля!")
+                return height()
+            }
         } catch (e: NumberFormatException) {
             writeToConsole.writelnToConsole(message.getMessage("NumberFormatException"))
         }
@@ -59,7 +74,12 @@ class AddPersonFields {
         writeToConsole.writelnToConsole(message.getMessage("enter_weight"))
         val weight = readerManager.readFromConsole()
         try {
-            return weight.toLong()
+            if (weight > 0.toString()) {
+                return weight.toLong()
+            } else {
+                writeToConsole.writelnToConsole("Вес должен быть больше нуля!")
+                return weight()
+            }
         } catch (e: NumberFormatException) {
             writeToConsole.writelnToConsole(message.getMessage("NumberFormatException"))
         }
@@ -113,11 +133,11 @@ class AddPersonFields {
         return locationX()
     }
 
-    fun locationY (): Long {
+    fun locationY (): Long? {
         writeToConsole.writelnToConsole(message.getMessage("enter_locationY"))
         val locationY = readerManager.readFromConsole()
         try {
-            return locationY.toLong()
+            return locationY?.toLong()
         } catch (e: NumberFormatException) {
             writeToConsole.writelnToConsole(message.getMessage("NumberFormatException"))
         }
