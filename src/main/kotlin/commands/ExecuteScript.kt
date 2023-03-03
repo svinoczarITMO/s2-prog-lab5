@@ -19,20 +19,27 @@ class ExecuteScript: Command {
 
         val scriptFile = File(arg[0] as String)
         writeToConsole.writelnToConsole(messages.getMessage("script_start"))
-        println(depth.toString() + "\n" + maxDepth.toString())
+//        println(depth.toString() + "\n" + maxDepth.toString())
         if (depth <= maxDepth) {
             val strings = scriptFile.readLines()
             for (string in strings) {
                 var new_args = string.split(" ")
-                val command = commandManager.getCommand(new_args[0])
-                new_args = new_args.slice(1 until new_args.size)
-                depth += 1
-                command?.execute(new_args.toTypedArray(), collectionManager)
+                if (new_args[0] == "execute_script") {
+                    depth += 1
+                    execute(new_args.slice(1 until new_args.size).toTypedArray(), collectionManager)
+                } else {
+                    val command = commandManager.getCommand(new_args[0])
+                    new_args = new_args.slice(1 until new_args.size)
+                    command?.execute(new_args.toTypedArray(), collectionManager)
                 }
+            }
         } else {
             writeToConsole.writelnToConsole(messages.getMessage("recurision"))
+
         }
         depth -= 1
-        writeToConsole.writelnToConsole(messages.getMessage("script_end"))
+        if (depth == 0) {
+            writeToConsole.writelnToConsole(messages.getMessage("script_end"))
+        }
     }
 }

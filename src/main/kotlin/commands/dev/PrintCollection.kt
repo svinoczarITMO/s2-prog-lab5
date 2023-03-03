@@ -10,6 +10,5 @@ PrintCollection: Command {
 
     override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
         writeToConsole.writelnToConsole(collectionManager.getVector().toString())
-//    println(collectionManager.getVector())
     }
 }

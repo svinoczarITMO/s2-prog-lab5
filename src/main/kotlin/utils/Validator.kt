@@ -1,11 +1,14 @@
 package utils
 
 import data.Color
+import data.Messages
 import java.util.*
 
 class Validator {
     private val commandManager = CommandManager()
     private val commandBuffer = LinkedList<String>()
+    private val writeToConsole = PrinterManager()
+    private val message = Messages()
 
     fun selector(command: String, invalidArguments: Array<String>): ArrayList<Any> {
         val validArgument = arrayListOf<Any>()
@@ -20,30 +23,48 @@ class Validator {
         val strings = arrayOf("execute_script")
         val colors = arrayOf("count_by_hair_color")
         val arrays = arrayOf("change_collection", "history")
-
         when (command) {
+
             in voids -> return validArgument
+
             in strings -> {
                 validArgument.add(invalidArguments[0])
                 return validArgument
             }
+
             in ints -> {
-                validArgument.add(invalidArguments[0].toInt())
-                return validArgument
+                try {
+                    validArgument.add(invalidArguments[0].toInt())
+                    return validArgument
+                } catch (e: NumberFormatException) {
+                    writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+                } catch (e: ArrayIndexOutOfBoundsException) {
+                    writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+                }
+
             }
+
             in colors -> {
                 validArgument.add(Color.valueOf(invalidArguments[0].uppercase()))
                 return validArgument
             }
 
             in arrays -> {
-//                validArgument.add(invalidArguments)
-                validArgument.add(commandBuffer.toList())
-                return  validArgument
+                try {
+                    validArgument.add(commandBuffer.toList())
+                    return validArgument
+            } catch (e: NumberFormatException) {
+                writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+                }
             }
         }
-        return validArgument
+        return arrayListOf()
     }
+//        catch (e: NumberFormatException) {
+//            writeToConsole.writelnToConsole("Введенно недопустимое значение аргумента.")
+//            return arrayListOf()
+//        }
+
 
     fun validation(args: Array<String>, collectionManager: CollectionManager) {
         val command = commandManager.getCommand(args[0])
@@ -59,23 +80,3 @@ class Validator {
         command?.execute(validArgument, collectionManager)
     }
 }
-
-//        if (vector.size > 1) {
-//            for ((counter, element) in vector.withIndex()) {
-//                println(element.weight)
-//                minWeightElements[counter] = element.weight
-//            }
-//            val minWeight = minWeightElements.minOf {it.key}
-//            val minByWeightElement = vector.get(minWeight)
-//            val minByWeightElementId = arrayOf("get", minByWeightElement.id.toString())
-//            writeToConsole.writelnToConsole(message.getMessage("min_weight"))
-//            println(minWeightElements)
-////            println(min)
-//            //val id = arrayOf(vector.elementAt(minWeight).toString())
-//            //get?.execute(id, collectionManager)
-//            validator.validation(minByWeightElementId, tempCollectionManager)
-//        } else {
-//            writeToConsole.writelnToConsole(message.getMessage("min_weight"))
-//            val temp_args = arrayOf("getElement", "1")
-//            validator.validation(temp_args, collectionManager)
-//        }

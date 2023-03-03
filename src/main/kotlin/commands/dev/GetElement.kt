@@ -10,11 +10,15 @@ class GetElement: Command {
 
     override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
         var obj: Person? = null
-        for (element in collectionManager.getVector()) {
-            if (element.id == arg[0]) {
-                obj = element
-                break
+        try {
+            for (element in collectionManager.getVector()) {
+                if (element.id == arg[0]) {
+                    obj = element
+                    break
+                }
             }
+        } catch (e: ArrayIndexOutOfBoundsException) {
+            //writeToConsole.writelnToConsole("Объект с указанным id не найден")
         }
         obj?.let {
             writeToConsole.writelnToConsole(
@@ -28,6 +32,6 @@ class GetElement: Command {
                         + "Национальность: " + it.nationality + "\n"
                         + "Местоположение: x = " + it.location.x + "; y = " + it.location.y + "; z = " + it.location.z
             )
-        } ?: writeToConsole.writelnToConsole("Объект с указанным id не найден")
+        } ?:writeToConsole.writelnToConsole("Объект с указанным id не найден")
     }
 }

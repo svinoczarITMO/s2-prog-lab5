@@ -30,6 +30,7 @@ fun main() {
     //TODO: 6) !!!ExecuteScript!!!
 
     //TODO: 8) Новая команда
+    //TODO: 9) KOTLIN DOG
 
     //linked hash map
 }
