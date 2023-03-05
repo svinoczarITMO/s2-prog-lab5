@@ -5,10 +5,10 @@ import data.Person
 import utils.CollectionManager
 import utils.PrinterManager
 
-class GetElement: Command {
+class GetElement: Command <Int> {
     private val writeToConsole = PrinterManager()
 
-    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
         var obj: Person? = null
         try {
             for (element in collectionManager.getVector()) {

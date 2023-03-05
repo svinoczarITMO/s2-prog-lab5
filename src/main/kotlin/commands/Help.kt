@@ -2,11 +2,12 @@ package commands
 
 import utils.CollectionManager
 import utils.PrinterManager
+import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
 
-class Help: Command {
+class Help: Command <Empty> {
     val writeToConsole: PrinterManager = PrinterManager()
 
-    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
             writeToConsole.writelnToConsole(
                     "=========================================================================================================================================\n" +
                     "help - выводит справку по доступным командам\n" +

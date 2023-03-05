@@ -1,51 +1,48 @@
 package commands
 
-import data.Color
-import data.Country
-import data.Messages
+import data.Coordinates
+import data.Location
+import data.Person
+import utils.AddPersonFields
 import utils.CollectionManager
-import utils.PrinterManager
+import java.util.*
 
 
-class Update: Command {
-    private val writeToConsole = PrinterManager()
-    private val message = Messages()
+class Update: Command <Int> {
+    private val set = AddPersonFields()
 
-    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
-        val element = collectionManager.getVector().elementAt(arg[0] as Int - 1)
-        writeToConsole.writelnToConsole(message.getMessage("enter_name"))
-        element.name = readln()
-
-        writeToConsole.writelnToConsole(message.getMessage("enter_coordinateX"))
-        element.coordinates.x = readln().toFloat()
-        writeToConsole.writelnToConsole(message.getMessage("enter_coordinateY"))
-        element.coordinates.y = readln().toFloat()
-
-        writeToConsole.writelnToConsole(message.getMessage("enter_height"))
-        element.height = readln().toInt()
-
-        writeToConsole.writelnToConsole(message.getMessage("enter_weight"))
-        element.weight = readln().toLong()
-
-        writeToConsole.writelnToConsole(message.getMessage("enter_hairColor"))
-        for (value in Color.values()) {
-            writeToConsole.writeToConsole(value.toString() + ", ")
+    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+        var element: Person? = null
+        try {
+            for (obj in collectionManager.getVector()) {
+                if (obj.id == arg[0]) {
+                    element = obj
+                    break
+                }
+            }
+        } catch (e: ArrayIndexOutOfBoundsException) {
+            //writeToConsole.writelnToConsole("Объект с указанным id не найден")
         }
-        writeToConsole.writelnToConsole("")
-        element.hairColor = Color.valueOf(readln().uppercase())
 
-        writeToConsole.writelnToConsole(message.getMessage("enter_nationality"))
-        for (value in Country.values()) {
-            writeToConsole.writeToConsole(value.toString() + ", ")
-        }
-        writeToConsole.writelnToConsole("")
-        element.nationality = Country.valueOf(readln().uppercase())
 
-        writeToConsole.writelnToConsole(message.getMessage("enter_locationX"))
-        element.location.x = readln().toInt()
-        writeToConsole.writelnToConsole(message.getMessage("enter_locationY"))
-        element.location.y = readln().toLong()
-        writeToConsole.writelnToConsole(message.getMessage("enter_locationZ"))
-        element.location.z = readln().toInt()
+        val id = element?.id as Int
+
+        val name: String = set.name()
+
+        val coordinates = Coordinates(set.coordinateX(),set.coordinateY())
+
+        val creationDate = Date()
+
+        val height = set.height()
+
+        val weight = set.weight()
+
+        val hairColor = set.hairColor()
+
+        val nationality = set.nationality()
+
+        val location = Location(set.locationX(), set.locationY(), set.locationZ())
+        collectionManager.getVector().elementAt(id)
+        element = Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
     }
 }

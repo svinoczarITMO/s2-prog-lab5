@@ -10,29 +10,31 @@ class Validator {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    fun selector(command: String, invalidArguments: Array<String>): ArrayList<Any> {
-        val validArgument = arrayListOf<Any>()
+    fun selector(command: String, invalidArguments: Array<String>): ArrayList<Any>? {
+        var validArgument = arrayListOf<Any>()
 
-        val voids = arrayOf(
+        val typeEmpty = arrayOf(
             "print", "fadd",
             "help", "info", "show", "add",
             "clear", "save", "exit", "remove_first",
             "reorder", "min_by_weight", "group_counting_by_nationality"
         )
-        val ints = arrayOf("update", "remove_by_id", "get")
-        val strings = arrayOf("execute_script")
-        val colors = arrayOf("count_by_hair_color")
-        val arrays = arrayOf("change_collection", "history")
+        val typeInt = arrayOf("update", "remove_by_id", "get")
+        val typeString = arrayOf("execute_script")
+        val typeColor = arrayOf("count_by_hair_color")
+        val typeArrays = arrayOf("change_collection", "history")
         when (command) {
 
-            in voids -> return validArgument
+            in typeEmpty -> {
+                return validArgument
+            }
 
-            in strings -> {
+            in typeString -> {
                 validArgument.add(invalidArguments[0])
                 return validArgument
             }
 
-            in ints -> {
+            in typeInt -> {
                 try {
                     validArgument.add(invalidArguments[0].toInt())
                     return validArgument
@@ -44,12 +46,12 @@ class Validator {
 
             }
 
-            in colors -> {
+            in typeColor -> {
                 validArgument.add(Color.valueOf(invalidArguments[0].uppercase()))
                 return validArgument
             }
 
-            in arrays -> {
+            in typeArrays -> {
                 try {
                     validArgument.add(commandBuffer.toList())
                     return validArgument
@@ -76,7 +78,7 @@ class Validator {
         } else {
             commandBuffer.add(args[0])
         }
-        val validArgument = selector(args[0], invalidArguments).toArray()
-        command?.execute(validArgument, collectionManager)
+        val validArgument = selector(args[0], invalidArguments)?.toArray()
+        command?.execute(validArgument!!, collectionManager)
     }
 }

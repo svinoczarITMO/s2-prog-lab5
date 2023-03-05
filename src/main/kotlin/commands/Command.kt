@@ -2,6 +2,6 @@ package commands
 
 import utils.CollectionManager
 
-interface Command {
-    fun execute (arg: Array<*>, collectionManager: CollectionManager)
+interface Command <T>{
+    fun execute (arg: Array<Any>, collectionManager: CollectionManager)
 }

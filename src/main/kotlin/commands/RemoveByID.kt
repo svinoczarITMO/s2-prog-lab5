@@ -5,13 +5,13 @@ import exceptions.ElementAmountException
 import utils.CollectionManager
 import utils.PrinterManager
 
-class RemoveByID: Command {
+class RemoveByID: Command <Int> {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
         try {
-            collectionManager.getVector().removeAt(arg[0] as Int - 1)
+            collectionManager.getVector().removeAt(arg[0] as Int)
             writeToConsole.writelnToConsole(
                 message.getMessage("by_id") +
                         arg +

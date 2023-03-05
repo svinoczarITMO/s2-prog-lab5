@@ -7,7 +7,7 @@ import commands.dev.PrintCollection
 import data.Color
 
 class CommandManager {
-        fun getCommand(command: String): Command? {
+        fun getCommand(command: String): Command<out Any>? {
                 val help: Help = Help()
                 val info: Info = Info()
                 val show: Show = Show()

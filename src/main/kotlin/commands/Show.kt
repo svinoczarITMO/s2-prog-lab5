@@ -2,11 +2,12 @@ package commands
 
 import utils.CollectionManager
 import utils.PrinterManager
+import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
 
-class Show: Command {
+class Show: Command <Empty> {
     private val writeToConsole = PrinterManager()
 
-    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
         if (collectionManager.getVector().size > 1) {
             for (i in 0 until collectionManager.getVector().size-1) {
                 writeToConsole.writeToConsole("${collectionManager.getVector()[i].name}, ")

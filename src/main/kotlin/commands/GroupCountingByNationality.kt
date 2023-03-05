@@ -5,11 +5,12 @@ import data.Person
 import utils.CollectionManager
 import utils.PrinterManager
 import java.util.*
+import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
 
-class GroupCountingByNationality: Command {
+class GroupCountingByNationality: Command <Empty> {
     private val writeToConsole = PrinterManager()
 
-    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
         val bufferVector = Vector<Person>()
         var counter = 0
 

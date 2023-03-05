@@ -1,14 +1,15 @@
 package commands
 
+import data.Color
 import data.Messages
 import utils.CollectionManager
 import utils.PrinterManager
 
-class CountByHairColor: Command {
+class CountByHairColor: Command <Color> {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(arg: Array<*>, collectionManager: CollectionManager) {
+    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
         val copyVector = collectionManager.getVector()
         var counter = 0
         try {
