@@ -21,4 +21,15 @@
 		<nationality>USA</nationality>
 		<location>0;0;0</location>
 	</element>
+	<element>
+		<id>3</id>
+		<name>JOJO</name>
+		<coordinates>2.0;12.12</coordinates>
+		<creationDate>Sun Mar 05 16:54:05 MSK 2023</creationDate>
+		<height>111</height>
+		<weight>2</weight>
+		<hairColor>RED</hairColor>
+		<nationality>CHINA</nationality>
+		<location>0;9;0</location>
+	</element>
 </vector-elements>

@@ -10,7 +10,7 @@ class RemoveByID: Command <Int> {
 
     override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
         var flag = false
-//        try {
+        try {
             try {
                 for (element in collectionManager.getVector()) {
                     if (element.id == arg[0]) {
@@ -20,7 +20,6 @@ class RemoveByID: Command <Int> {
                     }
                 }
             } catch (e: ArrayIndexOutOfBoundsException) {
-                writeToConsole.writelnToConsole("Объект с указанным id не найден")
                 return
             }
 
@@ -30,12 +29,12 @@ class RemoveByID: Command <Int> {
                         arg[0] +
                         message.getMessage("removed")
             )
-        } else if (!flag && (arg[0] in arrayOf(1,2,3,4,5,6,7,8,9,0))){
+        } else if (!flag){
             writeToConsole.writelnToConsole("Объект с указанным id не найден")
         }
-//        } catch (e: ArrayIndexOutOfBoundsException) {
-//            writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
-//            return
-//        }
+        } catch (e: ArrayIndexOutOfBoundsException) {
+            writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+            return
+        }
     }
 }

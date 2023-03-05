@@ -18,7 +18,7 @@ class CountByHairColor: Command <Color> {
                     counter += 1
                 }
             }
-            writeToConsole.writelnToConsole("Количество людей с цветом волос \"${arg.toString().capitalize()}\": $counter")
+            writeToConsole.writelnToConsole("Количество людей с цветом волос \"${arg[0].toString().capitalize()}\": $counter")
         } catch (e: IllegalArgumentException) {
             writeToConsole.writelnToConsole(message.getMessage("IllegalColor"))
         }

@@ -26,7 +26,8 @@ class Update: Command <Int> {
                 }
             }
         } catch (e: ArrayIndexOutOfBoundsException) {
-            writeToConsole.writelnToConsole("Объект с указанным id не найден")
+//            writeToConsole.writelnToConsole("Объект с указанным id не найден")
+            return
         }
 
         try {

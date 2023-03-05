@@ -47,8 +47,16 @@ class Validator {
             }
 
             in typeColor -> {
-                validArgument.add(Color.valueOf(invalidArguments[0].uppercase()))
-                return validArgument
+                try {
+                    validArgument.add(Color.valueOf(invalidArguments[0].uppercase()))
+                    return validArgument
+                } catch (e: IllegalArgumentException) {
+                    writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+                    return null
+                } catch (e: ArrayIndexOutOfBoundsException) {
+                    writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+                    return null
+                }
             }
 
             in typeArrays -> {
@@ -79,6 +87,10 @@ class Validator {
             commandBuffer.add(args[0])
         }
         val validArgument = selector(args[0], invalidArguments)?.toArray()
-        command?.execute(validArgument!!, collectionManager)
+        try {
+            command?.execute(validArgument!!, collectionManager)
+        } catch (e: NullPointerException) {
+            return
+        }
     }
 }
