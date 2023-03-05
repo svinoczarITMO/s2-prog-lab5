@@ -1,7 +1,6 @@
 package commands
 
 import data.Messages
-import exceptions.ElementAmountException
 import utils.CollectionManager
 import utils.PrinterManager
 
@@ -10,16 +9,33 @@ class RemoveByID: Command <Int> {
     private val message = Messages()
 
     override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
-        try {
-            collectionManager.getVector().removeAt(arg[0] as Int)
+        var flag = false
+//        try {
+            try {
+                for (element in collectionManager.getVector()) {
+                    if (element.id == arg[0]) {
+                        collectionManager.getVector().remove(element)
+                        flag = true
+                        break
+                    }
+                }
+            } catch (e: ArrayIndexOutOfBoundsException) {
+                writeToConsole.writelnToConsole("Объект с указанным id не найден")
+                return
+            }
+
+        if (flag) {
             writeToConsole.writelnToConsole(
                 message.getMessage("by_id") +
-                        arg +
+                        arg[0] +
                         message.getMessage("removed")
             )
-        } catch (e: ElementAmountException) {
-            writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
-            execute(arg, collectionManager)
+        } else if (!flag && (arg[0] in arrayOf(1,2,3,4,5,6,7,8,9,0))){
+            writeToConsole.writelnToConsole("Объект с указанным id не найден")
         }
+//        } catch (e: ArrayIndexOutOfBoundsException) {
+//            writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+//            return
+//        }
     }
 }

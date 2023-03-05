@@ -2,16 +2,21 @@ package commands
 
 import data.Coordinates
 import data.Location
+import data.Messages
 import data.Person
 import utils.AddPersonFields
 import utils.CollectionManager
+import utils.PrinterManager
 import java.util.*
 
 
 class Update: Command <Int> {
     private val set = AddPersonFields()
+    private val writeToConsole = PrinterManager()
+    private val message = Messages()
 
     override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+        var id = 0
         var element: Person? = null
         try {
             for (obj in collectionManager.getVector()) {
@@ -21,11 +26,15 @@ class Update: Command <Int> {
                 }
             }
         } catch (e: ArrayIndexOutOfBoundsException) {
-            //writeToConsole.writelnToConsole("Объект с указанным id не найден")
+            writeToConsole.writelnToConsole("Объект с указанным id не найден")
         }
 
-
-        val id = element?.id as Int
+        try {
+            id = element?.id as Int
+        } catch (e: NullPointerException) {
+            writeToConsole.writelnToConsole("Элемента с указанным id не существует")
+            return
+        }
 
         val name: String = set.name()
 
@@ -42,7 +51,8 @@ class Update: Command <Int> {
         val nationality = set.nationality()
 
         val location = Location(set.locationX(), set.locationY(), set.locationZ())
-        collectionManager.getVector().elementAt(id)
         element = Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
+        collectionManager.getVector().removeAt(id-1)
+        collectionManager.getVector().insertElementAt(element, id-1)
     }
 }

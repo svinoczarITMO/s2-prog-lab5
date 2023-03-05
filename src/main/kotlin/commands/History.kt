@@ -10,7 +10,7 @@ class History: Command <List<*>> {
     private val message = Messages()
 
     override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
-        val commandBuffer = arg[0] as Array<*>
+        val commandBuffer = arg[0] as List<*>
         writeToConsole.writelnToConsole(message.getMessage("last_commands"))
         for (command in commandBuffer) {
             writeToConsole.writelnToConsole(command)

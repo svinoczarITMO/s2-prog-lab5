@@ -1,14 +1,14 @@
 <vector-elements>
 	<element>
 		<id>1</id>
-		<name>1</name>
-		<coordinates>1.0;1.0</coordinates>
-		<creationDate>Mon Feb 27 13:55:26 MSK 2023</creationDate>
-		<height>1</height>
-		<weight>1</weight>
+		<name>a</name>
+		<coordinates>2.0;2.0</coordinates>
+		<creationDate>Sun Mar 05 04:01:42 MSK 2023</creationDate>
+		<height>2</height>
+		<weight>2</weight>
 		<hairColor>RED</hairColor>
 		<nationality>USA</nationality>
-		<location>1;1;1</location>
+		<location>2;2;2</location>
 	</element>
 	<element>
 		<id>1002</id>
