@@ -7,6 +7,12 @@ import utils.AddPersonFields
 import utils.CollectionManager
 import java.util.*
 
+/**
+ * Adds new element in collection.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class Add: Command <String> {
     private val set = AddPersonFields()
 

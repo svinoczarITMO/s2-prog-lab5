@@ -4,7 +4,12 @@ import utils.CollectionManager
 import java.io.File
 import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
 
-
+/**
+ * Saves collection in Collection.xml file.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class Save: Command <Empty>{
     private val pathToFile = System.getenv("Collection Var")
 

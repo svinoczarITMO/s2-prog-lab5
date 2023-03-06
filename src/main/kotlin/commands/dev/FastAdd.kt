@@ -5,6 +5,12 @@ import data.*
 import utils.CollectionManager
 import utils.PrinterManager
 
+/**
+ * Adds new element to collection without input arguments.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class FastAdd: Command <Int>{
     private val writeToConsole = PrinterManager()
 

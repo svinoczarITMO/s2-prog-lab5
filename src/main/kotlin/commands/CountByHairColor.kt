@@ -5,6 +5,12 @@ import data.Messages
 import utils.CollectionManager
 import utils.PrinterManager
 
+/**
+ * Counts elements by hair color.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class CountByHairColor: Command <Color> {
     private val writeToConsole = PrinterManager()
     private val message = Messages()

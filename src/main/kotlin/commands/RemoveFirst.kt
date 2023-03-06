@@ -5,6 +5,12 @@ import utils.CollectionManager
 import utils.PrinterManager
 import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
 
+/**
+ * Removes the first element of collection.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class RemoveFirst: Command <Empty> {
     private val writeToConsole = PrinterManager()
     private val message = Messages()

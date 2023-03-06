@@ -9,7 +9,12 @@ import utils.CollectionManager
 import utils.PrinterManager
 import java.util.*
 
-
+/**
+ * Updates element of collection with inputed id.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class Update: Command <Int> {
     private val set = AddPersonFields()
     private val writeToConsole = PrinterManager()

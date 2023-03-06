@@ -6,7 +6,12 @@ import utils.PrinterManager
 import utils.Validator
 import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
 
-
+/**
+ * Prints element of collection with minimal weight.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class MinByWeight: Command <Empty> {
     private val validator = Validator()
     private val writeToConsole = PrinterManager()

@@ -1,13 +1,19 @@
 package commands
 
 import data.Messages
+import org.jetbrains.kotlin.konan.file.File
 import utils.CollectionManager
 import utils.CommandManager
 import utils.PrinterManager
 import utils.Validator
-import java.io.File
 import java.io.FileNotFoundException
 
+/**
+ * Executes script from inputed path to file.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class ExecuteScript: Command <String> {
     private val writeToConsole = PrinterManager()
     private val validator = Validator()
@@ -27,15 +33,15 @@ class ExecuteScript: Command <String> {
 
         try {
             if (depth <= maxDepth) {
-                val strings = scriptFile.readLines()
+                val strings = scriptFile.readStrings()
                 writeToConsole.writelnToConsole(messages.getMessage("script_start"))
                 for (string in strings) {
-                    val new_args = string.split(" ")
-                    if (new_args[0] == "execute_script") {
+                    val newArgs = string.split(" ")
+                    if (newArgs[0] == "execute_script") {
                         depth += 1
-                        execute(new_args.slice(1 until new_args.size).toTypedArray(), collectionManager)
+                        execute(newArgs.slice(1 until newArgs.size).toTypedArray(), collectionManager)
                     } else {
-                        validator.validation(new_args.toTypedArray(), collectionManager)
+                        validator.validation(newArgs.toTypedArray(), collectionManager)
                     }
                 }
             } else {

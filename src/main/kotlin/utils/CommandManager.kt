@@ -4,7 +4,6 @@ import commands.*
 import commands.dev.FastAdd
 import commands.dev.GetElement
 import commands.dev.PrintCollection
-import data.Color
 
 class CommandManager {
         fun getCommand(command: String): Command<out Any>? {
@@ -51,27 +50,5 @@ class CommandManager {
                 )
 
                 return commands[command]
-        }
-
-        fun selector(command: String, arguments: Array<String>): Any {
-                val voids = arrayOf(
-                        "help", "info", "show", "add", "clear", "save", "exit", "remove_first",
-                        "reorder", "min_by_weight", "group_counting_by_nationality"
-                )
-                val ints = arrayOf("update", "remove_by_id")
-                val strings = arrayOf("execute_script")
-                val colors = arrayOf("count_by_hair_color")
-                val arrays = arrayOf("change_collection","history")
-
-                val singleArg = arguments[0]
-
-                when (command) {
-                        in voids -> return 0
-                        in ints -> return singleArg.toInt()
-                        in strings -> return singleArg
-                        in colors -> return Color.valueOf(singleArg.uppercase())
-                        in arrays -> return arguments
-                }
-                return 0
         }
 }

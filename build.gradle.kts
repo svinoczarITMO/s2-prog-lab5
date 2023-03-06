@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm") version "1.8.10"
     kotlin("plugin.serialization") version "1.8.10"
     application
+    id("org.jetbrains.dokka") version "1.7.20"
 }
 
 group = "org.example"
@@ -21,4 +22,8 @@ dependencies {
     testImplementation(kotlin("test"))
     implementation(kotlin("serialization", version = kotlinVersion))
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0-RC")
+}
+
+subprojects {
+    apply(plugin = "org.jetbrains.dokka")
 }

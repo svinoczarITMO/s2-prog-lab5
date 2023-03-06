@@ -7,6 +7,12 @@ import utils.PrinterManager
 import java.util.*
 import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
 
+/**
+ * Counts and groups elements by nationality.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class GroupCountingByNationality: Command <Empty> {
     private val writeToConsole = PrinterManager()
 

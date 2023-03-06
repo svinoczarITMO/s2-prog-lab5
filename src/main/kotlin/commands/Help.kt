@@ -4,6 +4,12 @@ import utils.CollectionManager
 import utils.PrinterManager
 import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
 
+/**
+ * Prints all commands and their descriptions.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class Help: Command <Empty> {
     val writeToConsole: PrinterManager = PrinterManager()
 

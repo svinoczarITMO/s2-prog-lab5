@@ -4,6 +4,12 @@ import data.Messages
 import utils.CollectionManager
 import utils.PrinterManager
 
+/**
+ * Removes element of collection with inputed id.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class RemoveByID: Command <Int> {
     private val writeToConsole = PrinterManager()
     private val message = Messages()

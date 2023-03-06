@@ -5,9 +5,19 @@ import data.Person
 import utils.CollectionManager
 import utils.PrinterManager
 
+/**
+ * Gets element of collection by id.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class GetElement: Command <Int> {
     private val writeToConsole = PrinterManager()
 
+    /**
+     *
+     * @param Int id of getting element.
+     */
     override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
         var obj: Person? = null
         try {

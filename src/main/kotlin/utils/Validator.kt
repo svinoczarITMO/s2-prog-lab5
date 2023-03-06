@@ -28,12 +28,10 @@ class Validator {
             in typeEmpty -> {
                 return validArgument
             }
-
             in typeString -> {
                 validArgument.add(invalidArguments[0])
                 return validArgument
             }
-
             in typeInt -> {
                 try {
                     validArgument.add(invalidArguments[0].toInt())
@@ -45,7 +43,6 @@ class Validator {
                 }
 
             }
-
             in typeColor -> {
                 try {
                     validArgument.add(Color.valueOf(invalidArguments[0].uppercase()))
@@ -58,7 +55,6 @@ class Validator {
                     return null
                 }
             }
-
             in typeArrays -> {
                 try {
                     validArgument.add(commandBuffer.toList())
@@ -70,11 +66,6 @@ class Validator {
         }
         return arrayListOf()
     }
-//        catch (e: NumberFormatException) {
-//            writeToConsole.writelnToConsole("Введенно недопустимое значение аргумента.")
-//            return arrayListOf()
-//        }
-
 
     fun validation(args: Array<String>, collectionManager: CollectionManager) {
         val command = commandManager.getCommand(args[0])

@@ -4,6 +4,13 @@ import utils.CollectionManager
 import utils.PrinterManager
 import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
 
+//TODO: Изменить описание класса.
+/**
+ * Prints all elements of collection.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class Show: Command <Empty> {
     private val writeToConsole = PrinterManager()
 
