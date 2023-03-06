@@ -2,7 +2,15 @@ package data
 
 import java.util.*
 
-
+/**
+ * Model of Person. Main model of the program.
+ *
+ * @constructor id: Int, name: String, coordinates: Coordinates,
+ * creationDate: Date, height: Int, weight: Long,
+ * hairColor: Color, nationality: Country, location: Location
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class Person(
     var id: Int,
     var name: String,

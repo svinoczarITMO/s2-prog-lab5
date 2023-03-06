@@ -1,5 +1,11 @@
 package data
 
+/**
+ * Contains messages for print.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class Messages {
     private val messages = mapOf(
         "enter_name" to "Введите имя: ",
@@ -31,6 +37,12 @@ class Messages {
         "invalid argument" to "Введенно недопустимое значение аргумента."
     )
 
+    /**
+     * Returns message from map of messages by inputed key.
+     *
+     * @param key key of message
+     * @return message as String?
+     */
     fun getMessage (key: String): String? {
         return messages[key]
     }
