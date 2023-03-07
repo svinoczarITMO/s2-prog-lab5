@@ -11,7 +11,7 @@ import java.util.*
  * @since 1.0.0
  */
 class Loader {
-    private val pathToFile = System.getenv("Collection Var")
+    private val pathToFile = System.getenv("COLLECTION_VAR")
 
     private var readerBuffer: String = File(pathToFile).readText()
     private val pattern = Regex("""<.*?>(.*)<.*?>""")

@@ -21,16 +21,21 @@ class AddPersonFields {
      *
      * @return name as String
      */
-    fun name (): String {
-        writeToConsole.writelnInConsole(message.getMessage("enter_name"))
-        val name = readerManager.readFromConsole()
+    fun name (flag: String, arg: String?): String {
+        val name: String = if (flag == "main") {
+            writeToConsole.writelnInConsole(message.getMessage("enter_name"))
+            readerManager.readFromConsole()
+        } else {
+            arg as String
+        }
+
         try {
             if (name.isBlank()) throw ElementAmountException()
             return name
         } catch (e: ElementAmountException) {
             writeToConsole.writelnInConsole("Строка не может быть пустой! Введите имя ещё раз.")
         }
-        return name()
+        return name(flag, arg)
     }
 
     /**
@@ -38,21 +43,25 @@ class AddPersonFields {
      *
      * @return Float
      */
-    fun coordinateX (): Float {
-        writeToConsole.writelnInConsole(message.getMessage("enter_coordinateX"))
-        val coordinateX = readerManager.readFromConsole()
+    fun coordinateX (flag: String, arg: String?): Float {
+        val coordinateX: String = if (flag == "main") {
+            writeToConsole.writelnInConsole(message.getMessage("enter_coordinateX"))
+            readerManager.readFromConsole()
+        } else {
+            arg as String
+        }
         try {
-            if (coordinateX <= 214.toString()) {
+            if (coordinateX.toFloat() <= 214) {
                 //TODO: сравнивать флоат, а не стринг
                 return coordinateX.toFloat()
             } else {
                 writeToConsole.writelnInConsole("Координата \"x\" должна быть не больше 214!")
-                return coordinateX()
+                return coordinateX(flag, arg)
             }
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return coordinateX()
+        return coordinateX(flag, arg)
     }
 
     /**
@@ -60,20 +69,24 @@ class AddPersonFields {
      *
      * @return Float
      */
-    fun coordinateY (): Float {
-        writeToConsole.writelnInConsole(message.getMessage("enter_coordinateY"))
-        val coordinateY = readerManager.readFromConsole()
+    fun coordinateY (flag: String, arg: String?): Float {
+        val coordinateY: String = if (flag == "main") {
+            writeToConsole.writelnInConsole(message.getMessage("enter_coordinateY"))
+            readerManager.readFromConsole()
+        } else {
+            arg as String
+        }
         try {
-            if (coordinateY <= 794.toString()) {
+            if (coordinateY.toFloat() <= 794) {
                 return coordinateY.toFloat()
             } else {
                 writeToConsole.writelnInConsole("Координата \"y\" должна быть не больше 794!")
-                return coordinateY()
+                return coordinateY(flag, arg)
             }
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return coordinateY()
+        return coordinateY(flag, arg)
     }
 
     /**
@@ -81,20 +94,24 @@ class AddPersonFields {
      *
      * @return Int
      */
-    fun height (): Int {
-        writeToConsole.writelnInConsole(message.getMessage("enter_height"))
-        val height = readerManager.readFromConsole()
+    fun height (flag: String, arg: String?): Int {
+        val height: String = if (flag == "main") {
+            writeToConsole.writelnInConsole(message.getMessage("enter_height"))
+            readerManager.readFromConsole()
+        } else {
+            arg as String
+        }
         try {
-            if (height > 0.toString()) {
+            if (height.toInt() > 0) {
                 return height.toInt()
             } else {
                 writeToConsole.writelnInConsole("Рост должен быть больше нуля!")
-                return height()
+                return height(flag, arg)
             }
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return height()
+        return height(flag, arg)
     }
 
     /**
@@ -102,20 +119,24 @@ class AddPersonFields {
      *
      * @return Long
      */
-    fun weight (): Long {
-        writeToConsole.writelnInConsole(message.getMessage("enter_weight"))
-        val weight = readerManager.readFromConsole()
+    fun weight (flag: String, arg: String?): Long {
+        val weight: String = if (flag == "main") {
+            writeToConsole.writelnInConsole(message.getMessage("enter_weight"))
+            readerManager.readFromConsole()
+        } else {
+            arg as String
+        }
         try {
-            if (weight > 0.toString()) {
+            if (weight.toLong() > 0) {
                 return weight.toLong()
             } else {
                 writeToConsole.writelnInConsole("Вес должен быть больше нуля!")
-                return weight()
+                return weight(flag, arg)
             }
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return weight()
+        return weight(flag, arg)
     }
 
     /**
@@ -123,22 +144,26 @@ class AddPersonFields {
      *
      * @return Color
      */
-    fun hairColor (): Color {
-        writeToConsole.writelnInConsole(message.getMessage("enter_hairColor"))
-        for (value in 0 until Color.values().size) {
-            writeToConsole.writeInConsole("${Color.values()[value]}")
-            if (value < Color.values().size-1) {
-                writeToConsole.writeInConsole(", ")
+    fun hairColor (flag: String, arg: String?): Color {
+        val hairColor: String = if (flag == "main") {
+            writeToConsole.writelnInConsole(message.getMessage("enter_hairColor"))
+            for (value in 0 until Color.values().size) {
+                writeToConsole.writeInConsole("${Color.values()[value]}")
+                if (value < Color.values().size-1) {
+                    writeToConsole.writeInConsole(", ")
+                }
             }
+            writeToConsole.writelnInConsole("")
+            readerManager.readFromConsole().uppercase()
+        } else {
+            arg?.uppercase() as String
         }
-        writeToConsole.writelnInConsole("")
-        val hairColor = readerManager.readFromConsole().uppercase()
         try {
             return Color.valueOf(hairColor)
         } catch (e: IllegalArgumentException) {
             writeToConsole.writelnInConsole(message.getMessage("IllegalColor"))
         }
-        return hairColor()
+        return hairColor(flag, arg)
     }
 
     /**
@@ -146,22 +171,28 @@ class AddPersonFields {
      *
      * @return Country
      */
-    fun nationality (): Country {
-        writeToConsole.writelnInConsole(message.getMessage("enter_nationality"))
-        for (value in 0 until Country.values().size) {
-            writeToConsole.writeInConsole("${Country.values()[value]}")
-            if (value < Country.values().size-1) {
-                writeToConsole.writeInConsole(",")
-            }
-        }
+    fun nationality (flag: String, arg: String?): Country {
+
         writeToConsole.writelnInConsole("")
-        val nationality = readerManager.readFromConsole().uppercase()
+        val nationality: String = if (flag == "main") {
+            writeToConsole.writelnInConsole(message.getMessage("enter_nationality"))
+            for (value in 0 until Country.values().size) {
+                writeToConsole.writeInConsole("${Country.values()[value]}")
+                if (value < Country.values().size-1) {
+                    writeToConsole.writeInConsole(",")
+                }
+            }
+            writeToConsole.writelnInConsole("")
+            readerManager.readFromConsole().uppercase()
+        } else {
+            arg?.uppercase() as String
+        }
         try {
             return Country.valueOf(nationality)
         } catch (e: IllegalArgumentException) {
             writeToConsole.writelnInConsole(message.getMessage("IllegalCountry"))
         }
-        return nationality()
+        return nationality(flag, arg)
     }
 
     /**
@@ -169,15 +200,19 @@ class AddPersonFields {
      *
      * @return Int
      */
-    fun locationX (): Int {
-        writeToConsole.writelnInConsole(message.getMessage("enter_locationX"))
-        val locationX = readerManager.readFromConsole()
+    fun locationX (flag: String, arg: String?): Int {
+        val locationX: String = if (flag == "main") {
+            writeToConsole.writelnInConsole(message.getMessage("enter_locationX"))
+            readerManager.readFromConsole()
+        } else {
+            arg as String
+        }
         try {
             return locationX.toInt()
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return locationX()
+        return locationX(flag, arg)
     }
 
     /**
@@ -185,15 +220,19 @@ class AddPersonFields {
      *
      * @return Long
      */
-    fun locationY (): Long? {
-        writeToConsole.writelnInConsole(message.getMessage("enter_locationY"))
-        val locationY = readerManager.readFromConsole()
+    fun locationY (flag: String, arg: String?): Long? {
+        val locationY: String = if (flag == "main") {
+            writeToConsole.writelnInConsole(message.getMessage("enter_locationY"))
+            readerManager.readFromConsole()
+        } else {
+            arg as String
+        }
         try {
             return locationY?.toLong()
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return locationY()
+        return locationY(flag, arg)
     }
 
     /**
@@ -201,14 +240,18 @@ class AddPersonFields {
      *
      * @return Int
      */
-    fun locationZ (): Int {
-        writeToConsole.writelnInConsole(message.getMessage("enter_locationZ"))
-        val locationZ = readerManager.readFromConsole()
+    fun locationZ (flag: String, arg: String?): Int {
+        val locationZ: String = if (flag == "main") {
+            writeToConsole.writelnInConsole(message.getMessage("enter_locationZ"))
+            readerManager.readFromConsole()
+        } else {
+            arg as String
+        }
         try {
             return locationZ.toInt()
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return locationZ()
+        return locationZ(flag, arg)
     }
 }

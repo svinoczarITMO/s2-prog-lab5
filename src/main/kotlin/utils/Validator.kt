@@ -17,6 +17,30 @@ class Validator {
     private val message = Messages()
 
     /**
+     * Validates arguments and starts command.
+     *
+     * @param args unchecked raw arguments.
+     * @param collectionManager instance of Collection Manager.
+     */
+    fun validation(args: Array<String>, collectionManager: CollectionManager, flag: String) {
+        val command = commandManager.getCommand(args[0])
+        val invalidArguments = args.slice(1 until args.size).toTypedArray()
+
+        if (commandBuffer.size == 7) {
+            commandBuffer.pop()
+            commandBuffer.add(args[0])
+        } else {
+            commandBuffer.add(args[0])
+        }
+        val validArgument = selector(args[0], invalidArguments + flag)?.toArray()
+        try {
+            command?.execute(validArgument!!, collectionManager)
+        } catch (e: NullPointerException) {
+            return
+        }
+    }
+
+    /**
      * Validates what is command's type, handles invalid arguments and returns them.
      *
      * @param command name of command.
@@ -28,12 +52,12 @@ class Validator {
 
         val typeEmpty = arrayOf(
             "print", "fadd",
-            "help", "info", "show", "add",
+            "help", "info", "show",
             "clear", "save", "exit", "remove_first",
             "reorder", "min_by_weight", "group_counting_by_nationality"
         )
         val typeInt = arrayOf("update", "remove_by_id", "get")
-        val typeString = arrayOf("execute_script")
+        val typeString = arrayOf("add", "execute_script")
         val typeColor = arrayOf("count_by_hair_color")
         val typeArrays = arrayOf("change_collection", "history")
         when (command) {
@@ -42,7 +66,7 @@ class Validator {
                 return validArgument
             }
             in typeString -> {
-                validArgument.add(invalidArguments[0])
+                invalidArguments.forEach {validArgument.add(it)}
                 return validArgument
             }
             in typeInt -> {
@@ -72,35 +96,19 @@ class Validator {
                 try {
                     validArgument.add(commandBuffer.toList())
                     return validArgument
-            } catch (e: NumberFormatException) {
-                writeToConsole.writelnInConsole(message.getMessage("invalid argument"))
+                } catch (e: NumberFormatException) {
+                    writeToConsole.writelnInConsole(message.getMessage("invalid argument"))
                 }
             }
         }
         return arrayListOf()
     }
 
-    /**
-     * Validates arguments and starts command.
-     *
-     * @param args unchecked raw arguments.
-     * @param collectionManager instance of Collection Manager.
-     */
-    fun validation(args: Array<String>, collectionManager: CollectionManager) {
-        val command = commandManager.getCommand(args[0])
-        val invalidArguments = args.slice(1 until args.size).toTypedArray()
-
-        if (commandBuffer.size == 7) {
-            commandBuffer.pop()
-            commandBuffer.add(args[0])
-        } else {
-            commandBuffer.add(args[0])
+    fun explorer (path: String?): String {
+        var pathToScriptFile = ""
+        if (path != null) {
+            pathToScriptFile = path
         }
-        val validArgument = selector(args[0], invalidArguments)?.toArray()
-        try {
-            command?.execute(validArgument!!, collectionManager)
-        } catch (e: NullPointerException) {
-            return
-        }
+        return pathToScriptFile
     }
 }

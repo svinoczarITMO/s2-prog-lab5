@@ -18,6 +18,7 @@ class MinByWeight: Command <Empty> {
     private val message = Messages()
 
     override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+        val flag = ::execute.name
         val vector = collectionManager.getVector()
         var minWeight: Long = Long.MAX_VALUE
         var minWeightId: String = "0"
@@ -29,6 +30,6 @@ class MinByWeight: Command <Empty> {
         }
         println(minWeight)
         println(minWeightId)
-        validator.validation(arrayOf("get", minWeightId), collectionManager)
+        validator.validation(arrayOf("get", minWeightId), collectionManager, flag)
     }
 }
