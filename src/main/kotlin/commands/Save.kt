@@ -11,7 +11,7 @@ import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMembe
  * @since 1.0.0
  */
 class Save: Command <Empty>{
-    private val pathToFile = System.getenv("Collection Var")
+    private val pathToFile = System.getenv("COLLECTION_VAR")
 
     private fun tagsCompilations (rawString: String, collectionManager: CollectionManager): String {
         val bufferVector = collectionManager.getVector()
@@ -33,7 +33,7 @@ class Save: Command <Empty>{
         return string
     }
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         val bufferVector = collectionManager.getVector()
         var tags = ""
         val tagsStart = "<vector-elements>\n"

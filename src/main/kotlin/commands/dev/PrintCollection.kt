@@ -13,7 +13,7 @@ import utils.PrinterManager
 class PrintCollection: Command <Any> {
     private val writeToConsole = PrinterManager()
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
-        writeToConsole.writelnToConsole(collectionManager.getVector().toString())
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+        writeToConsole.writelnInConsole(collectionManager.getVector().toString())
     }
 }

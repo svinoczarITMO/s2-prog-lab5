@@ -16,7 +16,7 @@ import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMembe
 class GroupCountingByNationality: Command <Empty> {
     private val writeToConsole = PrinterManager()
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         val bufferVector = Vector<Person>()
         var counter = 0
 
@@ -30,7 +30,7 @@ class GroupCountingByNationality: Command <Empty> {
                     counterOfElementsInGroup += 1
                 }
             }
-            writeToConsole.writelnToConsole("В группе $nationality $counterOfElementsInGroup человек")
+            writeToConsole.writelnInConsole("В группе $nationality $counterOfElementsInGroup человек")
         }
         collectionManager.setVector(bufferVector)
     }

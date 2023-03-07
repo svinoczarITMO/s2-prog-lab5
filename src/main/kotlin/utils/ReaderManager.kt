@@ -2,6 +2,12 @@ package utils
 
 import java.io.File
 
+/**
+ * Manages readers.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class ReaderManager: Reader {
     override fun readFromConsole(): String {
         return readln()

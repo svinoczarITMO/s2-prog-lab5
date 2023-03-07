@@ -3,17 +3,17 @@ package utils
 import org.jetbrains.kotlin.konan.file.File
 
 /**
- * Saves initialization date to data.log file.
+ * Manages printers.
  *
  * @author svinoczar
  * @since 1.0.0
  */
 class PrinterManager: Printer{
-    override fun writeToConsole(message: Any?) {
+    override fun writeInConsole(message: Any?) {
         print(message)
     }
 
-    override fun writelnToConsole (message: Any?) {
+    override fun writelnInConsole (message: Any?) {
         println(message)
     }
 

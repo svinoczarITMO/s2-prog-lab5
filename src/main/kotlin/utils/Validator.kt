@@ -4,14 +4,27 @@ import data.Color
 import data.Messages
 import java.util.*
 
+/**
+ * Validates and handles commands and their arguments before executing.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class Validator {
     private val commandManager = CommandManager()
     private val commandBuffer = LinkedList<String>()
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    fun selector(command: String, invalidArguments: Array<String>): ArrayList<Any>? {
-        var validArgument = arrayListOf<Any>()
+    /**
+     * Validates what is command's type, handles invalid arguments and returns them.
+     *
+     * @param command name of command.
+     * @param invalidArguments unchecked raw arguments.
+     * @return valid arguments as ArrayList<Any>?
+     */
+    private fun selector(command: String, invalidArguments: Array<String>): ArrayList<Any>? {
+        val validArgument = arrayListOf<Any>()
 
         val typeEmpty = arrayOf(
             "print", "fadd",
@@ -37,9 +50,9 @@ class Validator {
                     validArgument.add(invalidArguments[0].toInt())
                     return validArgument
                 } catch (e: NumberFormatException) {
-                    writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+                    writeToConsole.writelnInConsole(message.getMessage("invalid argument"))
                 } catch (e: ArrayIndexOutOfBoundsException) {
-                    writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+                    writeToConsole.writelnInConsole(message.getMessage("invalid argument"))
                 }
 
             }
@@ -48,10 +61,10 @@ class Validator {
                     validArgument.add(Color.valueOf(invalidArguments[0].uppercase()))
                     return validArgument
                 } catch (e: IllegalArgumentException) {
-                    writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+                    writeToConsole.writelnInConsole(message.getMessage("invalid argument"))
                     return null
                 } catch (e: ArrayIndexOutOfBoundsException) {
-                    writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+                    writeToConsole.writelnInConsole(message.getMessage("invalid argument"))
                     return null
                 }
             }
@@ -60,13 +73,19 @@ class Validator {
                     validArgument.add(commandBuffer.toList())
                     return validArgument
             } catch (e: NumberFormatException) {
-                writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+                writeToConsole.writelnInConsole(message.getMessage("invalid argument"))
                 }
             }
         }
         return arrayListOf()
     }
 
+    /**
+     * Validates arguments and starts command.
+     *
+     * @param args unchecked raw arguments.
+     * @param collectionManager instance of Collection Manager.
+     */
     fun validation(args: Array<String>, collectionManager: CollectionManager) {
         val command = commandManager.getCommand(args[0])
         val invalidArguments = args.slice(1 until args.size).toTypedArray()

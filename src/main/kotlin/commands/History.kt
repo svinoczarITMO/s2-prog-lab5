@@ -14,13 +14,13 @@ class History: Command <List<*>> {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
-        val commandBuffer = arg[0] as List<*>
-        writeToConsole.writelnToConsole(message.getMessage("last_commands"))
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+        val commandBuffer = args[0] as List<*>
+        writeToConsole.writelnInConsole(message.getMessage("last_commands"))
         for (command in commandBuffer) {
-            writeToConsole.writelnToConsole(command)
+            writeToConsole.writelnInConsole(command)
         }
-        writeToConsole.writelnToConsole("")
+        writeToConsole.writelnInConsole("")
     }
 
 

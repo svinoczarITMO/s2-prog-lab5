@@ -13,8 +13,8 @@ import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMembe
 class Help: Command <Empty> {
     val writeToConsole: PrinterManager = PrinterManager()
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
-            writeToConsole.writelnToConsole(
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+            writeToConsole.writelnInConsole(
                     "=========================================================================================================================================\n" +
                     "help - выводит справку по доступным командам\n" +
                     "info - выводит  в стандартный поток вывода информацию о коллекции " +

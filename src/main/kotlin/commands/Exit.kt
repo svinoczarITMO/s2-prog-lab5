@@ -11,7 +11,7 @@ import kotlin.system.exitProcess
  * @since 1.0.0
  */
 class Exit: Command <Empty> {
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         exitProcess(1)
     }
 }

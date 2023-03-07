@@ -15,18 +15,18 @@ class CountByHairColor: Command <Color> {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         val copyVector = collectionManager.getVector()
         var counter = 0
         try {
             for (element in copyVector) {
-                if (element.hairColor == arg[0]) {
+                if (element.hairColor == args[0]) {
                     counter += 1
                 }
             }
-            writeToConsole.writelnToConsole("Количество людей с цветом волос \"${arg[0].toString().capitalize()}\": $counter")
+            writeToConsole.writelnInConsole("Количество людей с цветом волос \"${args[0].toString().capitalize()}\": $counter")
         } catch (e: IllegalArgumentException) {
-            writeToConsole.writelnToConsole(message.getMessage("IllegalColor"))
+            writeToConsole.writelnInConsole(message.getMessage("IllegalColor"))
         }
     }
 }

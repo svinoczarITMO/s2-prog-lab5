@@ -14,16 +14,16 @@ import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMembe
 class Show: Command <Empty> {
     private val writeToConsole = PrinterManager()
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         if (collectionManager.getVector().size > 1) {
             for (i in 0 until collectionManager.getVector().size-1) {
-                writeToConsole.writeToConsole("${collectionManager.getVector()[i].name}, ")
+                writeToConsole.writeInConsole("${collectionManager.getVector()[i].name}, ")
             }
-            writeToConsole.writelnToConsole("${collectionManager.getVector().lastElement().name}.")
+            writeToConsole.writelnInConsole("${collectionManager.getVector().lastElement().name}.")
         } else if (collectionManager.getVector().size == 1) {
-            writeToConsole.writelnToConsole(collectionManager.getVector().lastElement().name)
+            writeToConsole.writelnInConsole(collectionManager.getVector().lastElement().name)
         } else {
-            writeToConsole.writelnToConsole("В коллекции не содержится элементов. ")
+            writeToConsole.writelnInConsole("В коллекции не содержится элементов. ")
         }
     }
 }

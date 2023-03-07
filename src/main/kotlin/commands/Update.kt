@@ -20,12 +20,12 @@ class Update: Command <Int> {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         var id = 0
         var element: Person? = null
         try {
             for (obj in collectionManager.getVector()) {
-                if (obj.id == arg[0]) {
+                if (obj.id == args[0]) {
                     element = obj
                     break
                 }
@@ -38,7 +38,7 @@ class Update: Command <Int> {
         try {
             id = element?.id as Int
         } catch (e: NullPointerException) {
-            writeToConsole.writelnToConsole("Элемента с указанным id не существует")
+            writeToConsole.writelnInConsole("Элемента с указанным id не существует")
             return
         }
 

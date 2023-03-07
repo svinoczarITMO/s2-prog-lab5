@@ -18,11 +18,11 @@ class GetElement: Command <Int> {
      *
      * @param Int id of getting element.
      */
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         var obj: Person? = null
         try {
             for (element in collectionManager.getVector()) {
-                if (element.id == arg[0]) {
+                if (element.id == args[0]) {
                     obj = element
                     break
                 }
@@ -31,7 +31,7 @@ class GetElement: Command <Int> {
             //writeToConsole.writelnToConsole("Объект с указанным id не найден")
         }
         obj?.let {
-            writeToConsole.writelnToConsole(
+            writeToConsole.writelnInConsole(
                 "Объект ${it.id}:\n"
                         + "Дата создания: \"" + it.creationDate + "\" \n"
                         + "Координаты: x = " + it.coordinates.x + " y = " + it.coordinates.y + "\n"
@@ -42,6 +42,6 @@ class GetElement: Command <Int> {
                         + "Национальность: " + it.nationality + "\n"
                         + "Местоположение: x = " + it.location.x + "; y = " + it.location.y + "; z = " + it.location.z
             )
-        } ?:writeToConsole.writelnToConsole("Объект с указанным id не найден")
+        } ?:writeToConsole.writelnInConsole("Объект с указанным id не найден")
     }
 }

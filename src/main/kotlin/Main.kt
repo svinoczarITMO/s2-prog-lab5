@@ -14,12 +14,12 @@ fun main() {
     loader.loadFromFile(collectionManager)
 
     while (true){
-        writeToConsole.writeToConsole("$")
+        writeToConsole.writeInConsole("$")
         val readFromConsole = (readln().lowercase()).split(" ")
         if (commandManager.getCommand(readFromConsole[0]) != null ){
             validator.validation(readFromConsole.toTypedArray(), collectionManager)
         } else {
-            writeToConsole.writelnToConsole("Введена неверная команда. Используйте help для вывода списка команд.")
+            writeToConsole.writelnInConsole("Введена неверная команда. Используйте help для вывода списка команд.")
         }
     }
     //TODO:------------------3)-Validator-----------------------------

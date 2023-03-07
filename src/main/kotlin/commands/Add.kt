@@ -16,7 +16,7 @@ import java.util.*
 class Add: Command <String> {
     private val set = AddPersonFields()
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         val id: Int = collectionManager.getVector().size+1
 
         val name: String = set.name()

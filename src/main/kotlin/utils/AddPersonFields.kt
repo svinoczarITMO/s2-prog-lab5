@@ -5,152 +5,209 @@ import data.Country
 import data.Messages
 import exceptions.ElementAmountException
 
+/**
+ * Handles inputed data for Person constructor fields.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class AddPersonFields {
     private val writeToConsole = PrinterManager()
     private val readerManager = ReaderManager()
     private val message = Messages()
 
+    /**
+     * Sets inputed name of current Person element.
+     *
+     * @return name as String
+     */
     fun name (): String {
-        writeToConsole.writelnToConsole(message.getMessage("enter_name"))
+        writeToConsole.writelnInConsole(message.getMessage("enter_name"))
         val name = readerManager.readFromConsole()
         try {
             if (name.isBlank()) throw ElementAmountException()
             return name
         } catch (e: ElementAmountException) {
-            writeToConsole.writelnToConsole("Строка не может быть пустой! Введите имя ещё раз.")
+            writeToConsole.writelnInConsole("Строка не может быть пустой! Введите имя ещё раз.")
         }
         return name()
     }
 
+    /**
+     * Sets inputed coordinate "x" of current Person element.
+     *
+     * @return Float
+     */
     fun coordinateX (): Float {
-        writeToConsole.writelnToConsole(message.getMessage("enter_coordinateX"))
+        writeToConsole.writelnInConsole(message.getMessage("enter_coordinateX"))
         val coordinateX = readerManager.readFromConsole()
         try {
             if (coordinateX <= 214.toString()) {
+                //TODO: сравнивать флоат, а не стринг
                 return coordinateX.toFloat()
             } else {
-                writeToConsole.writelnToConsole("Координата \"x\" должна быть не больше 214!")
+                writeToConsole.writelnInConsole("Координата \"x\" должна быть не больше 214!")
                 return coordinateX()
             }
         } catch (e: NumberFormatException) {
-            writeToConsole.writelnToConsole(message.getMessage("NumberFormatException"))
+            writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
         return coordinateX()
     }
 
+    /**
+     * Sets inputed coordinate "x" of current Person element.
+     *
+     * @return Float
+     */
     fun coordinateY (): Float {
-        writeToConsole.writelnToConsole(message.getMessage("enter_coordinateY"))
+        writeToConsole.writelnInConsole(message.getMessage("enter_coordinateY"))
         val coordinateY = readerManager.readFromConsole()
         try {
             if (coordinateY <= 794.toString()) {
                 return coordinateY.toFloat()
             } else {
-                writeToConsole.writelnToConsole("Координата \"y\" должна быть не больше 794!")
+                writeToConsole.writelnInConsole("Координата \"y\" должна быть не больше 794!")
                 return coordinateY()
             }
         } catch (e: NumberFormatException) {
-            writeToConsole.writelnToConsole(message.getMessage("NumberFormatException"))
+            writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
         return coordinateY()
     }
 
+    /**
+     * Sets inputed height of current Person element.
+     *
+     * @return Int
+     */
     fun height (): Int {
-        writeToConsole.writelnToConsole(message.getMessage("enter_height"))
+        writeToConsole.writelnInConsole(message.getMessage("enter_height"))
         val height = readerManager.readFromConsole()
         try {
             if (height > 0.toString()) {
                 return height.toInt()
             } else {
-                writeToConsole.writelnToConsole("Рост должен быть больше нуля!")
+                writeToConsole.writelnInConsole("Рост должен быть больше нуля!")
                 return height()
             }
         } catch (e: NumberFormatException) {
-            writeToConsole.writelnToConsole(message.getMessage("NumberFormatException"))
+            writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
         return height()
     }
 
+    /**
+     * Sets inputed weight of current Person element.
+     *
+     * @return Long
+     */
     fun weight (): Long {
-        writeToConsole.writelnToConsole(message.getMessage("enter_weight"))
+        writeToConsole.writelnInConsole(message.getMessage("enter_weight"))
         val weight = readerManager.readFromConsole()
         try {
             if (weight > 0.toString()) {
                 return weight.toLong()
             } else {
-                writeToConsole.writelnToConsole("Вес должен быть больше нуля!")
+                writeToConsole.writelnInConsole("Вес должен быть больше нуля!")
                 return weight()
             }
         } catch (e: NumberFormatException) {
-            writeToConsole.writelnToConsole(message.getMessage("NumberFormatException"))
+            writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
         return weight()
     }
 
+    /**
+     * Sets inputed color of hair of current Person element.
+     *
+     * @return Color
+     */
     fun hairColor (): Color {
-        writeToConsole.writelnToConsole(message.getMessage("enter_hairColor"))
+        writeToConsole.writelnInConsole(message.getMessage("enter_hairColor"))
         for (value in 0 until Color.values().size) {
-            writeToConsole.writeToConsole("${Color.values()[value]}")
+            writeToConsole.writeInConsole("${Color.values()[value]}")
             if (value < Color.values().size-1) {
-                writeToConsole.writeToConsole(", ")
+                writeToConsole.writeInConsole(", ")
             }
         }
-        writeToConsole.writelnToConsole("")
+        writeToConsole.writelnInConsole("")
         val hairColor = readerManager.readFromConsole().uppercase()
         try {
             return Color.valueOf(hairColor)
         } catch (e: IllegalArgumentException) {
-            writeToConsole.writelnToConsole(message.getMessage("IllegalColor"))
+            writeToConsole.writelnInConsole(message.getMessage("IllegalColor"))
         }
         return hairColor()
     }
 
+    /**
+     * Sets inputed nationality of current Person element.
+     *
+     * @return Country
+     */
     fun nationality (): Country {
-        writeToConsole.writelnToConsole(message.getMessage("enter_nationality"))
+        writeToConsole.writelnInConsole(message.getMessage("enter_nationality"))
         for (value in 0 until Country.values().size) {
-            writeToConsole.writeToConsole("${Country.values()[value]}")
+            writeToConsole.writeInConsole("${Country.values()[value]}")
             if (value < Country.values().size-1) {
-                writeToConsole.writeToConsole(",")
+                writeToConsole.writeInConsole(",")
             }
         }
-        writeToConsole.writelnToConsole("")
+        writeToConsole.writelnInConsole("")
         val nationality = readerManager.readFromConsole().uppercase()
         try {
             return Country.valueOf(nationality)
         } catch (e: IllegalArgumentException) {
-            writeToConsole.writelnToConsole(message.getMessage("IllegalCountry"))
+            writeToConsole.writelnInConsole(message.getMessage("IllegalCountry"))
         }
         return nationality()
     }
 
+    /**
+     * Sets inputed location "x" of current Person element.
+     *
+     * @return Int
+     */
     fun locationX (): Int {
-        writeToConsole.writelnToConsole(message.getMessage("enter_locationX"))
+        writeToConsole.writelnInConsole(message.getMessage("enter_locationX"))
         val locationX = readerManager.readFromConsole()
         try {
             return locationX.toInt()
         } catch (e: NumberFormatException) {
-            writeToConsole.writelnToConsole(message.getMessage("NumberFormatException"))
+            writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
         return locationX()
     }
 
+    /**
+     * Sets inputed location "y" of current Person element.
+     *
+     * @return Long
+     */
     fun locationY (): Long? {
-        writeToConsole.writelnToConsole(message.getMessage("enter_locationY"))
+        writeToConsole.writelnInConsole(message.getMessage("enter_locationY"))
         val locationY = readerManager.readFromConsole()
         try {
             return locationY?.toLong()
         } catch (e: NumberFormatException) {
-            writeToConsole.writelnToConsole(message.getMessage("NumberFormatException"))
+            writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
         return locationY()
     }
 
+    /**
+     * Sets inputed location "z" of current Person element.
+     *
+     * @return Int
+     */
     fun locationZ (): Int {
-        writeToConsole.writelnToConsole(message.getMessage("enter_locationZ"))
+        writeToConsole.writelnInConsole(message.getMessage("enter_locationZ"))
         val locationZ = readerManager.readFromConsole()
         try {
             return locationZ.toInt()
         } catch (e: NumberFormatException) {
-            writeToConsole.writelnToConsole(message.getMessage("NumberFormatException"))
+            writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
         return locationZ()
     }

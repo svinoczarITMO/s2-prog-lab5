@@ -17,7 +17,7 @@ class MinByWeight: Command <Empty> {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         val vector = collectionManager.getVector()
         var minWeight: Long = Long.MAX_VALUE
         var minWeightId: String = "0"

@@ -5,7 +5,19 @@ import commands.dev.FastAdd
 import commands.dev.GetElement
 import commands.dev.PrintCollection
 
+/**
+ * Manages commands.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class CommandManager {
+        /**
+         * Returns command as Command from map by command name.
+         *
+         * @param command command name.
+         * @return Command<out Any>?
+         */
         fun getCommand(command: String): Command<out Any>? {
                 val help: Help = Help()
                 val info: Info = Info()

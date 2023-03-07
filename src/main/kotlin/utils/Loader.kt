@@ -4,6 +4,12 @@ import data.*
 import java.io.File
 import java.util.*
 
+/**
+ * Loads actual collection from Collection.xml.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class Loader {
     private val pathToFile = System.getenv("Collection Var")
 
@@ -11,6 +17,11 @@ class Loader {
     private val pattern = Regex("""<.*?>(.*)<.*?>""")
     private val tagsList: MutableList<String> = mutableListOf()
 
+    /**
+     * Loads collection from xml file.
+     *
+     * @param collectionManager CollectionManager object.
+     */
     fun loadFromFile (collectionManager: CollectionManager) {
         val bufferVector = Vector<Person>()
         while (pattern.find(readerBuffer) != null) {
@@ -40,7 +51,6 @@ class Loader {
                 tagsList.clear()
             }
         }
-//        println(bufferVector)
         collectionManager.setVector(bufferVector)
     }
 }

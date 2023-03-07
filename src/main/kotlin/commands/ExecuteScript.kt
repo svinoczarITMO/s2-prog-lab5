@@ -23,18 +23,18 @@ class ExecuteScript: Command <String> {
     private var depth = 0
     private var scriptFile = File("")
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         try {
-            scriptFile = File(arg[0] as String)
+            scriptFile = File(args[0] as String)
         } catch (e: FileNotFoundException) {
-            writeToConsole.writelnToConsole("Указанный файл не найден")
+            writeToConsole.writelnInConsole("Указанный файл не найден")
             return
         }
 
         try {
             if (depth <= maxDepth) {
                 val strings = scriptFile.readStrings()
-                writeToConsole.writelnToConsole(messages.getMessage("script_start"))
+                writeToConsole.writelnInConsole(messages.getMessage("script_start"))
                 for (string in strings) {
                     val newArgs = string.split(" ")
                     if (newArgs[0] == "execute_script") {
@@ -45,16 +45,16 @@ class ExecuteScript: Command <String> {
                     }
                 }
             } else {
-                writeToConsole.writelnToConsole(messages.getMessage("recurision"))
+                writeToConsole.writelnInConsole(messages.getMessage("recurision"))
 
             }
         } catch (e: FileNotFoundException) {
-            writeToConsole.writelnToConsole("Указанный файл не найден")
+            writeToConsole.writelnInConsole("Указанный файл не найден")
             return
         }
         depth -= 1
         if (depth == 0) {
-            writeToConsole.writelnToConsole(messages.getMessage("script_end"))
+            writeToConsole.writelnInConsole(messages.getMessage("script_end"))
         }
     }
 }

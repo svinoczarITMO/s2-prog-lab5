@@ -15,8 +15,8 @@ class Clear: Command <Empty> {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
-        writeToConsole.writelnToConsole(message.getMessage("clear"))
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+        writeToConsole.writelnInConsole(message.getMessage("clear"))
         return collectionManager.clear()
     }
 }

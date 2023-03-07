@@ -15,9 +15,9 @@ class RemoveFirst: Command <Empty> {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         collectionManager.getVector().removeFirst()
-        writeToConsole.writelnToConsole(
+        writeToConsole.writelnInConsole(
             message.getMessage("first_element") +
                     message.getMessage("removed"))
     }

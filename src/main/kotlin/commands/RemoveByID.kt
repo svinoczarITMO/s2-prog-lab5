@@ -14,12 +14,12 @@ class RemoveByID: Command <Int> {
     private val writeToConsole = PrinterManager()
     private val message = Messages()
 
-    override fun execute(arg: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         var flag = false
         try {
             try {
                 for (element in collectionManager.getVector()) {
-                    if (element.id == arg[0]) {
+                    if (element.id == args[0]) {
                         collectionManager.getVector().remove(element)
                         flag = true
                         break
@@ -30,16 +30,16 @@ class RemoveByID: Command <Int> {
             }
 
         if (flag) {
-            writeToConsole.writelnToConsole(
+            writeToConsole.writelnInConsole(
                 message.getMessage("by_id") +
-                        arg[0] +
+                        args[0] +
                         message.getMessage("removed")
             )
         } else if (!flag){
-            writeToConsole.writelnToConsole("Объект с указанным id не найден")
+            writeToConsole.writelnInConsole("Объект с указанным id не найден")
         }
         } catch (e: ArrayIndexOutOfBoundsException) {
-            writeToConsole.writelnToConsole(message.getMessage("invalid argument"))
+            writeToConsole.writelnInConsole(message.getMessage("invalid argument"))
             return
         }
     }
