@@ -2,8 +2,8 @@ package commands
 
 import data.Coordinates
 import data.Location
-import data.Messages
 import data.Person
+import org.jetbrains.kotlin.konan.file.File
 import utils.AddPersonFields
 import utils.CollectionManager
 import utils.PrinterManager
@@ -18,11 +18,18 @@ import java.util.*
 class Update: Command <Int> {
     private val set = AddPersonFields()
     private val writeToConsole = PrinterManager()
-    private val message = Messages()
 
     override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         var id = 0
         var element: Person? = null
+        var params = arrayListOf<String>("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
+                                         "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
+        val flag = args[0] as String
+
+        if (flag != "main") {
+            params = parametersParser(args)
+        }
+
         try {
             for (obj in collectionManager.getVector()) {
                 if (obj.id == args[0]) {
@@ -42,23 +49,47 @@ class Update: Command <Int> {
             return
         }
 
-        val name: String = set.name()
+        val name = set.name(params[0], flag)
 
-        val coordinates = Coordinates(set.coordinateX(),set.coordinateY())
+        val coordinates = Coordinates(set.coordinateX(params[1], flag), set.coordinateY(params[2], flag))
 
         val creationDate = Date()
 
-        val height = set.height()
+        val height = set.height(params[3], flag)
 
-        val weight = set.weight()
+        val weight = set.weight(params[4], flag)
 
-        val hairColor = set.hairColor()
+        val hairColor = set.hairColor(params[5], flag)
 
-        val nationality = set.nationality()
+        val nationality = set.nationality(params[6], flag)
 
-        val location = Location(set.locationX(), set.locationY(), set.locationZ())
+        val location = Location(set.locationX(params[7], flag), set.locationY(params[8], flag), set.locationZ(params[9], flag))
+
         element = Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
         collectionManager.getVector().removeAt(id-1)
         collectionManager.getVector().insertElementAt(element, id-1)
+    }
+
+    private fun parametersParser (args: Array<Any>): ArrayList<String> {
+        val flag = args[0] as String
+        val path = args[1] as String
+        val params = arrayListOf<String>()
+        var isAdd = false
+        var counter = 0
+        val strings = File(path).readStrings()
+
+        strings.forEach {
+            if (!isAdd || counter < 10) {
+                isAdd = false
+                if (it == "add") {
+                    isAdd = true
+                    counter = 0
+                }
+            } else {
+                params.add(it.lowercase())
+                counter++
+            }
+        }
+        return params
     }
 }

@@ -15,7 +15,7 @@ fun main() {
 
     while (true){
         val flag = ::main.name
-        writeToConsole.writeInConsole("$")
+        writeToConsole.writeInConsole("> ")
         val readFromConsole = (readln().lowercase()).split(" ")
         if (commandManager.getCommand(readFromConsole[0]) != null ){
             validator.validation(readFromConsole.toTypedArray(), collectionManager, flag)
@@ -29,9 +29,11 @@ fun main() {
     //TODO:------------------6)-ExecuteScript-------------------------
     //TODO:------------------7)-Обработка-95%-ошибок------------------
     //TODO:------------------10)-KOTLIN-DOKKA-98%---------------------
+    //TODO:------------------11)-add-из-файла-------------------------
 
     //TODO: 8) ExecuteScript аргумент
     //TODO: 9) Новая команда
+    //TODO: 12) update из файла
 
 
     //linked hash map

@@ -35,7 +35,7 @@ class ExecuteScript: Command <String> {
                 val strings = scriptFile.readStrings()
                 writeToConsole.writelnInConsole(messages.getMessage("script_start"))
                 for (string in strings) {
-                    var newArgs = string.split(" ")
+                    val newArgs = string.split(" ")
                     if (newArgs[0] == "execute_script") {
                         depth += 1
                         execute(newArgs.slice(1 until newArgs.size).toTypedArray(), collectionManager)
