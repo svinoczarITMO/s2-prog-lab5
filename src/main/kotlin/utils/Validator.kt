@@ -56,8 +56,8 @@ class Validator {
             "clear", "save", "exit", "remove_first",
             "reorder", "min_by_weight", "group_counting_by_nationality"
         )
-        val typeInt = arrayOf("update", "remove_by_id", "get")
-        val typeString = arrayOf("add", "execute_script")
+        val typeInt = arrayOf("remove_by_id", "get")
+        val typeString = arrayOf("add", "update", "execute_script")
         val typeColor = arrayOf("count_by_hair_color")
         val typeArrays = arrayOf("change_collection", "history")
         when (command) {

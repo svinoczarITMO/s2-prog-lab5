@@ -55,13 +55,16 @@ class AddPersonFields {
                 return coordinateX.toFloat()
             } else {
                 writeToConsole.writelnInConsole("Координата \"x\" должна быть не больше 214!")
-                return coordinateX(arg, flag)
+                if (flag == "main") {
+                    return coordinateX(arg, flag)
+                } else {return coordinateX as Float}
             }
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        //TODO????
-        return coordinateX(arg, flag)
+        if (flag == "main") {
+            return coordinateX(arg, flag)
+        } else {return coordinateX as Float}
     }
 
     /**
@@ -81,12 +84,16 @@ class AddPersonFields {
                 return coordinateY.toFloat()
             } else {
                 writeToConsole.writelnInConsole("Координата \"y\" должна быть не больше 794!")
-                return coordinateY(arg, flag)
+                if (flag == "main") {
+                    return coordinateX(arg, flag)
+                } else {return coordinateY as Float}
             }
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return coordinateY(arg, flag)
+        if (flag == "main") {
+            return coordinateX(arg, flag)
+        } else {return coordinateY as Float}
     }
 
     /**
@@ -106,12 +113,16 @@ class AddPersonFields {
                 return height.toInt()
             } else {
                 writeToConsole.writelnInConsole("Рост должен быть больше нуля!")
-                return height(arg, flag)
+                if (flag == "main") {
+                    return height(arg, flag)
+                } else {return height as Int}
             }
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return height(arg, flag)
+        if (flag == "main") {
+            return height(arg, flag)
+        } else {return height as Int}
     }
 
     /**
@@ -131,12 +142,16 @@ class AddPersonFields {
                 return weight.toLong()
             } else {
                 writeToConsole.writelnInConsole("Вес должен быть больше нуля!")
-                return weight(arg, flag)
+                if (flag == "main") {
+                    return weight(arg, flag)
+                } else {return weight as Long}
             }
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return weight(arg, flag)
+        if (flag == "main") {
+            return weight(arg, flag)
+        } else {return weight as Long}
     }
 
     /**
@@ -163,7 +178,9 @@ class AddPersonFields {
         } catch (e: IllegalArgumentException) {
             writeToConsole.writelnInConsole(message.getMessage("IllegalColor"))
         }
-        return hairColor(arg, flag)
+        if (flag == "main") {
+            return hairColor(arg, flag)
+        } else {return hairColor as Color}
     }
 
     /**
@@ -192,7 +209,9 @@ class AddPersonFields {
         } catch (e: IllegalArgumentException) {
             writeToConsole.writelnInConsole(message.getMessage("IllegalCountry"))
         }
-        return nationality(arg, flag)
+        if (flag == "main") {
+            return nationality(arg, flag)
+        } else {return nationality as Country}
     }
 
     /**
@@ -212,7 +231,9 @@ class AddPersonFields {
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return locationX(arg, flag)
+        if (flag == "main") {
+            return locationX(arg, flag)
+        } else {return locationX as Int}
     }
 
     /**
@@ -232,7 +253,9 @@ class AddPersonFields {
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return locationY(arg, flag)
+        if (flag == "main") {
+            return locationY(arg, flag)
+        } else {return locationY as Long}
     }
 
     /**
@@ -252,6 +275,8 @@ class AddPersonFields {
         } catch (e: NumberFormatException) {
             writeToConsole.writelnInConsole(message.getMessage("NumberFormatException"))
         }
-        return locationZ(arg, flag)
+        if (flag == "main") {
+            return locationZ(arg, flag)
+        } else {return locationZ as Int}
     }
 }

@@ -22,7 +22,7 @@ class Add: Command <String>{
     private val message = Messages()
 
     override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
-        val id: Int = collectionManager.getVector().size + 1
+        val id: Int = collectionManager.getVector().maxOf { it.id } + 1
         var flag = "null"
         var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
@@ -58,9 +58,10 @@ class Add: Command <String>{
             Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
         collectionManager.addObject(personElement)
         } catch (e: IndexOutOfBoundsException) {
-            writeToConsole.writelnInConsole("Не хватает параметров в скрипте для добавления новой команды.")
+            writeToConsole.writelnInConsole(message.getMessage("not_enough_args"))
             return
         }
+        writeToConsole.writelnInConsole(message.getMessage("added"))
     }
 
     private fun parametersParser (args: Array<Any>): ArrayList<String> {

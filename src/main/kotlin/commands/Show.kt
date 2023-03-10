@@ -1,5 +1,6 @@
 package commands
 
+import data.Messages
 import utils.CollectionManager
 import utils.PrinterManager
 import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
@@ -13,6 +14,7 @@ import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMembe
  */
 class Show: Command <Empty> {
     private val writeToConsole = PrinterManager()
+    private val messages = Messages()
 
     override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         if (collectionManager.getVector().size > 1) {
@@ -23,7 +25,7 @@ class Show: Command <Empty> {
         } else if (collectionManager.getVector().size == 1) {
             writeToConsole.writelnInConsole(collectionManager.getVector().lastElement().name)
         } else {
-            writeToConsole.writelnInConsole("В коллекции не содержится элементов. ")
+            writeToConsole.writelnInConsole(messages.getMessage("clean_collection"))
         }
     }
 }

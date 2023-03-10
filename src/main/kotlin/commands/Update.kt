@@ -22,9 +22,17 @@ class Update: Command <Int> {
     override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         var id = 0
         var element: Person? = null
-        var params = arrayListOf<String>("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
+        var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
-        val flag = args[0] as String
+        var flag = "null"
+
+        if (args.size == 2) {
+            flag = args[1] as String
+        } else {
+            args[2] as String
+        }
+
+        args.forEach { println(it) }
 
         if (flag != "main") {
             params = parametersParser(args)
@@ -32,7 +40,7 @@ class Update: Command <Int> {
 
         try {
             for (obj in collectionManager.getVector()) {
-                if (obj.id == args[0]) {
+                if (obj.id == args[0].toString().toInt()) {
                     element = obj
                     break
                 }
@@ -49,6 +57,7 @@ class Update: Command <Int> {
             return
         }
 
+        println(params)
         val name = set.name(params[0], flag)
 
         val coordinates = Coordinates(set.coordinateX(params[1], flag), set.coordinateY(params[2], flag))
@@ -71,23 +80,16 @@ class Update: Command <Int> {
     }
 
     private fun parametersParser (args: Array<Any>): ArrayList<String> {
-        val flag = args[0] as String
         val path = args[1] as String
         val params = arrayListOf<String>()
-        var isAdd = false
-        var counter = 0
         val strings = File(path).readStrings()
+        args.forEach { println(it) }
 
-        strings.forEach {
-            if (!isAdd || counter < 10) {
-                isAdd = false
-                if (it == "add") {
-                    isAdd = true
-                    counter = 0
+        for (id in 0 until strings.size) {
+            if (strings[id] == ("update ${args[0]}")) {
+                for (n in 1..10) {
+                    params.add(strings[id + n].lowercase().trim())
                 }
-            } else {
-                params.add(it.lowercase())
-                counter++
             }
         }
         return params

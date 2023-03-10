@@ -5,7 +5,6 @@ import org.jetbrains.kotlin.konan.file.File
 import utils.CollectionManager
 import utils.PrinterManager
 import utils.Validator
-import java.io.FileNotFoundException
 
 /**
  * Executes script from inputed path to file.
@@ -23,13 +22,14 @@ class ExecuteScript: Command <String> {
 
     override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         val flag = ::execute.name
-        try {
-            scriptFile = File(args[0] as String)
-            validator.explorer(args[0] as String)
-        } catch (e: FileNotFoundException) {
-            writeToConsole.writelnInConsole("Указанный файл не найден")
+        val link = args[0] as String
+        if (File(link).exists) {
+            scriptFile = File(link)
+            validator.explorer(link)
+        } else {
             return
         }
+
         try {
             if (depth <= maxDepth) {
                 val strings = scriptFile.readStrings()
@@ -45,10 +45,9 @@ class ExecuteScript: Command <String> {
                 }
             } else {
                 writeToConsole.writelnInConsole(messages.getMessage("recurision"))
-
             }
-        } catch (e: FileNotFoundException) {
-            writeToConsole.writelnInConsole("Указанный файл не найден")
+        } catch (e: NoSuchFileException) {
+            writeToConsole.writelnInConsole(messages.getMessage("NoSuchFileException"))
             return
         }
         depth -= 1
