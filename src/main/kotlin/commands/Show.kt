@@ -7,7 +7,7 @@ import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMembe
 
 //TODO: Изменить описание класса.
 /**
- * Prints all elements of collection.
+ * Prints pairs "id - name" of elements in the collection.
  *
  * @author svinoczar
  * @since 1.0.0
@@ -19,11 +19,11 @@ class Show: Command <Empty> {
     override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
         if (collectionManager.getVector().size > 1) {
             for (i in 0 until collectionManager.getVector().size-1) {
-                writeToConsole.writeInConsole("${collectionManager.getVector()[i].name}, ")
+                writeToConsole.writeInConsole("Id: ${collectionManager.getVector()[i].id}, Name: ${collectionManager.getVector()[i].name}\n")
             }
-            writeToConsole.writelnInConsole("${collectionManager.getVector().lastElement().name}.")
+            writeToConsole.writelnInConsole("Id: ${collectionManager.getVector().lastElement().id}, Name: ${collectionManager.getVector().lastElement().name}")
         } else if (collectionManager.getVector().size == 1) {
-            writeToConsole.writelnInConsole(collectionManager.getVector().lastElement().name)
+            writeToConsole.writelnInConsole("Id: ${collectionManager.getVector().lastElement().id}, Name: ${collectionManager.getVector().lastElement().name}")
         } else {
             writeToConsole.writelnInConsole(messages.getMessage("clean_collection"))
         }
