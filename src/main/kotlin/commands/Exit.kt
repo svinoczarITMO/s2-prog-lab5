@@ -1,7 +1,5 @@
 package commands
 
-import utils.CollectionManager
-import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
 import kotlin.system.exitProcess
 
 /**
@@ -10,8 +8,8 @@ import kotlin.system.exitProcess
  * @author svinoczar
  * @since 1.0.0
  */
-class Exit: Command <Empty> {
-    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+class Exit: Command() {
+    override fun execute(args: Map<String, Any>) {
         exitProcess(1)
     }
 }

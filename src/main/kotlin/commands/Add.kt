@@ -2,12 +2,9 @@ package commands
 
 import data.Coordinates
 import data.Location
-import data.Messages
 import data.Person
 import org.jetbrains.kotlin.konan.file.File
 import utils.AddPersonFields
-import utils.CollectionManager
-import utils.PrinterManager
 import java.util.*
 
 /**
@@ -16,25 +13,18 @@ import java.util.*
  * @author svinoczar
  * @since 1.0.0
  */
-class Add: Command <String>{
+class Add: Command() {
     private val set = AddPersonFields()
-    private val writeToConsole = PrinterManager()
-    private val message = Messages()
 
-    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Map<String, Any>) {
+        val flag = args.get("flag") as String
+        val rawParams = args.get("params") as Array<*>
         val id: Int = collectionManager.getVector().maxOf { it.id } + 1
-        var flag = "null"
         var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
 
-        if (args.size == 1) {
-            flag = args[0] as String
-        } else {
-            args[1] as String
-        }
-
         if (flag != "main") {
-            params = parametersParser(args)
+            params = parametersParser(rawParams)
         }
 
         try {
@@ -58,13 +48,13 @@ class Add: Command <String>{
             Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
         collectionManager.addObject(personElement)
         } catch (e: IndexOutOfBoundsException) {
-            writeToConsole.writelnInConsole(message.getMessage("not_enough_args"))
+            write.linesInConsole(message.getMessage("not_enough_args"))
             return
         }
-        writeToConsole.writelnInConsole(message.getMessage("added"))
+        write.linesInConsole(message.getMessage("added"))
     }
 
-    private fun parametersParser (args: Array<Any>): ArrayList<String> {
+    private fun parametersParser (args: Array<*>): ArrayList<String> {
         val path = args[0] as String
         val params = arrayListOf<String>()
         val strings = File(path).readStrings()

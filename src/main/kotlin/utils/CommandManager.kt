@@ -18,7 +18,7 @@ class CommandManager {
          * @param command command name.
          * @return Command<out Any>?
          */
-        fun getCommand(command: String): Command<out Any>? {
+        fun getCommand(command: String): Any? {
                 val help: Help = Help()
                 val info: Info = Info()
                 val show: Show = Show()

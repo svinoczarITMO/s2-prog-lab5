@@ -1,6 +1,10 @@
 package commands
 
-import utils.CollectionManager
+
+import data.Messages
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import utils.*
 
 /**
  * Base interface for command implementation. You should implement it before applying command in CommandManager.
@@ -8,12 +12,20 @@ import utils.CollectionManager
  * @author svinoczar
  * @since 1.0.0
  */
-interface Command <T>{
+abstract class Command: KoinComponent {
+    val collectionManager: CollectionManager by inject()
+    val commandManager: CommandManager by inject()
+    val write: PrinterManager by inject()
+    val read: ReaderManager by inject()
+    val message: Messages by inject()
+    val validator: Validator by inject()
+    val serializer: Serializer by inject()
+
     /**
      * Executes command with "arg" as arguments and "collectionManager" as Collection Manager.
      *
-     * @param args array of command's arguments.
-     * @param collectionManager instance of Collection Manager.
+     * @param args map of command's arguments.
      */
-    fun execute (args: Array<Any>, collectionManager: CollectionManager)
+    abstract fun execute(args: Map<String, Any>)
 }
+

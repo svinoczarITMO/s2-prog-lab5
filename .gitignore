@@ -6,7 +6,8 @@ build
 gradle.properties
 gradlew
 gradlew.bat
-TODO list
+TODO
+src/main/kotlin/deprecated
 
 ### IntelliJ IDEA ###
 .idea

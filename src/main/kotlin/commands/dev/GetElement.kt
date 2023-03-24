@@ -2,8 +2,6 @@ package commands.dev
 
 import commands.Command
 import data.Person
-import utils.CollectionManager
-import utils.PrinterManager
 
 /**
  * Gets element of collection by id.
@@ -11,27 +9,26 @@ import utils.PrinterManager
  * @author svinoczar
  * @since 1.0.0
  */
-class GetElement: Command <Int> {
-    private val writeToConsole = PrinterManager()
-
+class GetElement: Command() {
     /**
      *
      * @param Int id of getting element.
      */
-    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+    override fun execute(args: Map<String, Any>) {
         var obj: Person? = null
+        val getId = args.get("id")
         try {
             for (element in collectionManager.getVector()) {
-                if (element.id == args[0]) {
+                if (element.id == getId) {
                     obj = element
                     break
                 }
             }
         } catch (e: ArrayIndexOutOfBoundsException) {
-            //writeToConsole.writelnToConsole("Объект с указанным id не найден")
+            write.linesInConsole(message.getMessage("invalid_id"))
         }
         obj?.let {
-            writeToConsole.writelnInConsole(
+            write.linesInConsole(
                 "Объект ${it.id}:\n"
                         + "Дата создания: \"" + it.creationDate + "\" \n"
                         + "Координаты: x = " + it.coordinates.x + " y = " + it.coordinates.y + "\n"
@@ -42,6 +39,6 @@ class GetElement: Command <Int> {
                         + "Национальность: " + it.nationality + "\n"
                         + "Местоположение: x = " + it.location.x + "; y = " + it.location.y + "; z = " + it.location.z
             )
-        } ?:writeToConsole.writelnInConsole("Объект с указанным id не найден")
+        } ?:write.linesInConsole(message.getMessage("invalid_id"))
     }
 }

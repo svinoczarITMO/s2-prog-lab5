@@ -5,7 +5,6 @@ import data.Location
 import data.Person
 import org.jetbrains.kotlin.konan.file.File
 import utils.AddPersonFields
-import utils.CollectionManager
 import utils.PrinterManager
 import java.util.*
 
@@ -15,32 +14,30 @@ import java.util.*
  * @author svinoczar
  * @since 1.0.0
  */
-class Update: Command <Int> {
+class Update: Command() {
     private val set = AddPersonFields()
     private val writeToConsole = PrinterManager()
 
-    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
-        var id = 0
+    override fun execute(args: Map<String, Any>) {
+        val id : Int
         var element: Person? = null
         var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
         var flag = "null"
+        try {
+            flag = args.get("flag") as String
+        } catch (_: Exception) {}
 
-        if (args.size == 2) {
-            flag = args[1] as String
-        } else {
-            args[2] as String
-        }
 
         args.forEach { println(it) }
 
         if (flag != "main") {
-            params = parametersParser(args)
+            params = parametersParser(args.get("params") as Array<Any>)
         }
 
         try {
             for (obj in collectionManager.getVector()) {
-                if (obj.id == args[0].toString().toInt()) {
+                if (obj.id == args.get("id") as Int) {
                     element = obj
                     break
                 }
@@ -53,7 +50,7 @@ class Update: Command <Int> {
         try {
             id = element?.id as Int
         } catch (e: NullPointerException) {
-            writeToConsole.writelnInConsole("Элемента с указанным id не существует")
+            writeToConsole.linesInConsole("Элемента с указанным id не существует")
             return
         }
 

@@ -1,20 +1,14 @@
 package commands
 
-import utils.CollectionManager
-import utils.PrinterManager
-import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
-
 /**
  * Prints all commands and their descriptions.
  *
  * @author svinoczar
  * @since 1.0.0
  */
-class Help: Command <Empty> {
-    val writeToConsole: PrinterManager = PrinterManager()
-
-    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
-            writeToConsole.writelnInConsole(
+class Help: Command() {
+    override fun execute(args: Map<String, Any>) {
+            write.linesInConsole(
                     "=========================================================================================================================================\n" +
                     "help - выводит справку по доступным командам\n" +
                     "info - выводит  в стандартный поток вывода информацию о коллекции " +

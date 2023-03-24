@@ -1,32 +1,25 @@
 package commands
 
-import data.Color
-import data.Messages
-import utils.CollectionManager
-import utils.PrinterManager
-
 /**
  * Counts elements by hair color.
  *
  * @author svinoczar
  * @since 1.0.0
  */
-class CountByHairColor: Command <Color> {
-    private val writeToConsole = PrinterManager()
-    private val message = Messages()
-
-    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+class CountByHairColor: Command() {
+    override fun execute(args: Map<String, Any>) {
+        val color by args
         val copyVector = collectionManager.getVector()
         var counter = 0
         try {
             for (element in copyVector) {
-                if (element.hairColor == args[0]) {
+                if (element.hairColor == color) {
                     counter += 1
                 }
             }
-            writeToConsole.writelnInConsole("Количество людей с цветом волос \"${args[0].toString().capitalize()}\": $counter")
+            write.linesInConsole("Количество людей с цветом волос \"${color.toString().capitalize()}\": $counter")
         } catch (e: IllegalArgumentException) {
-            writeToConsole.writelnInConsole(message.getMessage("IllegalColor"))
+            write.linesInConsole(message.getMessage("IllegalColor"))
         }
     }
 }

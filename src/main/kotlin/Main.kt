@@ -1,25 +1,34 @@
+
+import data.Messages
+import di.notKoinModule
+import org.koin.core.context.GlobalContext.startKoin
 import utils.*
 
 
 fun main() {
+    startKoin {
+        modules(notKoinModule)
+    }
+
     val collectionManager = CollectionManager()
     val validator = Validator()
     val loader = Loader()
     val logger = Logger()
     val writeToConsole = PrinterManager()
     val commandManager = CommandManager()
+    val message = Messages()
 
     logger.initDate(collectionManager)
     loader.loadFromFile(collectionManager)
 
     while (true){
         val flag = ::main.name
-        writeToConsole.writeInConsole("> ")
+        writeToConsole.inConsole("> ")
         val readFromConsole = (readln().lowercase()).split(" ")
         if (commandManager.getCommand(readFromConsole[0]) != null ){
-            validator.validation(readFromConsole.toTypedArray(), collectionManager, flag)
+            validator.validation(readFromConsole.toTypedArray())
         } else {
-            writeToConsole.writelnInConsole("Введена неверная команда. Используйте help для вывода списка команд.")
+            writeToConsole.linesInConsole(message.getMessage("weird_command"))
         }
     }
 }

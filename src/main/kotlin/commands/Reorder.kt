@@ -1,11 +1,7 @@
 package commands
 
-import data.Messages
 import data.Person
-import utils.CollectionManager
-import utils.PrinterManager
 import java.util.*
-import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
 
 /**
  * Turns the collection.
@@ -13,16 +9,13 @@ import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMembe
  * @author svinoczar
  * @since 1.0.0
  */
-class Reorder: Command <Empty> {
-    private val writeToConsole = PrinterManager()
-    private val message = Messages()
-
-    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+class Reorder: Command() {
+    override fun execute(args: Map<String, Any>) {
         val bufferVector: Vector<Person> = Vector()
         for (element in collectionManager.getVector()) {
             bufferVector.insertElementAt(element,0)
         }
         collectionManager.setVector(bufferVector)
-        writeToConsole.writelnInConsole(collectionManager.getVector().toString())
+        write.linesInConsole(collectionManager.getVector().toString())
     }
 }

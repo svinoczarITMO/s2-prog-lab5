@@ -1,23 +1,13 @@
 package commands
 
-import data.Messages
-import utils.CollectionManager
-import utils.PrinterManager
-import utils.Validator
-import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
-
 /**
  * Prints element of collection with minimal weight.
  *
  * @author svinoczar
  * @since 1.0.0
  */
-class MinByWeight: Command <Empty> {
-    private val validator = Validator()
-    private val writeToConsole = PrinterManager()
-    private val message = Messages()
-
-    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+class MinByWeight: Command() {
+    override fun execute(args: Map<String, Any>) {
         val flag = ::execute.name
         val vector = collectionManager.getVector()
         var minWeight: Long = Long.MAX_VALUE
@@ -30,6 +20,6 @@ class MinByWeight: Command <Empty> {
         }
         println(minWeight)
         println(minWeightId)
-        validator.validation(arrayOf("get", minWeightId), collectionManager, flag)
+        validator.validation(arrayOf("get", minWeightId))
     }
 }

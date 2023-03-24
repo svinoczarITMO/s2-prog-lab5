@@ -2,10 +2,7 @@ package commands
 
 import data.Country
 import data.Person
-import utils.CollectionManager
-import utils.PrinterManager
 import java.util.*
-import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMemberIndex.Empty
 
 /**
  * Counts and groups elements by nationality.
@@ -13,10 +10,8 @@ import kotlin.reflect.jvm.internal.impl.load.java.lazy.descriptors.DeclaredMembe
  * @author svinoczar
  * @since 1.0.0
  */
-class GroupCountingByNationality: Command <Empty> {
-    private val writeToConsole = PrinterManager()
-
-    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+class GroupCountingByNationality: Command() {
+    override fun execute(args: Map<String, Any>) {
         val bufferVector = Vector<Person>()
         var counter = 0
 
@@ -30,7 +25,7 @@ class GroupCountingByNationality: Command <Empty> {
                     counterOfElementsInGroup += 1
                 }
             }
-            writeToConsole.writelnInConsole("В группе $nationality $counterOfElementsInGroup человек")
+            write.linesInConsole("В группе $nationality $counterOfElementsInGroup человек")
         }
         collectionManager.setVector(bufferVector)
     }

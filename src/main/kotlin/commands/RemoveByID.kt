@@ -1,25 +1,19 @@
 package commands
 
-import data.Messages
-import utils.CollectionManager
-import utils.PrinterManager
-
 /**
  * Removes element of collection with inputed id.
  *
  * @author svinoczar
  * @since 1.0.0
  */
-class RemoveByID: Command <Int> {
-    private val writeToConsole = PrinterManager()
-    private val message = Messages()
-
-    override fun execute(args: Array<Any>, collectionManager: CollectionManager) {
+class RemoveByID: Command() {
+    override fun execute(args: Map<String, Any>) {
         var flag = false
+        val removeId = args.get("id")
         try {
             try {
                 for (element in collectionManager.getVector()) {
-                    if (element.id == args[0]) {
+                    if (element.id == removeId) {
                         collectionManager.getVector().remove(element)
                         flag = true
                         break
@@ -30,16 +24,16 @@ class RemoveByID: Command <Int> {
             }
 
         if (flag) {
-            writeToConsole.writelnInConsole(
+            write.linesInConsole(
                 message.getMessage("by_id") +
-                        args[0] +
+                        removeId +
                         message.getMessage("removed")
             )
         } else if (!flag){
-            writeToConsole.writelnInConsole("Объект с указанным id не найден")
+            write.linesInConsole(message.getMessage("invalid_id"))
         }
         } catch (e: ArrayIndexOutOfBoundsException) {
-            writeToConsole.writelnInConsole(message.getMessage("invalid argument"))
+            write.linesInConsole(message.getMessage("InvalidArgument"))
             return
         }
     }
