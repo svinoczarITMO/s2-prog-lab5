@@ -9,15 +9,15 @@ import org.jetbrains.kotlin.konan.file.File
  * @since 1.0.0
  */
 class PrinterManager: Printer{
-    override fun writeInConsole(message: Any?) {
+    override fun inConsole(message: Any?) {
         print(message)
     }
 
-    override fun writelnInConsole (message: Any?) {
+    override fun linesInConsole (message: Any?) {
         println(message)
     }
 
-    override fun writeToFile(message: Any?, pathToFile: String) {
+    override fun toFile(message: Any?, pathToFile: String) {
         when (message) {
             is String -> File(pathToFile).writeText(message)
             is Array<*> -> File(pathToFile).writeLines(message as Iterable<String>)

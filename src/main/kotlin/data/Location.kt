@@ -1,5 +1,7 @@
 package data
 
+import kotlinx.serialization.Serializable
+
 /**
  * Model of Location. Sub-model of the <code>Person</code>.
  *
@@ -7,6 +9,7 @@ package data
  * @author svinoczar
  * @since 1.0.0
  */
+@Serializable
 class Location (var x: Int, var y: Long?, var z: Int) {
 
 }

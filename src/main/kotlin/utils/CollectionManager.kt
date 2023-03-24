@@ -10,9 +10,9 @@ import java.util.*
  * @author svinoczar
  * @since 1.0.0
  */
+
 class CollectionManager {
     private var vector = Vector<Person>()
-
     /**
      * Returs the collection (Vector).
      *

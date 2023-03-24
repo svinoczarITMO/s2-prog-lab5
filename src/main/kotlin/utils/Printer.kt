@@ -12,14 +12,14 @@ interface Printer {
      *
      * @param message printed message.
      */
-    fun writeInConsole (message: Any?)
+    fun inConsole (message: Any?)
 
     /**
      * Prints message line by line in console.
      *
      * @param message printed message.
      */
-    fun writelnInConsole (message: Any?)
+    fun linesInConsole (message: Any?)
 
     /**
      * Prints message in file.
@@ -27,5 +27,5 @@ interface Printer {
      * @param message printed message.
      * @param pathToFile path to writing file.
      */
-    fun writeToFile (message: Any?, pathToFile: String)
+    fun toFile (message: Any?, pathToFile: String)
 }

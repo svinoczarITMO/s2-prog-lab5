@@ -1,5 +1,7 @@
 package data
 
+import kotlinx.serialization.Serializable
+
 /**
  * Model of Coordinates. Sub-model of the <code>Person</code>.
  *
@@ -7,6 +9,6 @@ package data
  * @author svinoczar
  * @since 1.0.0
  */
+@Serializable
 class Coordinates (var x: Float, var y: Float) {
-
 }

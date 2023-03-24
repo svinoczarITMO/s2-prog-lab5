@@ -1,5 +1,8 @@
 package data
 
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
+import utils.DateAsStringSerializer
 import java.util.*
 
 /**
@@ -11,10 +14,13 @@ import java.util.*
  * @author svinoczar
  * @since 1.0.0
  */
-class Person(
+@Serializable
+data class Person(
     var id: Int,
     var name: String,
     var coordinates: Coordinates,
+    @Contextual
+    @Serializable(DateAsStringSerializer::class)
     var creationDate: Date,
     var height: Int,
     var weight: Long,
