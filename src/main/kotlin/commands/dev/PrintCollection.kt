@@ -9,7 +9,7 @@ import commands.Command
  * @since 1.0.0
  */
 class PrintCollection: Command() {
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
         write.linesInConsole(collectionManager.getVector().toString())
     }
 }

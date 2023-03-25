@@ -11,7 +11,7 @@ import java.util.*
  * @since 1.0.0
  */
 class GroupCountingByNationality: Command() {
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
         val bufferVector = Vector<Person>()
         var counter = 0
 

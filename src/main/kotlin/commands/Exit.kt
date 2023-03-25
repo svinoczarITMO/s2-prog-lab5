@@ -9,7 +9,7 @@ import kotlin.system.exitProcess
  * @since 1.0.0
  */
 class Exit: Command() {
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
         exitProcess(1)
     }
 }

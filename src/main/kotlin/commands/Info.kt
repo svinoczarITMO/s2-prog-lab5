@@ -10,7 +10,7 @@ import utils.Logger
  */
 class Info: Command() {
     private val logger = Logger()
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
         val typeArray = collectionManager::getVector.returnType.toString().split(".")
         val type = typeArray[2] + "." + typeArray[3]
         val size = collectionManager.getVector().size

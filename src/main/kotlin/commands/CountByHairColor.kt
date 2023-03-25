@@ -7,7 +7,7 @@ package commands
  * @since 1.0.0
  */
 class CountByHairColor: Command() {
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
         val color by args
         val copyVector = collectionManager.getVector()
         var counter = 0

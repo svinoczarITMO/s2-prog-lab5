@@ -7,7 +7,7 @@ package commands
  * @since 1.0.0
  */
 class MinByWeight: Command() {
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
         val flag = ::execute.name
         val vector = collectionManager.getVector()
         var minWeight: Long = Long.MAX_VALUE
@@ -18,8 +18,7 @@ class MinByWeight: Command() {
                 minWeightId = element.id.toString()
             }
         }
-        println(minWeight)
-        println(minWeightId)
-        validator.validation(arrayOf("get", minWeightId))
+        write.linesInConsole(message.getMessage("min_weight_id") + minWeightId)
+        write.linesInConsole(message.getMessage("weight") + minWeight)
     }
 }

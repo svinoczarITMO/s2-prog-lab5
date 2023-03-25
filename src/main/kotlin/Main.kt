@@ -26,7 +26,7 @@ fun main() {
         writeToConsole.inConsole("> ")
         val readFromConsole = (readln().lowercase()).split(" ")
         if (commandManager.getCommand(readFromConsole[0]) != null ){
-            validator.validation(readFromConsole.toTypedArray())
+            validator.validate(readFromConsole.toTypedArray())
         } else {
             writeToConsole.linesInConsole(message.getMessage("weird_command"))
         }
@@ -42,4 +42,10 @@ fun main() {
 //DONE: 10) KOTLIN DOKKA 85%
 //DONE: 11) add из файла
 
-//TODO: 12) KOTLIN DOKKA + 15%
+//TODO: 12) Починить ExecuteScript
+//TODO: 13) Обработка ошибок в валидаторе
+//TODO: 14) Дописать серриализацию
+//TODO: 15) Починить Save и Load
+//TODO: 16) CHANGE_COLLECTION
+//TODO: 17) 10 юнит тестов
+//TODO: 18) KOTLIN DOKKA

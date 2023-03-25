@@ -7,7 +7,7 @@ package commands
  * @since 1.0.0
  */
 class RemoveByID: Command() {
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
         var flag = false
         val removeId = args.get("id")
         try {

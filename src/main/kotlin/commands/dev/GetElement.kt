@@ -14,7 +14,7 @@ class GetElement: Command() {
      *
      * @param Int id of getting element.
      */
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
         var obj: Person? = null
         val getId = args.get("id")
         try {

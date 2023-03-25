@@ -7,7 +7,7 @@ package commands
  * @since 1.0.0
  */
 class RemoveFirst: Command() {
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
         collectionManager.getVector().removeFirst()
         write.linesInConsole(
             message.getMessage("first_element") +

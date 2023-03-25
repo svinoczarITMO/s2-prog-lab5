@@ -7,7 +7,7 @@ package commands
  * @since 1.0.0
  */
 class Show: Command() {
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
         if (collectionManager.getVector().size > 1) {
             for (i in 0 until collectionManager.getVector().size-1) {
                 write.inConsole("Id: ${collectionManager.getVector()[i].id}, Name: ${collectionManager.getVector()[i].name}\n")

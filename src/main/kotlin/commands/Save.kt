@@ -22,7 +22,7 @@ package commands
 
 class Save: Command() {
     private val pathToFile = System.getenv("COLLECTION_VAR")
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
         TODO("Not yet implemented")
     }
 }

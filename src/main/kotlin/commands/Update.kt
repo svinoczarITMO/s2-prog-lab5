@@ -18,12 +18,14 @@ class Update: Command() {
     private val set = AddPersonFields()
     private val writeToConsole = PrinterManager()
 
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
+        var flag = "null"
+        val rawParams: Array<*> by args
         val id : Int
         var element: Person? = null
         var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
-        var flag = "null"
+
         try {
             flag = args.get("flag") as String
         } catch (_: Exception) {}
@@ -32,7 +34,7 @@ class Update: Command() {
         args.forEach { println(it) }
 
         if (flag != "main") {
-            params = parametersParser(args.get("params") as Array<Any>)
+            params = parametersParser(rawParams)
         }
 
         try {
@@ -76,7 +78,7 @@ class Update: Command() {
         collectionManager.getVector().insertElementAt(element, id-1)
     }
 
-    private fun parametersParser (args: Array<Any>): ArrayList<String> {
+    private fun parametersParser (args: Array<*>): ArrayList<String> {
         val path = args[1] as String
         val params = arrayListOf<String>()
         val strings = File(path).readStrings()

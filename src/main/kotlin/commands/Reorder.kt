@@ -10,7 +10,7 @@ import java.util.*
  * @since 1.0.0
  */
 class Reorder: Command() {
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
         val bufferVector: Vector<Person> = Vector()
         for (element in collectionManager.getVector()) {
             bufferVector.insertElementAt(element,0)

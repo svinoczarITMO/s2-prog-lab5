@@ -1,5 +1,7 @@
 package commands
 
+import java.util.*
+
 /**
  * Prints last 7 commands.
  *
@@ -7,14 +9,12 @@ package commands
  * @since 1.0.0
  */
 class History: Command() {
-    override fun execute(args: Map<String, Any>) {
-        val commandBuffer = args.get("buffer") as Array<*>
+    override fun execute(args: Map<String, Any?>) {
+        val buffer: LinkedList<String> by args
         write.linesInConsole(message.getMessage("last_commands"))
-        for (command in commandBuffer) {
+        for (command in buffer) {
             write.linesInConsole(command)
         }
         write.linesInConsole("")
     }
-
-
 }

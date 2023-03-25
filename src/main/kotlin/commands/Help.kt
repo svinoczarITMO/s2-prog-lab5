@@ -7,7 +7,7 @@ package commands
  * @since 1.0.0
  */
 class Help: Command() {
-    override fun execute(args: Map<String, Any>) {
+    override fun execute(args: Map<String, Any?>) {
             write.linesInConsole(
                     "=========================================================================================================================================\n" +
                     "help - выводит справку по доступным командам\n" +

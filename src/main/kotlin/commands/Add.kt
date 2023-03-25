@@ -16,9 +16,9 @@ import java.util.*
 class Add: Command() {
     private val set = AddPersonFields()
 
-    override fun execute(args: Map<String, Any>) {
-        val flag = args.get("flag") as String
-        val rawParams = args.get("params") as Array<*>
+    override fun execute(args: Map<String, Any?>) {
+        val flag: String by args
+        val rawParams: Array<*> by args
         val id: Int = collectionManager.getVector().maxOf { it.id } + 1
         var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
