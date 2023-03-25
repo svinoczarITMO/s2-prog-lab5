@@ -19,27 +19,25 @@ class Update: Command() {
     private val writeToConsole = PrinterManager()
 
     override fun execute(args: Map<String, Any?>) {
-        var flag = "null"
-        val rawParams: Array<*> by args
-        val id : Int
+        val elementId : Int by args
+        val path = if (args.contains("path")) args["path"] else ""
+        val flag: String by args
+        val id: Int
         var element: Person? = null
+        val tmpMap = mutableMapOf<String, Any>()
         var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
 
-        try {
-            flag = args.get("flag") as String
-        } catch (_: Exception) {}
-
-
-        args.forEach { println(it) }
+        tmpMap["path"] = path as String
+        tmpMap["id"] = elementId
 
         if (flag != "main") {
-            params = parametersParser(rawParams)
+            params = parametersParser(tmpMap)
         }
 
         try {
             for (obj in collectionManager.getVector()) {
-                if (obj.id == args.get("id") as Int) {
+                if (obj.id == args["elementId"] as Int) {
                     element = obj
                     break
                 }
@@ -78,16 +76,17 @@ class Update: Command() {
         collectionManager.getVector().insertElementAt(element, id-1)
     }
 
-    private fun parametersParser (args: Array<*>): ArrayList<String> {
-        val path = args[1] as String
+    private fun parametersParser (args: Map<String, Any>): ArrayList<String> {
+        val path: String by args
+        val id: Int by args
         val params = arrayListOf<String>()
         val strings = File(path).readStrings()
-        args.forEach { println(it) }
+//        args.forEach { println(it) }
 
-        for (id in 0 until strings.size) {
-            if (strings[id] == ("update ${args[0]}")) {
+        for (index in 0 until strings.size) {
+            if (strings[index] == ("update $id")) {
                 for (n in 1..10) {
-                    params.add(strings[id + n].lowercase().trim())
+                    params.add(strings[index + n].lowercase().trim())
                 }
             }
         }

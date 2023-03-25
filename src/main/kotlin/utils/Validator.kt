@@ -1,5 +1,6 @@
 package utils
 
+import commands.Command
 import data.Color
 import data.Messages
 import org.koin.core.component.KoinComponent
@@ -15,7 +16,7 @@ import java.util.*
 class Validator: KoinComponent{
     private val collectionManager: CollectionManager by inject()
     private val commandManager: CommandManager by inject()
-    private val messages: Messages by inject()
+    private val message: Messages by inject()
     private val commandBuffer = LinkedList<String>()
 
     /**
@@ -43,7 +44,7 @@ class Validator: KoinComponent{
 //    }
 
 
-    fun validate (args: Array<Any>) {
+    fun validate (args: Array<Any?>) {
         val commandName = args[0] as String
         val mapOfArgs = mutableMapOf<String, Any?>()
         val arguments = args.slice(1 until args.size)
@@ -58,12 +59,13 @@ class Validator: KoinComponent{
 
         when (commandName){
             "add" -> {
-                mapOfArgs["rawParams"] = if (arguments[1] != "main") arguments[0] else arrayListOf(null)
-                mapOfArgs["flag"] = arguments[1]
+                mapOfArgs["flag"] = arguments[0]
+                mapOfArgs["path"] = if (arguments[0] != "main") arguments[1] else ""
             }
             "update" -> {
-                mapOfArgs["rawParams"] = if (arguments[1] != "main") arguments[0] else arrayListOf(null)
+                mapOfArgs["elementId"] = arguments[0].toString().toInt()
                 mapOfArgs["flag"] = arguments[1]
+                mapOfArgs["path"] = if (arguments[1] != "main") arguments[2] else ""
             }
             "execute_script" -> {
                 mapOfArgs["path"] = arguments[0]
@@ -118,14 +120,16 @@ class Validator: KoinComponent{
             }
         }
         val command = commandManager.getCommand(commandName)
+        execute(command, mapOfArgs)
+    }
+
+    fun execute (command: Command?, args: Map<String, Any?>) {
         try {
-            command?.execute(mapOfArgs)
+            command?.execute(args)
         } catch (e: NullPointerException) {
             return
         }
     }
-
-
 
 
 //    /**

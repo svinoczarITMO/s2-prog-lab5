@@ -18,13 +18,13 @@ class Add: Command() {
 
     override fun execute(args: Map<String, Any?>) {
         val flag: String by args
-        val rawParams: Array<*> by args
-        val id: Int = collectionManager.getVector().maxOf { it.id } + 1
+        val path: String by args
+        val id: Int = if (collectionManager.getVector().size > 0) collectionManager.getVector().maxOf { it.id } + 1 else 1
         var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
 
         if (flag != "main") {
-            params = parametersParser(rawParams)
+            params = parametersParser(path)
         }
 
         try {
@@ -54,11 +54,9 @@ class Add: Command() {
         write.linesInConsole(message.getMessage("added"))
     }
 
-    private fun parametersParser (args: Array<*>): ArrayList<String> {
-        val path = args[0] as String
+    private fun parametersParser (path: String): ArrayList<String> {
         val params = arrayListOf<String>()
         val strings = File(path).readStrings()
-
         for (id in 0 until strings.size) {
             if (strings[id] == "add") {
                 for (n in 1..10) {

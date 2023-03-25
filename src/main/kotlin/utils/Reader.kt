@@ -10,12 +10,12 @@ interface Reader {
     /**
      * Reads message from console.
      */
-    fun readFromConsole (): String
+    fun fromConsole(): String
 
     /**
      * Reads message from file.
      *
      * @param pathToFile path to reading file.
      */
-    fun readFromFile (pathToFile: String): List<String>
+    fun fromFile(pathToFile: String): List<String>
 }

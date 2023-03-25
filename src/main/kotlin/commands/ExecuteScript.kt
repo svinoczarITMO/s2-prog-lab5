@@ -17,6 +17,7 @@ class ExecuteScript: Command() {
     override fun execute(args: Map<String, Any?>) {
         val flag = ::execute.name
         val path: String by args
+        var arguments: ArrayList<Any?> = arrayListOf()
         if (File(path).exists) {
             scriptFile = File(path)
             validator.explorer(path)
@@ -28,10 +29,16 @@ class ExecuteScript: Command() {
                 val strings = scriptFile.readStrings()
                 write.linesInConsole(message.getMessage("script_start"))
                 for (string in strings) {
-                    val newArgs = string.split(" ").toMutableList()
-                    if (newArgs[0] == "execute_script") {
+                    var newArgs = string.split(" ").toMutableList()
+                    val commandName = newArgs[0]
+                    if (commandName == "execute_script") {
                         depth += 1
-                        newArgs.add(0, path)
+                        newArgs.add(flag)
+                        newArgs.add(path)
+                        validator.validate(newArgs.toTypedArray())
+                    } else {
+                        newArgs.add(flag)
+                        newArgs.add(path)
                         validator.validate(newArgs.toTypedArray())
                     }
                 }

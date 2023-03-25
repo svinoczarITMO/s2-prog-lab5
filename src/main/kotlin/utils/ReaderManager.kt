@@ -9,11 +9,11 @@ import java.io.File
  * @since 1.0.0
  */
 class ReaderManager: Reader {
-    override fun readFromConsole(): String {
+    override fun fromConsole(): String {
         return readln()
     }
 
-    override fun readFromFile(pathToFile: String): List<String> {
+    override fun fromFile(pathToFile: String): List<String> {
         return File(pathToFile).readLines()
     }
 

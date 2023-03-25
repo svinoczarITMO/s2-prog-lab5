@@ -24,7 +24,8 @@ fun main() {
     while (true){
         val flag = ::main.name
         writeToConsole.inConsole("> ")
-        val readFromConsole = (readln().lowercase()).split(" ")
+        val readFromConsole = (readln().lowercase()).split(" ").toMutableList()
+        readFromConsole.add(flag)
         if (commandManager.getCommand(readFromConsole[0]) != null ){
             validator.validate(readFromConsole.toTypedArray())
         } else {
@@ -41,8 +42,8 @@ fun main() {
 //DONE: 9) update из файла
 //DONE: 10) KOTLIN DOKKA 85%
 //DONE: 11) add из файла
+//DONE: 12) Починить ExecuteScript
 
-//TODO: 12) Починить ExecuteScript
 //TODO: 13) Обработка ошибок в валидаторе
 //TODO: 14) Дописать серриализацию
 //TODO: 15) Починить Save и Load
