@@ -1,9 +1,8 @@
 package utils
 
-import commands.*
-import commands.dev.FastAdd
-import commands.dev.GetElement
-import commands.dev.PrintCollection
+import commands.Command
+import org.reflections.Reflections
+import org.reflections.scanners.SubTypesScanner
 
 /**
  * Manages commands.
@@ -13,56 +12,43 @@ import commands.dev.PrintCollection
  */
 class CommandManager {
         /**
-         * Returns command as Command from map by command name.
+         * Parses specified package and filters classes by specified name of Interface.
          *
-         * @param command command name.
-         * @return Command<out Any>?
+         * @param packageName name of parsed package.
+         * @param commandInterfaceName name of Interface.
+         * @return Set<Class<*>>
          */
-        fun getCommand(command: String): Command? {
-                val help: Help = Help()
-                val info: Info = Info()
-                val show: Show = Show()
-                val add: Add = Add()
-                val update: Update = Update()
-                val removeById: RemoveByID = RemoveByID()
-                val executeScript = ExecuteScript()
-                val minByWeight = MinByWeight()
-                val history = History()
-                val clear: Clear = Clear()
-                val save: Save = Save()
-                val exit: Exit = Exit()
-                val removeFirst: RemoveFirst = RemoveFirst()
-                val reorder: Reorder = Reorder()
-                val groupCountingByNationality: GroupCountingByNationality = GroupCountingByNationality()
-                val countByHairColor: CountByHairColor = CountByHairColor()
-                val fastAdd: FastAdd = FastAdd()
-                val printCollection: PrintCollection = PrintCollection()
-                val getElement: GetElement = GetElement()
+        private fun parsePackage(packageName: String, commandInterfaceName: String): Set<Class<*>> {
+                val reflections = Reflections(packageName, SubTypesScanner(false))
 
-                val commands = mapOf(
-                        "help" to help,
-                        "info" to info,
-                        "show" to show,
-                        "add" to add,
-                        "update" to update,
-                        "remove_by_id" to removeById,
-                        "clear" to clear,
-                        "save" to save,
-                        "exit" to exit,
-                        "remove_first" to removeFirst,
-                        "reorder" to reorder,
-                        "group_counting_by_nationality" to groupCountingByNationality,
-                        "count_by_hair_color" to countByHairColor,
-                        "fadd" to fastAdd,
-                        "print" to printCollection,
-                        "get" to getElement,
-                        "execute_script" to executeScript,
-                        "history" to history,
-                        "min_by_weight" to minByWeight
-                )
-
-                return commands[command]
+                return reflections.getSubTypesOf(Object::class.java)
+                        .filter { klass -> !klass.simpleName.equals(commandInterfaceName, ignoreCase = true) }
+                        .toSet()
         }
 
+        /**
+         * Returns command as Command from specified package by name.
+         *
+         * @param packageName name of package.
+         * @param commandInterfaceName name of Interface.
+         * @param commandName command's name.
+         * @return Command?
+         */
+        fun getCommand(packageName: String, commandName: String, commandInterfaceName: String): Command? {
+                val classes = parsePackage(packageName, commandInterfaceName)
 
+                for (klass in classes) {
+                        try {
+                                val command = klass.getConstructor().newInstance() as Command
+
+                                if (command.getName() == commandName) {
+                                        return command
+                                }
+                        } catch (e: Exception) {
+                                println(e.message)
+                        }
+                }
+
+                return null
+        }
 }

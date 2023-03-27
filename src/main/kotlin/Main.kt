@@ -26,7 +26,7 @@ fun main() {
         writeToConsole.inConsole("> ")
         val readFromConsole = (readln().lowercase()).split(" ").toMutableList()
         readFromConsole.add(flag)
-        if (commandManager.getCommand(readFromConsole[0]) != null ){
+        if (commandManager.getCommand("commands", readFromConsole[0], "Command") != null ){
             validator.validate(readFromConsole.toTypedArray())
         } else {
             writeToConsole.linesInConsole(message.getMessage("weird_command"))

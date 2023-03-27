@@ -19,10 +19,11 @@ application {
 dependencies {
     val koinVersion = "3.2.2"
     val kotlinVersion = "1.8.0"
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.10")
     testImplementation(kotlin("test"))
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.10")
+    implementation("org.reflections:reflections:0.10.2")
     implementation(kotlin("serialization", version = kotlinVersion))
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0-RC")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
     implementation("io.insert-koin:koin-core:$koinVersion")
 }
 
