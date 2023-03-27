@@ -22,6 +22,16 @@ abstract class Command: KoinComponent {
     val serializer: Serializer by inject()
 
     /**
+     * Returns command's name.
+     */
+    abstract fun getName(): String
+
+    /**
+     * Returns command's description.
+     */
+    abstract fun getDescription(): String
+
+    /**
      * Executes command with "arg" as arguments and "collectionManager" as Collection Manager.
      *
      * @param args map of command's arguments.

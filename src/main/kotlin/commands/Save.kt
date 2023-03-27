@@ -22,6 +22,13 @@ package commands
 
 class Save: Command() {
     private val pathToFile = System.getenv("COLLECTION_VAR")
+    override fun getName(): String {
+        return "save"
+    }
+
+    override fun getDescription(): String {
+        return getName() + " - сохраняет коллекцию в файл\n"
+    }
     override fun execute(args: Map<String, Any?>) {
         TODO("Not yet implemented")
     }

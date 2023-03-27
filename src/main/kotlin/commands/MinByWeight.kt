@@ -7,6 +7,14 @@ package commands
  * @since 1.0.0
  */
 class MinByWeight: Command() {
+    override fun getName(): String {
+        return "min_by_weight"
+    }
+
+    override fun getDescription(): String {
+        return getName() + " - выводит любой объект из коллекции, значение поля weight которого является минимальным\n"
+    }
+
     override fun execute(args: Map<String, Any?>) {
         val flag = ::execute.name
         val vector = collectionManager.getVector()

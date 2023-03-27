@@ -17,6 +17,13 @@ import java.util.*
 class Update: Command() {
     private val set = AddPersonFields()
     private val writeToConsole = PrinterManager()
+    override fun getName(): String {
+        return "show"
+    }
+
+    override fun getDescription(): String {
+        return getName() + " - выводит в стандартный поток вывода все элементы коллекции в строковом представлении\n"
+    }
 
     override fun execute(args: Map<String, Any?>) {
         val elementId : Int by args

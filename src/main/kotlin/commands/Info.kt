@@ -10,6 +10,15 @@ import utils.Logger
  */
 class Info: Command() {
     private val logger = Logger()
+    override fun getName(): String {
+        return "info"
+    }
+
+    override fun getDescription(): String {
+        return getName() + " - выводит  в стандартный поток вывода информацию о коллекции " +
+                "(тип, дата инициализации, количество элементов и т.д.)\n"
+    }
+
     override fun execute(args: Map<String, Any?>) {
         val typeArray = collectionManager::getVector.returnType.toString().split(".")
         val type = typeArray[2] + "." + typeArray[3]

@@ -16,6 +16,14 @@ import java.util.*
 class Add: Command() {
     private val set = AddPersonFields()
 
+    override fun getName(): String {
+        return "add"
+    }
+
+    override fun getDescription(): String {
+        return getName() + " - добавляет новый элемент в коллекцию\n"
+    }
+
     override fun execute(args: Map<String, Any?>) {
         val flag: String by args
         val path: String by args

@@ -11,6 +11,15 @@ import java.util.*
  * @since 1.0.0
  */
 class GroupCountingByNationality: Command() {
+    override fun getName(): String {
+        return "group_counting_by_nationality"
+    }
+
+    override fun getDescription(): String {
+        return getName() + " - группирует элементы коллекции по значению поля nationality, " +
+                "выводит количество элементов в каждой группе\n"
+    }
+
     override fun execute(args: Map<String, Any?>) {
         val bufferVector = Vector<Person>()
         var counter = 0

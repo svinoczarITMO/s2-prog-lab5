@@ -14,6 +14,14 @@ class ExecuteScript: Command() {
     private var depth = 0
     private var scriptFile = File("")
 
+    override fun getName(): String {
+        return "execute_script"
+    }
+
+    override fun getDescription(): String {
+        return getName() + " --file_name - считывает и исполняет скрипт из указанного файла\n"
+    }
+
     override fun execute(args: Map<String, Any?>) {
         val flag = ::execute.name
         val path: String by args

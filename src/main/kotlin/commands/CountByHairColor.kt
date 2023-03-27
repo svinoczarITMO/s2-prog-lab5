@@ -7,6 +7,14 @@ package commands
  * @since 1.0.0
  */
 class CountByHairColor: Command() {
+    override fun getName(): String {
+        return "count_by_hair_color"
+    }
+
+    override fun getDescription(): String {
+        return getName() + " --hairColor - выводит количество элементов, значение поля hairColor которых равно заданному\n"
+    }
+
     override fun execute(args: Map<String, Any?>) {
         val color by args
         val copyVector = collectionManager.getVector()

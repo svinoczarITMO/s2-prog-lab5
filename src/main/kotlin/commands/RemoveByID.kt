@@ -7,6 +7,14 @@ package commands
  * @since 1.0.0
  */
 class RemoveByID: Command() {
+    override fun getName(): String {
+        return "remove_by_id"
+    }
+
+    override fun getDescription(): String {
+        return getName() + " --id - удаляет элемент из коллекции по его id\n"
+    }
+
     override fun execute(args: Map<String, Any?>) {
         var flag = false
         val removeId = args.get("id")
