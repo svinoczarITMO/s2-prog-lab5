@@ -16,7 +16,7 @@ import java.util.*
 
 class Serializer {
 
-    fun serialize(whatToSerialize: Vector<Person>): String {
+    fun serialize(whatToSerialize: List<Person>): String {
         return Json.encodeToString(whatToSerialize)
     }
 

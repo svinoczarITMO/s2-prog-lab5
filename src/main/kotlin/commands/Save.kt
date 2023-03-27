@@ -1,5 +1,8 @@
 package commands
 
+import data.Person
+import java.util.*
+
 /**
  * Saves collection in Collection.json file.
  *
@@ -29,7 +32,17 @@ class Save: Command() {
     override fun getDescription(): String {
         return getName() + " - сохраняет коллекцию в файл\n"
     }
+    /**
+     * execute method. Save collection to file
+     *
+     * @return info from command as ResultModule
+     */
     override fun execute(args: Map<String, Any?>) {
-        TODO("Not yet implemented")
+        val collection = Vector<Person>()
+        collection.addAll(collectionManager.getCollection())
+        val list = collectionManager.collectionToList()
+        val jsonString = serializer.serialize(list)
+        write.toFile(jsonString, pathToFile)
+        write.linesInConsole(message.getMessage("saved"))
     }
 }
