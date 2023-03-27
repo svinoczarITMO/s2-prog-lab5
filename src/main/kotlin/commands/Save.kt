@@ -39,7 +39,7 @@ class Save: Command() {
      */
     override fun execute(args: Map<String, Any?>) {
         val collection = Vector<Person>()
-        collection.addAll(collectionManager.getCollection())
+        collection.addAll(collectionManager.collection)
         val list = collectionManager.collectionToList()
         val jsonString = serializer.serialize(list)
         write.toFile(jsonString, pathToFile)

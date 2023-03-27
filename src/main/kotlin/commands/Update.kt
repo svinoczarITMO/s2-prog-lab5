@@ -43,7 +43,7 @@ class Update: Command() {
         }
 
         try {
-            for (obj in collectionManager.getVector()) {
+            for (obj in collectionManager.collection) {
                 if (obj.id == args["elementId"] as Int) {
                     element = obj
                     break
@@ -79,8 +79,19 @@ class Update: Command() {
         val location = Location(set.locationX(params[7], flag), set.locationY(params[8], flag), set.locationZ(params[9], flag))
 
         element = Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
-        collectionManager.getVector().removeAt(id-1)
-        collectionManager.getVector().insertElementAt(element, id-1)
+        collectionManager.collection.remove(collectionManager.collection.elementAt(id-1))
+
+        var count = 1
+        val bufferMap: MutableMap<Int, Person> = mutableMapOf()
+        for (el in collectionManager.collection) {
+            if (count != id) {
+                bufferMap[count] = el
+                count ++
+            } else {
+                bufferMap[count] = element
+                count ++
+            }
+        }
     }
 
     private fun parametersParser (args: Map<String, Any>): ArrayList<String> {

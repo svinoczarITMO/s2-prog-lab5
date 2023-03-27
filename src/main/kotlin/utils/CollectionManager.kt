@@ -11,40 +11,32 @@ import java.util.*
  * @since 1.0.0
  */
 
-class CollectionManager {
-    private var vector = Vector<Person>()
-    /**
-     * Returs the collection (Vector).
-     *
-     * @return vector as Vector<Person>.
-     */
-    fun getVector (): Vector<Person> {
-        return vector
+class CollectionManager{
+    var collection: MutableCollection<Person> = Vector<Person>()
+    private var supportedCollectionTypes: HashMap<String, MutableCollection<Person>> = hashMapOf()
+
+    init {
+        addSupportedCollectionType("vector", Vector())
+        addSupportedCollectionType("linkedlist", LinkedList())
     }
 
-    /**
-     * Sets a new vector.
-     *
-     * @param newVector Vector<Person> that will set up.
-     */
-    fun setVector (newVector: Vector<Person>) {
-        vector = newVector
+    fun changeType(newType: String) {
+        if (collection == getSupportedCollectionTypes()[newType]!!) return
+        val old = collection
+        collection = supportedCollectionTypes[newType.lowercase()]!!
+        for (element in old) {
+            collection.add(element)
+        }
     }
 
-    /**
-     * Adds Person object to collection (Vector).
-     *
-     * @param obj Person object.
-     */
-    fun addObject (obj: Person) {
-        vector.addElement(obj)
+    private fun addSupportedCollectionType(name: String, collection: MutableCollection<Person>) {
+        supportedCollectionTypes[name] = collection
     }
 
-    /**
-     * Clears the collection (Vector).
-     */
-    fun clear () {
-        vector.clear()
+    private fun getSupportedCollectionTypes() = supportedCollectionTypes
+
+    fun collectionToList(): List<Person> {
+        return collection.toList()
     }
 
     /**

@@ -17,6 +17,6 @@ class Clear: Command() {
 
     override fun execute(args: Map<String, Any?>) {
         write.linesInConsole(message.getMessage("clear"))
-        return collectionManager.clear()
+        return collectionManager.collection.clear()
     }
 }

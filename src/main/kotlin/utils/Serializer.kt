@@ -15,15 +15,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class Serializer {
-
     fun serialize(whatToSerialize: List<Person>): String {
         return Json.encodeToString(whatToSerialize)
     }
 
     fun deserialize(whatToDeserialize: String): Vector<Person> {
-        return Json.decodeFromString<Vector<Person>>(whatToDeserialize)
+        return Json.decodeFromString(whatToDeserialize)
     }
-
 }
 
 object DateAsStringSerializer : KSerializer<Date> {

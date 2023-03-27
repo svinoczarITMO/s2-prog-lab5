@@ -20,9 +20,9 @@ class RemoveByID: Command() {
         val removeId = args.get("id")
         try {
             try {
-                for (element in collectionManager.getVector()) {
+                for (element in collectionManager.collection) {
                     if (element.id == removeId) {
-                        collectionManager.getVector().remove(element)
+                        collectionManager.collection.remove(element)
                         flag = true
                         break
                     }

@@ -19,7 +19,7 @@ fun main() {
     val message = Messages()
 
     logger.initDate(collectionManager)
-    loader.loadFromFile(collectionManager)
+    loader.load()
 
     while (true){
         val flag = ::main.name
@@ -44,6 +44,7 @@ fun main() {
 //DONE: 11) add из файла
 //DONE: 12) Починить ExecuteScript
 
+//TODO: 12.5) Дописать валидатор
 //TODO: 13) Обработка ошибок в валидаторе
 //TODO: 14) Дописать серриализацию
 //TODO: 15) Починить Save и Load

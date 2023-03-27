@@ -10,6 +10,13 @@ import data.Person
  * @since 1.0.0
  */
 class GetElement: Command() {
+    override fun getName(): String {
+        return "get"
+    }
+
+    override fun getDescription(): String {
+        return getName() + " - выводит в терминал объект коллекции с указанным id\n"
+    }
     /**
      *
      * @param Int id of getting element.
@@ -18,7 +25,7 @@ class GetElement: Command() {
         var obj: Person? = null
         val getId = args.get("id")
         try {
-            for (element in collectionManager.getVector()) {
+            for (element in collectionManager.collection) {
                 if (element.id == getId) {
                     obj = element
                     break

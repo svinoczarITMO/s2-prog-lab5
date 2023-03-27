@@ -15,7 +15,7 @@ class RemoveFirst: Command() {
         return getName() + " - удаляет первый элемент из коллекции\n"
     }
     override fun execute(args: Map<String, Any?>) {
-        collectionManager.getVector().removeFirst()
+        collectionManager.collection.remove(collectionManager.collection.first())
         write.linesInConsole(
             message.getMessage("first_element") +
                     message.getMessage("removed"))

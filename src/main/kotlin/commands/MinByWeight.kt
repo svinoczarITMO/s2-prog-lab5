@@ -17,7 +17,7 @@ class MinByWeight: Command() {
 
     override fun execute(args: Map<String, Any?>) {
         val flag = ::execute.name
-        val vector = collectionManager.getVector()
+        val vector = collectionManager.collection
         var minWeight: Long = Long.MAX_VALUE
         var minWeightId: String = "0"
         for (element in vector) {

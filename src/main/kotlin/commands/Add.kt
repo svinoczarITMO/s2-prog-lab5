@@ -27,7 +27,7 @@ class Add: Command() {
     override fun execute(args: Map<String, Any?>) {
         val flag: String by args
         val path: String by args
-        val id: Int = if (collectionManager.getVector().size > 0) collectionManager.getVector().maxOf { it.id } + 1 else 1
+        val id: Int = if (collectionManager.collection.isNotEmpty()) collectionManager.collection.maxOf { it.id } + 1 else 1
         var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
 
@@ -54,7 +54,7 @@ class Add: Command() {
 
         val personElement =
             Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
-        collectionManager.addObject(personElement)
+        collectionManager.collection.add(personElement)
         } catch (e: IndexOutOfBoundsException) {
             write.linesInConsole(message.getMessage("not_enough_args"))
             return

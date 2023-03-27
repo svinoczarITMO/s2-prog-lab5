@@ -19,7 +19,7 @@ class Logger {
      * @return initDate as String.
      */
     fun initDate(collectionManager: CollectionManager): String {
-        val vector = collectionManager.getVector()
+        val vector = collectionManager.collection
         val initDate = Date().toString()
         return if (vector.isNotEmpty()) {
             File(pathToFile).readText().substring(10, initDate.length - 1)

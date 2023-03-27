@@ -17,7 +17,7 @@ class CountByHairColor: Command() {
 
     override fun execute(args: Map<String, Any?>) {
         val color by args
-        val copyVector = collectionManager.getVector()
+        val copyVector = collectionManager.collection
         var counter = 0
         try {
             for (element in copyVector) {

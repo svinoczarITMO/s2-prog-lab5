@@ -19,10 +19,10 @@ class Reorder: Command() {
     }
     override fun execute(args: Map<String, Any?>) {
         val bufferVector: Vector<Person> = Vector()
-        for (element in collectionManager.getVector()) {
+        for (element in collectionManager.collection) {
             bufferVector.insertElementAt(element,0)
         }
-        collectionManager.setVector(bufferVector)
-        write.linesInConsole(collectionManager.getVector().toString())
+        collectionManager.collection = bufferVector
+        write.linesInConsole(collectionManager.collection.toString())
     }
 }

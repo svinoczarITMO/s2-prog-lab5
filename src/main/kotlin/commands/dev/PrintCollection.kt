@@ -9,7 +9,14 @@ import commands.Command
  * @since 1.0.0
  */
 class PrintCollection: Command() {
+    override fun getName(): String {
+        return "print"
+    }
+
+    override fun getDescription(): String {
+        return getName() + " - выводит в терминал все объекты коллекции в развернутом виде"
+    }
     override fun execute(args: Map<String, Any?>) {
-        write.linesInConsole(collectionManager.getVector().toString())
+        write.linesInConsole(collectionManager.collection.toString())
     }
 }

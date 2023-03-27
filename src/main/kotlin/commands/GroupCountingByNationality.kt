@@ -27,7 +27,7 @@ class GroupCountingByNationality: Command() {
         for (nationality in Country.values()) {
             val mainNationality = nationality.toString()
             var counterOfElementsInGroup = 0
-            for (element in collectionManager.getVector()) {
+            for (element in collectionManager.collection) {
                 if (element.nationality.toString() == mainNationality) {
                     bufferVector.insertElementAt(element, counter)
                     counter += 1
@@ -36,6 +36,6 @@ class GroupCountingByNationality: Command() {
             }
             write.linesInConsole("В группе $nationality $counterOfElementsInGroup человек")
         }
-        collectionManager.setVector(bufferVector)
+        collectionManager.collection = bufferVector
     }
 }
