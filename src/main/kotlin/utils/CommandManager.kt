@@ -18,11 +18,11 @@ class CommandManager {
          * @param commandInterfaceName name of Interface.
          * @return Set<Class<*>>
          */
-        private fun parsePackage(packageName: String, commandInterfaceName: String): Set<Class<*>> {
+        fun parsePackage(packageName: String, commandInterfaceName: String): Set<Class<*>> {
                 val reflections = Reflections(packageName, SubTypesScanner(false))
 
                 return reflections.getSubTypesOf(Object::class.java)
-                        .filter { klass -> !klass.simpleName.equals(commandInterfaceName, ignoreCase = true) }
+                        .filter { klass -> !klass.simpleName.equals(commandInterfaceName) }
                         .toSet()
         }
 

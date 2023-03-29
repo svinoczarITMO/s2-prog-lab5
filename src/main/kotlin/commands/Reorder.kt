@@ -23,6 +23,6 @@ class Reorder: Command() {
             bufferVector.insertElementAt(element,0)
         }
         collectionManager.collection = bufferVector
-        write.linesInConsole(collectionManager.collection.toString())
+        write.linesInConsole(message.getMessage("reordered"))
     }
 }

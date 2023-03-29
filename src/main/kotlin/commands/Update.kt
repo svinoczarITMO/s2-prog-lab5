@@ -18,25 +18,25 @@ class Update: Command() {
     private val set = AddPersonFields()
     private val writeToConsole = PrinterManager()
     override fun getName(): String {
-        return "show"
+        return "update"
     }
 
     override fun getDescription(): String {
-        return getName() + " - выводит в стандартный поток вывода все элементы коллекции в строковом представлении\n"
+        return getName() + " - обновляет элемент коллекции по указанному id\n"
     }
 
     override fun execute(args: Map<String, Any?>) {
-        val elementId : Int by args
-        val path = if (args.contains("path")) args["path"] else ""
-        val flag: String by args
+        val elementId = if (args.contains("elementId")) args["elementId"] as Int else 0
+        val path = if (args.contains("path")) args["path"] as String else ""
+        val flag = if (args.contains("flag")) args["flag"] as String else ""
         val id: Int
         var element: Person? = null
         val tmpMap = mutableMapOf<String, Any>()
         var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
 
-        tmpMap["path"] = path as String
-        tmpMap["id"] = elementId
+        tmpMap["path"] = path
+        tmpMap["elementId"] = elementId
 
         if (flag != "main") {
             params = parametersParser(tmpMap)
@@ -44,7 +44,7 @@ class Update: Command() {
 
         try {
             for (obj in collectionManager.collection) {
-                if (obj.id == args["elementId"] as Int) {
+                if (obj.id == args["elementId"]) {
                     element = obj
                     break
                 }

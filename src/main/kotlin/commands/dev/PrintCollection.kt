@@ -14,7 +14,7 @@ class PrintCollection: Command() {
     }
 
     override fun getDescription(): String {
-        return getName() + " - выводит в терминал все объекты коллекции в развернутом виде"
+        return getName() + " - выводит в терминал все объекты коллекции в развернутом виде\n"
     }
     override fun execute(args: Map<String, Any?>) {
         write.linesInConsole(collectionManager.collection.toString())

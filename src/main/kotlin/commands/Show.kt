@@ -18,7 +18,7 @@ class Show: Command() {
     override fun execute(args: Map<String, Any?>) {
         if (collectionManager.collection.size > 1) {
             for (i in 0 until collectionManager.collection.size-1) {
-                write.inConsole("Id: ${collectionManager.collection.elementAt(i)}, Name: ${collectionManager.collection.elementAt(i).name}\n")
+                write.inConsole("Id: ${collectionManager.collection.elementAt(i).id}, Name: ${collectionManager.collection.elementAt(i).name}\n")
             }
             write.linesInConsole("Id: ${collectionManager.collection.elementAt(collectionManager.collection.size-1).id}, " +
                     "Name: ${collectionManager.collection.elementAt(collectionManager.collection.size-1).name}")

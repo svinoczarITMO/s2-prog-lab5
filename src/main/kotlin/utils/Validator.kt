@@ -48,13 +48,30 @@ class Validator: KoinComponent{
         val commandName = args[0] as String
         val mapOfArgs = mutableMapOf<String, Any?>()
         val arguments = args.slice(1 until args.size)
-        println(arguments)
+        val typeEmpty = arrayOf(
+            "print", "fadd",
+            "help", "info", "show",
+            "clear", "save", "exit", "remove_first",
+            "reorder", "min_by_weight", "group_counting_by_nationality")
+        val typeInt = arrayOf("remove_by_id", "get")
+        val typeString = arrayOf("add", "update", "execute_script")
+        val typeColor = arrayOf("count_by_hair_color")
+        val typeArrays = arrayOf("change_collection", "history")
+        val typeSoloArg = arrayOf(
+            "add", "update", "execute_script",
+            "count_by_hair_color",
+            "change_collection", "history")
 
         if (commandBuffer.size == 7) {
             commandBuffer.pop()
             commandBuffer.add(commandName)
         } else {
             commandBuffer.add(commandName)
+        }
+
+        when (commandName){
+            in typeEmpty -> mapOfArgs["none"] = null
+            in typeSoloArg -> mapOfArgs
         }
 
         when (commandName){
@@ -74,10 +91,10 @@ class Validator: KoinComponent{
                 mapOfArgs["buffer"] = commandBuffer
             }
             "remove_by_id" -> {
-                mapOfArgs["id"] = arguments[0]
+                mapOfArgs["id"] = arguments[0].toString().toInt()
             }
             "get" -> {
-                mapOfArgs["id"] = arguments[0]
+                mapOfArgs["id"] = arguments[0].toString().toInt()
             }
             "count_by_hair_color" -> {
                 mapOfArgs["color"] = Color.valueOf((arguments[0] as String).uppercase())
@@ -119,7 +136,7 @@ class Validator: KoinComponent{
                 mapOfArgs["none"] = null
             }
         }
-        val command = commandManager.getCommand(commandName)
+        val command = commandManager.getCommand("commands", commandName, "Command")
         execute(command, mapOfArgs)
     }
 

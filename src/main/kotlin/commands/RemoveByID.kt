@@ -17,11 +17,11 @@ class RemoveByID: Command() {
 
     override fun execute(args: Map<String, Any?>) {
         var flag = false
-        val removeId = args.get("id")
+        val id: Int by args
         try {
             try {
                 for (element in collectionManager.collection) {
-                    if (element.id == removeId) {
+                    if (element.id == id) {
                         collectionManager.collection.remove(element)
                         flag = true
                         break
@@ -34,7 +34,7 @@ class RemoveByID: Command() {
         if (flag) {
             write.linesInConsole(
                 message.getMessage("by_id") +
-                        removeId +
+                        id +
                         message.getMessage("removed")
             )
         } else if (!flag){

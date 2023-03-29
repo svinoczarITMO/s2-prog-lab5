@@ -1,6 +1,7 @@
 package utils
 
 import data.Person
+import kotlinx.serialization.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -12,6 +13,7 @@ import java.util.*
  */
 
 class CollectionManager{
+    @Serializable
     var collection: MutableCollection<Person> = Vector<Person>()
     private var supportedCollectionTypes: HashMap<String, MutableCollection<Person>> = hashMapOf()
 
@@ -34,6 +36,10 @@ class CollectionManager{
     }
 
     private fun getSupportedCollectionTypes() = supportedCollectionTypes
+
+    fun getType() {
+        //
+    }
 
     fun collectionToList(): List<Person> {
         return collection.toList()

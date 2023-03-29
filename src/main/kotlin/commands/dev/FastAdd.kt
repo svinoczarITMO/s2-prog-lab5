@@ -19,7 +19,8 @@ class FastAdd: Command() {
     }
 
     override fun execute(args: Map<String, Any?>) {
-        val id: Int = collectionManager.collection.size + 1001
+//        val id: Int = collectionManager.collection.size + 1001
+        val id: Int = if (collectionManager.collection.isNotEmpty()) collectionManager.collection.maxOf { it.id } + 1000 else 1000
         val obj = Person(id, "Jesus", Coordinates(0f,0f), collectionManager.parseDate("Fri Jul 19 12:00:00 MSK 2023"), 305, 0, Color.RED, Country.USA, Location(0,0,0))
         write.linesInConsole("Объект успешно добавлен.")
         collectionManager.collection.add(obj)

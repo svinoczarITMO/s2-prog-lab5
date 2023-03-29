@@ -44,10 +44,12 @@ fun main() {
 //DONE: 11) add из файла
 //DONE: 12) Починить ExecuteScript
 
+
+//DONE: 14) Дописать серриализацию
+//DONE: 15) Починить Save и Load
+
 //TODO: 12.5) Дописать валидатор
 //TODO: 13) Обработка ошибок в валидаторе
-//TODO: 14) Дописать серриализацию
-//TODO: 15) Починить Save и Load
-//TODO: 16) CHANGE_COLLECTION
+//TODO: 16) CHANGE_COLLECTION (1/2)
 //TODO: 17) 10 юнит тестов
 //TODO: 18) KOTLIN DOKKA

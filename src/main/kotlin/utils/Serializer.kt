@@ -1,6 +1,5 @@
 package utils
 
-
 import data.Person
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.decodeFromString
@@ -14,13 +13,14 @@ import kotlinx.serialization.json.Json
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class Serializer {
     fun serialize(whatToSerialize: List<Person>): String {
         return Json.encodeToString(whatToSerialize)
     }
 
-    fun deserialize(whatToDeserialize: String): Vector<Person> {
-        return Json.decodeFromString(whatToDeserialize)
+    fun deserialize(whatToDeserialize: String): List<Person> {
+        return Json.decodeFromString<List<Person>>(whatToDeserialize)
     }
 }
 

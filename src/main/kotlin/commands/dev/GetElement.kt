@@ -23,10 +23,10 @@ class GetElement: Command() {
      */
     override fun execute(args: Map<String, Any?>) {
         var obj: Person? = null
-        val getId = args.get("id")
+        val id: Int by args
         try {
             for (element in collectionManager.collection) {
-                if (element.id == getId) {
+                if (element.id == id) {
                     obj = element
                     break
                 }

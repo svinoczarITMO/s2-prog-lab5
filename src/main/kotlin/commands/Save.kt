@@ -32,10 +32,9 @@ class Save: Command() {
     override fun getDescription(): String {
         return getName() + " - сохраняет коллекцию в файл\n"
     }
+
     /**
      * execute method. Save collection to file
-     *
-     * @return info from command as ResultModule
      */
     override fun execute(args: Map<String, Any?>) {
         val collection = Vector<Person>()
