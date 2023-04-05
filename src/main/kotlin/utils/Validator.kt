@@ -17,6 +17,7 @@ class Validator: KoinComponent{
     private val collectionManager: CollectionManager by inject()
     private val commandManager: CommandManager by inject()
     private val message: Messages by inject()
+    private val write: PrinterManager by inject()
     private val commandBuffer = LinkedList<String>()
 
     /**
@@ -25,42 +26,34 @@ class Validator: KoinComponent{
      * @param args unchecked raw arguments.
      * @param collectionManager instance of Collection Manager.
      */
-//    fun validate(args: Array<String>) {
-//        val command = commandManager.getCommand(args[0])
-//        val invalidArguments = args.slice(1 until args.size).toTypedArray()
-//
-//        if (commandBuffer.size == 7) {
-//            commandBuffer.pop()
-//            commandBuffer.add(args[0])
-//        } else {
-//            commandBuffer.add(args[0])
-//        }
-//        val validArgument = selector(args[0], invalidArguments + flag)?.toArray()
-//        try {
-////            command?.execute(validArgument!!, collectionManager)
-//        } catch (e: NullPointerException) {
-//            return
-//        }
-//    }
-
-
     fun validate (args: Array<Any?>) {
         val commandName = args[0] as String
         val mapOfArgs = mutableMapOf<String, Any?>()
         val arguments = args.slice(1 until args.size)
-        val typeEmpty = arrayOf(
+
+        val noArgs = arrayOf(
             "print", "fadd",
-            "help", "info", "show",
+            "help", "info", "show", "history",
             "clear", "save", "exit", "remove_first",
             "reorder", "min_by_weight", "group_counting_by_nationality")
-        val typeInt = arrayOf("remove_by_id", "get")
-        val typeString = arrayOf("add", "update", "execute_script")
-        val typeColor = arrayOf("count_by_hair_color")
-        val typeArrays = arrayOf("change_collection", "history")
-        val typeSoloArg = arrayOf(
-            "add", "update", "execute_script",
-            "count_by_hair_color",
-            "change_collection", "history")
+        val oneArg = arrayOf(
+            "remove_by_id", "get",
+            "count_by_hair_color", "execute_script", "change_collection"
+        )
+        val newObj = arrayOf(
+            "add"
+        )
+        val argAndObj = arrayOf(
+            "update"
+        )
+
+        val oneArgCommands = mapOf<String, String>(
+            "execute_script" to "path",
+            "remove_by_id" to "id",
+            "get" to "id",
+            "history" to "buffer",
+            "count_by_hair_color" to "color"
+        )
 
         if (commandBuffer.size == 7) {
             commandBuffer.pop()
@@ -69,73 +62,97 @@ class Validator: KoinComponent{
             commandBuffer.add(commandName)
         }
 
-        when (commandName){
-            in typeEmpty -> mapOfArgs["none"] = null
-            in typeSoloArg -> mapOfArgs
+        mapOfArgs["buffer"] = commandBuffer
+
+        try {
+            when (commandName) {
+                in noArgs -> {
+                    mapOfArgs["none"] = null
+                }
+
+                in oneArg -> {
+                    val name = oneArgCommands[commandName]
+                    mapOfArgs["$name"] = extraValidation(name!!, arguments)
+                }
+
+                in newObj -> {
+                    mapOfArgs["flag"] = arguments[0]
+                    mapOfArgs["path"] = if (arguments[0] != "main") arguments[1] else ""
+                }
+
+                in argAndObj -> {
+                    mapOfArgs["elementId"] = arguments[0].toString().toInt()
+                    mapOfArgs["flag"] = arguments[1]
+                    mapOfArgs["path"] = if (arguments[1] != "main") arguments[2] else ""
+                }
+            }
+        } catch (e: NumberFormatException) {
+            write.linesInConsole(message.getMessage("InvalidArgument"))
+            return
         }
 
-        when (commandName){
-            "add" -> {
-                mapOfArgs["flag"] = arguments[0]
-                mapOfArgs["path"] = if (arguments[0] != "main") arguments[1] else ""
-            }
-            "update" -> {
-                mapOfArgs["elementId"] = arguments[0].toString().toInt()
-                mapOfArgs["flag"] = arguments[1]
-                mapOfArgs["path"] = if (arguments[1] != "main") arguments[2] else ""
-            }
-            "execute_script" -> {
-                mapOfArgs["path"] = arguments[0]
-            }
-            "history" -> {
-                mapOfArgs["buffer"] = commandBuffer
-            }
-            "remove_by_id" -> {
-                mapOfArgs["id"] = arguments[0].toString().toInt()
-            }
-            "get" -> {
-                mapOfArgs["id"] = arguments[0].toString().toInt()
-            }
-            "count_by_hair_color" -> {
-                mapOfArgs["color"] = Color.valueOf((arguments[0] as String).uppercase())
-            }
-            "clear" -> {
-                mapOfArgs["none"] = null
-            }
-            "exit" -> {
-                mapOfArgs["none"] = null
-            }
-            "group_counting_by_nationality" -> {
-                mapOfArgs["none"] = null
-            }
-            "help" -> {
-                mapOfArgs["none"] = null
-            }
-            "info" -> {
-                mapOfArgs["none"] = null
-            }
-            "min_by_weight" -> {
-                mapOfArgs["none"] = null
-            }
-            "remove_first" -> {
-                mapOfArgs["none"] = null
-            }
-            "reorder" -> {
-                mapOfArgs["none"] = null
-            }
-            "save" -> {
-                mapOfArgs["none"] = null
-            }
-            "show" -> {
-                mapOfArgs["none"] = null
-            }
-            "fadd" -> {
-                mapOfArgs["none"] = null
-            }
-            "print" -> {
-                mapOfArgs["none"] = null
-            }
-        }
+//        when (commandName){
+//            "add" -> {
+//                mapOfArgs["flag"] = arguments[0]
+//                mapOfArgs["path"] = if (arguments[0] != "main") arguments[1] else ""
+//            }
+//            "update" -> {
+//                mapOfArgs["elementId"] = arguments[0].toString().toInt()
+//                mapOfArgs["flag"] = arguments[1]
+//                mapOfArgs["path"] = if (arguments[1] != "main") arguments[2] else ""
+//            }
+//            "execute_script" -> {
+//                mapOfArgs["path"] = arguments[0]
+//            }
+//            "history" -> {
+//                mapOfArgs["buffer"] = commandBuffer
+//            }
+//            "remove_by_id" -> {
+//                mapOfArgs["id"] = arguments[0].toString().toInt()
+//            }
+//            "get" -> {
+//                mapOfArgs["id"] = arguments[0].toString().toInt()
+//            }
+//            "count_by_hair_color" -> {
+//                mapOfArgs["color"] = Color.valueOf((arguments[0] as String).uppercase())
+//            }
+//            "clear" -> {
+//                mapOfArgs["none"] = null
+//            }
+//            "exit" -> {
+//                mapOfArgs["none"] = null
+//            }
+//            "group_counting_by_nationality" -> {
+//                mapOfArgs["none"] = null
+//            }
+//            "help" -> {
+//                mapOfArgs["none"] = null
+//            }
+//            "info" -> {
+//                mapOfArgs["none"] = null
+//            }
+//            "min_by_weight" -> {
+//                mapOfArgs["none"] = null
+//            }
+//            "remove_first" -> {
+//                mapOfArgs["none"] = null
+//            }
+//            "reorder" -> {
+//                mapOfArgs["none"] = null
+//            }
+//            "save" -> {
+//                mapOfArgs["none"] = null
+//            }
+//            "show" -> {
+//                mapOfArgs["none"] = null
+//            }
+//            "fadd" -> {
+//                mapOfArgs["none"] = null
+//            }
+//            "print" -> {
+//                mapOfArgs["none"] = null
+//            }
+//        }
         val command = commandManager.getCommand("commands", commandName, "Command")
         execute(command, mapOfArgs)
     }
@@ -146,6 +163,15 @@ class Validator: KoinComponent{
         } catch (e: NullPointerException) {
             return
         }
+    }
+
+    fun extraValidation (name: String, arguments: List<Any?>): Any {
+        when (name) {
+            "path" -> return arguments[0].toString()
+            "color" -> return Color.valueOf((arguments[0].toString()).uppercase())
+            "id" -> return arguments[0].toString().toInt()
+        }
+        return 0
     }
 
 

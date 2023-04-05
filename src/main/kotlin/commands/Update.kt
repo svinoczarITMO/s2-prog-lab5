@@ -79,19 +79,37 @@ class Update: Command() {
         val location = Location(set.locationX(params[7], flag), set.locationY(params[8], flag), set.locationZ(params[9], flag))
 
         element = Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
-        collectionManager.collection.remove(collectionManager.collection.elementAt(id-1))
 
-        var count = 1
-        val bufferMap: MutableMap<Int, Person> = mutableMapOf()
+//        val iterator = collectionManager.collection.iterator()
+//        while (iterator.hasNext()) {
+//            val el = iterator.next()
+//            if (el.id == id) {
+//                iterator.remove()
+//            }
+//        }
+
+//        for (el in collectionManager.collection) {
+//            if (count != id) {
+//                println(el)
+//                println("------")
+//                bufferCollection.add(el)
+//                println(bufferCollection)
+//                count++
+//            } else {
+//                bufferCollection.add(element)
+//                count++
+//            }
+//        }
+
+        val bufferCollection = mutableListOf<Person>()
         for (el in collectionManager.collection) {
-            if (count != id) {
-                bufferMap[count] = el
-                count ++
+            if (el.id != element.id) {
+                bufferCollection.add(el)
             } else {
-                bufferMap[count] = element
-                count ++
+                bufferCollection.add(element)
             }
         }
+        collectionManager.collection = bufferCollection
     }
 
     private fun parametersParser (args: Map<String, Any>): ArrayList<String> {
@@ -99,7 +117,6 @@ class Update: Command() {
         val id: Int by args
         val params = arrayListOf<String>()
         val strings = File(path).readStrings()
-//        args.forEach { println(it) }
 
         for (index in 0 until strings.size) {
             if (strings[index] == ("update $id")) {
