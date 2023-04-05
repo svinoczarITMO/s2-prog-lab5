@@ -61,7 +61,6 @@ class Update: Command() {
             return
         }
 
-        println(params)
         val name = set.name(params[0], flag)
 
         val coordinates = Coordinates(set.coordinateX(params[1], flag), set.coordinateY(params[2], flag))
@@ -100,7 +99,6 @@ class Update: Command() {
 //                count++
 //            }
 //        }
-
         val bufferCollection = mutableListOf<Person>()
         for (el in collectionManager.collection) {
             if (el.id != element.id) {
@@ -112,16 +110,20 @@ class Update: Command() {
         collectionManager.collection = bufferCollection
     }
 
-    private fun parametersParser (args: Map<String, Any>): ArrayList<String> {
+    private fun parametersParser(args: Map<String, Any>): ArrayList<String> {
         val path: String by args
-        val id: Int by args
+        val pattern = "\\d+".toRegex()
         val params = arrayListOf<String>()
         val strings = File(path).readStrings()
 
         for (index in 0 until strings.size) {
-            if (strings[index] == ("update $id")) {
+            val updatePattern = "update ${pattern.pattern}".toRegex()
+            if (updatePattern.matches(strings[index])) {
                 for (n in 1..10) {
-                    params.add(strings[index + n].lowercase().trim())
+                    val param = strings.getOrElse(index + n) { "" }.trim().lowercase()
+                    if (param.isNotEmpty()) {
+                        params.add(param)
+                    }
                 }
             }
         }
