@@ -21,7 +21,7 @@ class Validator: KoinComponent{
     private val commandBuffer = LinkedList<String>()
 
     /**
-     * Validates arguments and starts command.
+     * Validates what is command's type and arguments and starts command.
      *
      * @param args unchecked raw arguments.
      * @param collectionManager instance of Collection Manager.
@@ -47,7 +47,15 @@ class Validator: KoinComponent{
             "update"
         )
 
-        if (commandName in noArgs){
+        // Проверка количества аргументов для комманды update.
+        if (commandName in argAndObj){
+            if (args[2] != "execute"){
+                write.linesInConsole(message.getMessage("InvalidArgument"))
+                return
+            }
+        }
+        // Проверка количества аргументов для комманд с 0 аргументов и для add.
+        if (commandName in noArgs || commandName in newObj){
             if (args[1] != "main" && args[1] != "execute"){
                 write.linesInConsole(message.getMessage("InvalidArgument"))
                 return
@@ -59,7 +67,8 @@ class Validator: KoinComponent{
             "remove_by_id" to "id",
             "get" to "id",
             "history" to "buffer",
-            "count_by_hair_color" to "color"
+            "count_by_hair_color" to "color",
+            "change_collection" to "type"
         )
 
         if (commandBuffer.size == 7) {
@@ -76,17 +85,21 @@ class Validator: KoinComponent{
                 in noArgs -> {
                     mapOfArgs["none"] = null
                 }
-
                 in oneArg -> {
                     val name = oneArgCommands[commandName]
                     mapOfArgs["$name"] = extraValidation(name!!, arguments)
+                    if (commandName == "execute_script"){
+                        if (arguments[1] == "main"){
+                            mapOfArgs["depth"] = 0
+                        } else {
+                            mapOfArgs["depth"] = arguments[3].toString().toInt()
+                        }
+                    }
                 }
-
                 in newObj -> {
                     mapOfArgs["flag"] = arguments[0]
                     mapOfArgs["path"] = if (arguments[0] != "main") arguments[1] else ""
                 }
-
                 in argAndObj -> {
                     mapOfArgs["elementId"] = arguments[0].toString().toInt()
                     mapOfArgs["flag"] = arguments[1]
@@ -115,18 +128,10 @@ class Validator: KoinComponent{
             "path" -> return arguments[0].toString()
             "color" -> return Color.valueOf((arguments[0].toString()).uppercase())
             "id" -> return arguments[0].toString().toInt()
+            "type" -> return arguments[0].toString()
         }
         return 0
     }
-
-
-//    /**
-//     * Validates what is command's type, handles invalid arguments and returns them.
-//     *
-//     * @param command name of command.
-//     * @param invalidArguments unchecked raw arguments.
-//     * @return valid arguments as ArrayList<Any>?
-//     */
 
     fun explorer (path: String?): String {
         var pathToScriptFile = ""
@@ -134,9 +139,5 @@ class Validator: KoinComponent{
             pathToScriptFile = path
         }
         return pathToScriptFile
-    }
-
-    fun flagpole (flag: String): Boolean {
-        return flag=="main"
     }
 }

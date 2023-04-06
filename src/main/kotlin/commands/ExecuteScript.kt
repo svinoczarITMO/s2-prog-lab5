@@ -9,9 +9,6 @@ import org.jetbrains.kotlin.konan.file.File
  * @since 1.0.0
  */
 class ExecuteScript: Command() {
-    // глубина рекурсии
-    private val maxDepth = 8
-    private var depth = 0
     private var scriptFile = File("")
 
     override fun getName(): String {
@@ -23,6 +20,10 @@ class ExecuteScript: Command() {
     }
 
     override fun execute(args: Map<String, Any?>) {
+        // глубина рекурсии
+        val maxDepth = 8
+        val depth: Int by args
+        var actDepth = depth
         val flag = ::execute.name
         val path: String by args
         var arguments: ArrayList<Any?> = arrayListOf()
@@ -33,16 +34,17 @@ class ExecuteScript: Command() {
             return
         }
         try {
-            if (depth <= maxDepth) {
+            if (actDepth <= maxDepth) {
                 val strings = scriptFile.readStrings()
                 write.linesInConsole(message.getMessage("script_start"))
                 for (string in strings) {
-                    var newArgs = string.split(" ").toMutableList()
+                    val newArgs = string.split(" ").toMutableList()
                     val commandName = newArgs[0]
                     if (commandName == "execute_script") {
-                        depth += 1
+                        actDepth += 1
                         newArgs.add(flag)
                         newArgs.add(path)
+                        newArgs.add(actDepth.toString())
                         validator.validate(newArgs.toTypedArray())
                     } else {
                         newArgs.add(flag)
@@ -57,8 +59,8 @@ class ExecuteScript: Command() {
             write.linesInConsole(message.getMessage("NoSuchFileException"))
             return
         }
-        depth -= 1
-        if (depth == 0) {
+        actDepth -= 1
+        if (actDepth == 0) {
             write.linesInConsole(message.getMessage("script_end"))
         }
     }
