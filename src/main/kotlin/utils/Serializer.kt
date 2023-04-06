@@ -27,7 +27,6 @@ class Serializer {
 object DateAsStringSerializer : KSerializer<Date> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Date", PrimitiveKind.STRING)
     override fun serialize(encoder: Encoder, value: Date) {
-        println(value.toString())
         encoder.encodeString(value.toString())
     }
     val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH)

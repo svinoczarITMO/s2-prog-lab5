@@ -35,10 +35,11 @@ class CollectionManager{
         supportedCollectionTypes[name] = collection
     }
 
-    private fun getSupportedCollectionTypes() = supportedCollectionTypes
+    fun getSupportedCollectionTypes() = supportedCollectionTypes
 
-    fun getType() {
-        //
+    fun getType(): String {
+        val type = collection.javaClass
+        return type.name.split(".")[2]
     }
 
     fun collectionToList(): List<Person> {

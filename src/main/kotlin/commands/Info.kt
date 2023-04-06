@@ -21,7 +21,7 @@ class Info: Command() {
 
     override fun execute(args: Map<String, Any?>) {
         val typeArray = collectionManager::collection.returnType.toString().split(".")
-        val type = typeArray[2] + "." + typeArray[3]
+        val type = collectionManager.getType()
         val size = collectionManager.collection.size
         val initDate = logger.initDate(collectionManager)
         write.linesInConsole(
