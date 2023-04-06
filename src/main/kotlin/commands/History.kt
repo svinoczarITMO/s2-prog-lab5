@@ -17,12 +17,14 @@ class History: Command() {
         return getName() + " - выводит последние 7 команд (без их аргумента)\n"
     }
 
-    override fun execute(args: Map<String, Any?>) {
+    override fun execute(args: Map<String, Any?>): String? {
+        var result: String? = ""
         val buffer: LinkedList<String> by args
-        write.linesInConsole(message.getMessage("last_commands"))
+        result = (message.getMessage("last_commands"))
         for (command in buffer) {
-            write.linesInConsole(command)
+            result += (command) + "\n"
         }
-        write.linesInConsole("")
+        result += "\n"
+        return result
     }
 }

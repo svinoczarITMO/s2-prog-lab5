@@ -36,6 +36,6 @@ abstract class Command: KoinComponent {
      *
      * @param args map of command's arguments.
      */
-    abstract fun execute(args: Map<String, Any?>)
+    abstract fun execute(args: Map<String, Any?>): String?
 }
 

@@ -20,7 +20,8 @@ class GroupCountingByNationality: Command() {
                 "выводит количество элементов в каждой группе\n"
     }
 
-    override fun execute(args: Map<String, Any?>) {
+    override fun execute(args: Map<String, Any?>): String? {
+        var result: String? = ""
         val bufferVector = Vector<Person>()
         var counter = 0
 
@@ -34,8 +35,9 @@ class GroupCountingByNationality: Command() {
                     counterOfElementsInGroup += 1
                 }
             }
-            write.linesInConsole("В группе $nationality $counterOfElementsInGroup человек")
+            result = ("В группе $nationality $counterOfElementsInGroup человек")
         }
         collectionManager.collection = bufferVector
+        return result
     }
 }

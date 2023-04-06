@@ -19,14 +19,16 @@ class Info: Command() {
                 "(тип, дата инициализации, количество элементов и т.д.)\n"
     }
 
-    override fun execute(args: Map<String, Any?>) {
-        val typeArray = collectionManager::collection.returnType.toString().split(".")
+    override fun execute(args: Map<String, Any?>): String? {
+        var result: String? = ""
         val type = collectionManager.getType()
         val size = collectionManager.collection.size
         val initDate = logger.initDate(collectionManager)
-        write.linesInConsole(
+        result = (
                     "Тип: " + type + "\n"
                     + "Размер: " + size + "\n"
-                    + "Дата инициализации: " + initDate)
+                    + "Дата инициализации: " + initDate
+                )
+        return result
     }
 }

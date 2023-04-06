@@ -8,6 +8,8 @@ import kotlin.system.exitProcess
  * @author svinoczar
  * @since 1.0.0
  */
+
+@Suppress("UNREACHABLE_CODE")
 class Exit: Command() {
     override fun getName(): String {
         return "exit"
@@ -17,7 +19,9 @@ class Exit: Command() {
         return getName() + " - завершает программу\n"
     }
 
-    override fun execute(args: Map<String, Any?>) {
+    override fun execute(args: Map<String, Any?>): String? {
+        val result: String? = ""
         exitProcess(1)
+        return result
     }
 }

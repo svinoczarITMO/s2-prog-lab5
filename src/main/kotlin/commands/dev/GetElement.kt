@@ -21,7 +21,8 @@ class GetElement: Command() {
      *
      * @param Int id of getting element.
      */
-    override fun execute(args: Map<String, Any?>) {
+    override fun execute(args: Map<String, Any?>): String? {
+        var result: String? = ""
         var obj: Person? = null
         val id: Int by args
         try {
@@ -32,10 +33,10 @@ class GetElement: Command() {
                 }
             }
         } catch (e: ArrayIndexOutOfBoundsException) {
-            write.linesInConsole(message.getMessage("invalid_id"))
+            result = (message.getMessage("invalid_id"))
         }
         obj?.let {
-            write.linesInConsole(
+            result = (
                 "Объект ${it.id}:\n"
                         + "Дата создания: \"" + it.creationDate + "\" \n"
                         + "Координаты: x = " + it.coordinates.x + " y = " + it.coordinates.y + "\n"
@@ -46,6 +47,7 @@ class GetElement: Command() {
                         + "Национальность: " + it.nationality + "\n"
                         + "Местоположение: x = " + it.location.x + "; y = " + it.location.y + "; z = " + it.location.z
             )
-        } ?:write.linesInConsole(message.getMessage("invalid_id"))
+        } ?:(message.getMessage("invalid_id"))
+        return result
     }
 }

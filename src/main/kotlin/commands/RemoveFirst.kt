@@ -14,10 +14,12 @@ class RemoveFirst: Command() {
     override fun getDescription(): String {
         return getName() + " - удаляет первый элемент из коллекции\n"
     }
-    override fun execute(args: Map<String, Any?>) {
+    override fun execute(args: Map<String, Any?>): String? {
+        var result: String? = ""
         collectionManager.collection.remove(collectionManager.collection.first())
-        write.linesInConsole(
+        result = (
             message.getMessage("first_element") +
                     message.getMessage("removed"))
+        return result
     }
 }

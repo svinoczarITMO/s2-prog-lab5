@@ -24,12 +24,13 @@ class Add: Command() {
         return getName() + " - добавляет новый элемент в коллекцию\n"
     }
 
-    override fun execute(args: Map<String, Any?>) {
+    override fun execute(args: Map<String, Any?>): String? {
         val flag: String by args
         val path: String by args
         val id: Int = if (collectionManager.collection.isNotEmpty()) collectionManager.collection.maxOf { it.id } + 1 else 1
         var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
+        var result: String? = ""
 
         if (flag != "main") {
             params = parametersParser(path)
@@ -56,10 +57,12 @@ class Add: Command() {
             Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
         collectionManager.collection.add(personElement)
         } catch (e: IndexOutOfBoundsException) {
-            write.linesInConsole(message.getMessage("not_enough_args"))
-            return
+            result = (message.getMessage("not_enough_args"))
+            return result
         }
-        write.linesInConsole(message.getMessage("added"))
+
+        result = (message.getMessage("added"))
+        return result
     }
 
     private fun parametersParser (path: String): ArrayList<String> {

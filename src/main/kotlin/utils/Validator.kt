@@ -26,7 +26,7 @@ class Validator: KoinComponent{
      * @param args unchecked raw arguments.
      * @param collectionManager instance of Collection Manager.
      */
-    fun validate (args: Array<Any?>) {
+    fun validate (args: Array<Any?>): String {
         val commandName = args[0] as String
         val mapOfArgs = mutableMapOf<String, Any?>()
         val arguments = args.slice(1 until args.size)
@@ -51,14 +51,14 @@ class Validator: KoinComponent{
         if (commandName in argAndObj){
             if (args[2] != "execute"){
                 write.linesInConsole(message.getMessage("InvalidArgument"))
-                return
+                return ""
             }
         }
         // Проверка количества аргументов для комманд с 0 аргументов и для add.
         if (commandName in noArgs || commandName in newObj){
             if (args[1] != "main" && args[1] != "execute"){
                 write.linesInConsole(message.getMessage("InvalidArgument"))
-                return
+                return ""
             }
         }
 
@@ -108,19 +108,23 @@ class Validator: KoinComponent{
             }
         } catch (e: NumberFormatException) {
             write.linesInConsole(message.getMessage("InvalidArgument"))
-            return
+            return ""
         }
 
         val command = commandManager.getCommand("commands", commandName, "Command")
-        execute(command, mapOfArgs)
+
+        val result = execute(command, mapOfArgs)
+        return result.toString()
     }
 
-    fun execute (command: Command?, args: Map<String, Any?>) {
+    fun execute (command: Command?, args: Map<String, Any?>): String {
+        var result: String
         try {
-            command?.execute(args)
+            result = (command?.execute(args)).toString()
         } catch (e: NullPointerException) {
-            return
+            return ""
         }
+        return result
     }
 
     fun extraValidation (name: String, arguments: List<Any?>): Any {

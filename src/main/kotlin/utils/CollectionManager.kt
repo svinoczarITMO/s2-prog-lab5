@@ -15,6 +15,7 @@ import java.util.*
 class CollectionManager{
     @Serializable
     var collection: MutableCollection<Person> = Vector<Person>()
+
     private var supportedCollectionTypes: HashMap<String, MutableCollection<Person>> = hashMapOf()
 
     init {

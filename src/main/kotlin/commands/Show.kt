@@ -15,18 +15,20 @@ class Show: Command() {
         return getName() + " - выводит в стандартный поток вывода все элементы коллекции в строковом представлении\n"
     }
 
-    override fun execute(args: Map<String, Any?>) {
+    override fun execute(args: Map<String, Any?>): String? {
+        var result: String? = ""
         if (collectionManager.collection.size > 1) {
             for (i in 0 until collectionManager.collection.size-1) {
-                write.inConsole("Id: ${collectionManager.collection.elementAt(i).id}, Name: ${collectionManager.collection.elementAt(i).name}\n")
+                result += ("Id: ${collectionManager.collection.elementAt(i).id}, Name: ${collectionManager.collection.elementAt(i).name}\n")
             }
-            write.linesInConsole("Id: ${collectionManager.collection.elementAt(collectionManager.collection.size-1).id}, " +
+            result += ("Id: ${collectionManager.collection.elementAt(collectionManager.collection.size-1).id}, " +
                     "Name: ${collectionManager.collection.elementAt(collectionManager.collection.size-1).name}")
         } else if (collectionManager.collection.size == 1) {
-            write.linesInConsole("Id: ${collectionManager.collection.elementAt(collectionManager.collection.size-1).id}, " +
+            result = ("Id: ${collectionManager.collection.elementAt(collectionManager.collection.size-1).id}, " +
                     "Name: ${collectionManager.collection.elementAt(collectionManager.collection.size-1).name}")
         } else {
-            write.linesInConsole(message.getMessage("clean_collection"))
+            result = (message.getMessage("clean_collection"))
         }
+        return result
     }
 }

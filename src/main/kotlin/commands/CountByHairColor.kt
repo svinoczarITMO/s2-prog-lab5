@@ -15,19 +15,21 @@ class CountByHairColor: Command() {
         return getName() + " --hairColor - выводит количество элементов, значение поля hairColor которых равно заданному\n"
     }
 
-    override fun execute(args: Map<String, Any?>) {
+    override fun execute(args: Map<String, Any?>): String? {
         val color by args
         val copyVector = collectionManager.collection
         var counter = 0
+        var result: String? = ""
         try {
             for (element in copyVector) {
                 if (element.hairColor == color) {
                     counter += 1
                 }
             }
-            write.linesInConsole("Количество людей с цветом волос \"${color.toString().capitalize()}\": $counter")
+            result = ("Количество людей с цветом волос \"${color.toString().capitalize()}\": $counter")
         } catch (e: IllegalArgumentException) {
-            write.linesInConsole(message.getMessage("IllegalColor"))
+            result = (message.getMessage("IllegalColor"))
         }
+        return result
     }
 }

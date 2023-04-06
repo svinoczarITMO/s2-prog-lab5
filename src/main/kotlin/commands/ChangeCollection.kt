@@ -9,14 +9,18 @@ class ChangeCollection: Command() {
         return getName() + " - изменяет тип коллекции.)\n"
     }
 
-    override fun execute(args: Map<String, Any?>) {
+    override fun execute(args: Map<String, Any?>): String? {
         val type: String by args
+        var result: String? = ""
         try {
             collectionManager.changeType(type.toString())
         } catch (e: NullPointerException) {
-            write.linesInConsole(message.getMessage("NoSuchType"))
-            write.linesInConsole(printSupportedTypes())
+            result = (message.getMessage("NoSuchType"))
+            result += printSupportedTypes()
+            return result
         }
+        result = message.getMessage("type_changed") + collectionManager.getType()
+        return result
     }
 
     private fun printSupportedTypes() : String? {

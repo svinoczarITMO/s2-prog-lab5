@@ -19,7 +19,8 @@ class ExecuteScript: Command() {
         return getName() + " --file_name - считывает и исполняет скрипт из указанного файла\n"
     }
 
-    override fun execute(args: Map<String, Any?>) {
+    override fun execute(args: Map<String, Any?>): String? {
+        var result: String? = ""
         // глубина рекурсии
         val maxDepth = 8
         val depth: Int by args
@@ -31,7 +32,8 @@ class ExecuteScript: Command() {
             scriptFile = File(path)
             validator.explorer(path)
         } else {
-            return
+            result = message.getMessage("NoSuchFile")
+            return result
         }
         try {
             if (actDepth <= maxDepth) {
@@ -56,12 +58,13 @@ class ExecuteScript: Command() {
                 write.linesInConsole(message.getMessage("recurision"))
             }
         } catch (e: NoSuchFileException) {
-            write.linesInConsole(message.getMessage("NoSuchFileException"))
-            return
+            result = (message.getMessage("NoSuchFile"))
+            return result
         }
         actDepth -= 1
         if (actDepth == 0) {
-            write.linesInConsole(message.getMessage("script_end"))
+            result = (message.getMessage("script_end"))
         }
+        return result
     }
 }

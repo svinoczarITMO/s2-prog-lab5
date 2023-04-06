@@ -1,6 +1,10 @@
 package utils
 
 import commands.Command
+import data.Messages
+import exceptions.CommandException
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import org.reflections.Reflections
 import org.reflections.scanners.SubTypesScanner
 
@@ -10,7 +14,10 @@ import org.reflections.scanners.SubTypesScanner
  * @author svinoczar
  * @since 1.0.0
  */
-class CommandManager {
+class CommandManager: KoinComponent {
+        val write: PrinterManager by inject()
+        val message: Messages by inject()
+
         /**
          * Parses specified package and filters classes by specified name of Interface.
          *
@@ -44,8 +51,8 @@ class CommandManager {
                                 if (command.getName() == commandName) {
                                         return command
                                 }
-                        } catch (e: Exception) {
-                                println(e.message)
+                        } catch (e: CommandException) {
+                                write.linesInConsole(message.getMessage("InvalidCommand"))
                         }
                 }
 

@@ -15,7 +15,8 @@ class RemoveByID: Command() {
         return getName() + " --id - удаляет элемент из коллекции по его id\n"
     }
 
-    override fun execute(args: Map<String, Any?>) {
+    override fun execute(args: Map<String, Any?>): String? {
+        var result: String? = ""
         var flag = false
         val id: Int by args
         try {
@@ -28,21 +29,23 @@ class RemoveByID: Command() {
                     }
                 }
             } catch (e: ArrayIndexOutOfBoundsException) {
-                return
+                result = e.message
+                return result
             }
 
         if (flag) {
-            write.linesInConsole(
+            result = (
                 message.getMessage("by_id") +
                         id +
                         message.getMessage("removed")
             )
         } else if (!flag){
-            write.linesInConsole(message.getMessage("invalid_id"))
+            result = (message.getMessage("invalid_id"))
         }
         } catch (e: ArrayIndexOutOfBoundsException) {
-            write.linesInConsole(message.getMessage("InvalidArgument"))
-            return
+            result = (message.getMessage("InvalidArgument"))
+            return result
         }
+        return result
     }
 }

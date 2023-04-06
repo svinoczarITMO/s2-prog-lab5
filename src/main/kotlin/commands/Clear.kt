@@ -15,8 +15,9 @@ class Clear: Command() {
         return getName() + " - очищает коллекцию\n"
     }
 
-    override fun execute(args: Map<String, Any?>) {
-        write.linesInConsole(message.getMessage("clear"))
-        return collectionManager.collection.clear()
+    override fun execute(args: Map<String, Any?>): String? {
+        val result = (message.getMessage("clear"))
+        collectionManager.collection.clear()
+        return result
     }
 }

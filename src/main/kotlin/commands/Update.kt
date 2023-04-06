@@ -25,7 +25,8 @@ class Update: Command() {
         return getName() + " - обновляет элемент коллекции по указанному id\n"
     }
 
-    override fun execute(args: Map<String, Any?>) {
+    override fun execute(args: Map<String, Any?>): String? {
+        var result: String? = ""
         val elementId = if (args.contains("elementId")) args["elementId"] as Int else 0
         val path = if (args.contains("path")) args["path"] as String else ""
         val flag = if (args.contains("flag")) args["flag"] as String else ""
@@ -50,15 +51,15 @@ class Update: Command() {
                 }
             }
         } catch (e: ArrayIndexOutOfBoundsException) {
-//            writeToConsole.writelnToConsole("Объект с указанным id не найден")
-            return
+            result = message.getMessage("invalid_id")
+            return result
         }
 
         try {
             id = element?.id as Int
         } catch (e: NullPointerException) {
-            writeToConsole.linesInConsole("Элемента с указанным id не существует")
-            return
+            result = message.getMessage("invalid_id")
+            return result
         }
 
         val name = set.name(params[0], flag)
@@ -79,26 +80,6 @@ class Update: Command() {
 
         element = Person(id, name, coordinates, creationDate, height, weight, hairColor, nationality, location)
 
-//        val iterator = collectionManager.collection.iterator()
-//        while (iterator.hasNext()) {
-//            val el = iterator.next()
-//            if (el.id == id) {
-//                iterator.remove()
-//            }
-//        }
-
-//        for (el in collectionManager.collection) {
-//            if (count != id) {
-//                println(el)
-//                println("------")
-//                bufferCollection.add(el)
-//                println(bufferCollection)
-//                count++
-//            } else {
-//                bufferCollection.add(element)
-//                count++
-//            }
-//        }
         val bufferCollection = mutableListOf<Person>()
         for (el in collectionManager.collection) {
             if (el.id != element.id) {
@@ -108,6 +89,8 @@ class Update: Command() {
             }
         }
         collectionManager.collection = bufferCollection
+        result = message.getMessage("updated")
+        return result
     }
 
     private fun parametersParser(args: Map<String, Any>): ArrayList<String> {

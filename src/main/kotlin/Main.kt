@@ -14,7 +14,7 @@ fun main() {
     val validator = Validator()
     val loader = Loader()
     val logger = Logger()
-    val writeToConsole = PrinterManager()
+    val write = PrinterManager()
     val commandManager = CommandManager()
     val message = Messages()
 
@@ -23,13 +23,14 @@ fun main() {
 
     while (true){
         val flag = ::main.name
-        writeToConsole.inConsole("> ")
+        write.inConsole("> ")
         val readFromConsole = (readln().lowercase()).split(" ").toMutableList()
         readFromConsole.add(flag)
         if (commandManager.getCommand("commands", readFromConsole[0], "Command") != null ){
-            validator.validate(readFromConsole.toTypedArray())
+            val result = validator.validate(readFromConsole.toTypedArray())
+            write.linesInConsole(result)
         } else {
-            writeToConsole.linesInConsole(message.getMessage("weird_command"))
+            write.linesInConsole(message.getMessage("weird_command"))
         }
     }
 }
