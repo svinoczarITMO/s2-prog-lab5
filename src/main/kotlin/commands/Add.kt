@@ -8,7 +8,7 @@ import utils.AddPersonFields
 import java.util.*
 
 /**
- * Adds new element in collection.
+ * Adds new element in the collection.
  *
  * @author svinoczar
  * @since 1.0.0
@@ -65,6 +65,12 @@ class Add: Command() {
         return result
     }
 
+    /**
+     * Parses item parameters from the script file.
+     *
+     * @author svinoczar
+     * @since 1.0.0
+     */
     private fun parametersParser (path: String): ArrayList<String> {
         val params = arrayListOf<String>()
         val strings = File(path).readStrings()

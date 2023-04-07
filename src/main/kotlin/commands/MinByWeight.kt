@@ -1,7 +1,7 @@
 package commands
 
 /**
- * Prints element of collection with minimal weight.
+ * Outputs the collection item with the minimum weight.
  *
  * @author svinoczar
  * @since 1.0.0

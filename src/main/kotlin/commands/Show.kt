@@ -1,7 +1,7 @@
 package commands
 
 /**
- * Prints pairs "id - name" of elements in the collection.
+ * Outputs "id-name" pairs of items in the collection.
  *
  * @author svinoczar
  * @since 1.0.0

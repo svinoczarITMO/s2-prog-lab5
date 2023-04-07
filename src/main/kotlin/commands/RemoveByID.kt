@@ -1,7 +1,7 @@
 package commands
 
 /**
- * Removes element of collection with inputed id.
+ * Deletes the collection item with the entered identifier.
  *
  * @author svinoczar
  * @since 1.0.0

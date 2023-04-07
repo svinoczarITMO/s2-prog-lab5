@@ -3,7 +3,7 @@ package commands
 import utils.Logger
 
 /**
- * Prints collection information.
+ * Outputs information about the collection.
  *
  * @author svinoczar
  * @since 1.0.0

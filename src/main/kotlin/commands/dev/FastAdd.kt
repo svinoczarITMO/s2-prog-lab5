@@ -4,7 +4,7 @@ import commands.Command
 import data.*
 
 /**
- * Adds new element to collection without input arguments.
+ * Adds new element to the collection with no input arguments.
  *
  * @author svinoczar
  * @since 1.0.0

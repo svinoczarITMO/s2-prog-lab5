@@ -4,7 +4,7 @@ import data.Person
 import java.util.*
 
 /**
- * Saves collection in Collection.json file.
+ * Saves the collection in the file Collection.json.
  *
  * @author svinoczar
  * @since 1.0.0

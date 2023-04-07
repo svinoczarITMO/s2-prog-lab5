@@ -4,7 +4,7 @@ import data.Person
 import java.util.*
 
 /**
- * Turns the collection.
+ * Turns the collection around.
  *
  * @author svinoczar
  * @since 1.0.0

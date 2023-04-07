@@ -1,7 +1,7 @@
 package data
 
 /**
- * Contains messages for print.
+ * Contains messages for output.
  *
  * @author svinoczar
  * @since 1.0.0

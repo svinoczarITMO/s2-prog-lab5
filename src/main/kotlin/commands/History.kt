@@ -3,7 +3,7 @@ package commands
 import java.util.*
 
 /**
- * Prints last 7 commands.
+ * Outputs the last 7 commands.
  *
  * @author svinoczar
  * @since 1.0.0

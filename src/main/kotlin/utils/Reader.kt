@@ -1,7 +1,7 @@
 package utils
 
 /**
- * Base interface for reader implementation. You should implement it before applying readers in ReaderManager.
+ * A basic interface for implementing a reader. You must implement it before applying readers in ReaderManager.
  *
  * @author svinoczar
  * @since 1.0.0

@@ -1,7 +1,7 @@
 package utils
 
 /**
- * Base interface for printer implementation. You should implement it before applying printers in PrinterManager.
+ * The basic interface for implementing a printer. You must implement it before applying printers in PrinterManager.
  *
  * @author svinoczar
  * @since 1.0.0

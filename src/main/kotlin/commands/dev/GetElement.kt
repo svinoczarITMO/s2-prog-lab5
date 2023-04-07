@@ -4,7 +4,7 @@ import commands.Command
 import data.Person
 
 /**
- * Gets element of collection by id.
+ * Gets the collection item by its identifier.
  *
  * @author svinoczar
  * @since 1.0.0

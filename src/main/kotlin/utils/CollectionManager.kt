@@ -23,6 +23,11 @@ class CollectionManager{
         addSupportedCollectionType("linkedlist", LinkedList())
     }
 
+    /**
+     * Changes type of the collection.
+     *
+     * @param newType - new type of the collection.
+     */
     fun changeType(newType: String) {
         if (collection == getSupportedCollectionTypes()[newType]!!) return
         val old = collection
@@ -32,23 +37,43 @@ class CollectionManager{
         }
     }
 
+    /**
+     * Adds new supported type of the collection in list.
+     *
+     * @param name - name of new supported type of the collection.
+     */
     private fun addSupportedCollectionType(name: String, collection: MutableCollection<Person>) {
         supportedCollectionTypes[name] = collection
     }
 
+    /**
+     * Returns supported types of the collection.
+     *
+     * @return supportedCollectionTypes
+     */
     fun getSupportedCollectionTypes() = supportedCollectionTypes
 
+    /**
+     * Returns type of the collection.
+     *
+     * @return type of the collection
+     */
     fun getType(): String {
         val type = collection.javaClass
         return type.name.split(".")[2]
     }
 
+    /**
+     * Converts collection to list.
+     *
+     * @return collection as List
+     */
     fun collectionToList(): List<Person> {
         return collection.toList()
     }
 
     /**
-     * Pairs date from string format to date format.
+     * Converts the date from string format to date format.
      *
      * @param dateString date in String format.
      */

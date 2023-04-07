@@ -7,7 +7,7 @@ import org.koin.core.component.inject
 import utils.*
 
 /**
- * Base interface for command implementation. You should implement it before applying command in CommandManager.
+ * A basic interface for implementing commands. You must implement it before applying a command in the CommandManager.
  *
  * @author svinoczar
  * @since 1.0.0

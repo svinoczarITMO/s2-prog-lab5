@@ -117,8 +117,14 @@ class Validator: KoinComponent{
         return result.toString()
     }
 
+    /**
+     * Executes command with valid arguments.
+     *
+     * @param command - Command.
+     * @param args - arguments of the command.
+     */
     fun execute (command: Command?, args: Map<String, Any?>): String {
-        var result: String
+        val result: String
         try {
             result = (command?.execute(args)).toString()
         } catch (e: NullPointerException) {
@@ -127,6 +133,12 @@ class Validator: KoinComponent{
         return result
     }
 
+    /**
+     * Validates keywords to data.
+     *
+     * @param name - validating keywords.
+     * @param arguments - list of all arguments of the command.
+     */
     fun extraValidation (name: String, arguments: List<Any?>): Any {
         when (name) {
             "path" -> return arguments[0].toString()
@@ -137,6 +149,12 @@ class Validator: KoinComponent{
         return 0
     }
 
+    /**
+     * Validates path to file.
+     *
+     * @param path - path to file.
+     * @return path to script file.
+     */
     fun explorer (path: String?): String {
         var pathToScriptFile = ""
         if (path != null) {

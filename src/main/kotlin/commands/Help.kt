@@ -1,7 +1,7 @@
 package commands
 
 /**
- * Prints all commands and their descriptions.
+ * Outputs all commands and their descriptions.
  *
  * @author svinoczar
  * @since 1.0.0

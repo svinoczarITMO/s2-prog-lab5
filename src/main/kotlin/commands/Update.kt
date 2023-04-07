@@ -9,7 +9,7 @@ import utils.PrinterManager
 import java.util.*
 
 /**
- * Updates element of collection with inputed id.
+ * Updates the collection item with the entered identifier.
  *
  * @author svinoczar
  * @since 1.0.0
@@ -93,6 +93,12 @@ class Update: Command() {
         return result
     }
 
+    /**
+     * Parses item parameters from the script file.
+     *
+     * @author svinoczar
+     * @since 1.0.0
+     */
     private fun parametersParser(args: Map<String, Any>): ArrayList<String> {
         val path: String by args
         val pattern = "\\d+".toRegex()

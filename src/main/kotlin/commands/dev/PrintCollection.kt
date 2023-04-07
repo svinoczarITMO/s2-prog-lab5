@@ -3,7 +3,7 @@ package commands.dev
 import commands.Command
 
 /**
- * Prints all elemets of collection as units.
+ * Outputs all items in the collection as units.
  *
  * @author svinoczar
  * @since 1.0.0

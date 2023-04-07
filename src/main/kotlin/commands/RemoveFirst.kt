@@ -1,7 +1,7 @@
 package commands
 
 /**
- * Removes the first element of collection.
+ * Deletes the first item in the collection.
  *
  * @author svinoczar
  * @since 1.0.0

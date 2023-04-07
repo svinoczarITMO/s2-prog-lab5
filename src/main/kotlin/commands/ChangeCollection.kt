@@ -1,5 +1,11 @@
 package commands
 
+/**
+ * Changes the collection type.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class ChangeCollection: Command() {
     override fun getName(): String {
         return "change_collection"
@@ -23,6 +29,12 @@ class ChangeCollection: Command() {
         return result
     }
 
+    /**
+     * Outputs the supported collection types.
+     *
+     * @author svinoczar
+     * @since 1.0.0
+     */
     private fun printSupportedTypes() : String? {
         var output = message.getMessage("supported_types")
         for (type in collectionManager.getSupportedCollectionTypes()) {

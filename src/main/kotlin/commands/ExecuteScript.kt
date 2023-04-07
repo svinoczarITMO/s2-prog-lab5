@@ -3,7 +3,7 @@ package commands
 import org.jetbrains.kotlin.konan.file.File
 
 /**
- * Executes script from inputed path to file.
+ * Executes the script according to the file path entered.
  *
  * @author svinoczar
  * @since 1.0.0

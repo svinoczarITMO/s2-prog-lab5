@@ -13,12 +13,23 @@ import kotlinx.serialization.json.Json
 import java.text.SimpleDateFormat
 import java.util.*
 
-
+/**
+ * Basic class for serializing the data.
+ *
+ * @author svinoczar
+ * @since 1.0.0
+ */
 class Serializer {
+    /**
+     * Serializes the list of Person objects.
+     */
     fun serialize(whatToSerialize: List<Person>): String {
         return Json.encodeToString(whatToSerialize)
     }
 
+    /**
+     * Deserializes the list of Person objects.
+     */
     fun deserialize(whatToDeserialize: String): List<Person> {
         return Json.decodeFromString<List<Person>>(whatToDeserialize)
     }

@@ -1,7 +1,7 @@
 package commands
 
 /**
- * Clears collection.
+ * Clears the collection.
  *
  * @author svinoczar
  * @since 1.0.0
