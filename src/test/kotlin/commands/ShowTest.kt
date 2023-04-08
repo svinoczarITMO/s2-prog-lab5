@@ -1,25 +1,20 @@
 package commands
 
 import data.*
-import di.notKoinModule
+import io.mockk.mockk
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import org.koin.core.component.KoinComponent
-import org.koin.core.context.GlobalContext.startKoin
 import utils.CollectionManager
 import utils.CommandManager
 import java.util.*
-import kotlin.test.assertEquals
 
-class ShowTest: KoinComponent {
+class ShowTest {
     private val collectionManager = CollectionManager()
     private val commandManager = CommandManager()
 
     @Test
     fun `Get info about collection elements`() {
-        startKoin {
-            modules(notKoinModule)
-        }
-        val collectionManager = CollectionManager()
+        val mockkObject = mockk<Show>()
         val show = Show()
         val collection: MutableCollection<Person> = Vector<Person>()
         val person1 = Person(2,"Pavel", Coordinates(45.24f, 24.45f), Date(), 180, 77, Color.BROWN, Country.USA, Location(10, 70,30))

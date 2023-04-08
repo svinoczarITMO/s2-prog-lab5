@@ -112,7 +112,6 @@ class Validator: KoinComponent{
         }
 
         val command = commandManager.getCommand("commands", commandName, "Command")
-
         val result = execute(command, mapOfArgs)
         return result.toString()
     }

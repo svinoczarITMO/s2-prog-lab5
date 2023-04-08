@@ -21,7 +21,7 @@ class Info: Command() {
 
     override fun execute(args: Map<String, Any?>): String? {
         var result: String? = ""
-        val type = collectionManager.getType()
+        val type = collectionManager.getType() //Работает некорректно с пустой коллекций (Выводит "Тип: ArrayList")
         val size = collectionManager.collection.size
         val initDate = logger.initDate(collectionManager)
         result = (

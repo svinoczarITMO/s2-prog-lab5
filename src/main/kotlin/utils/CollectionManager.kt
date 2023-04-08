@@ -59,8 +59,9 @@ class CollectionManager{
      * @return type of the collection
      */
     fun getType(): String {
-        val type = collection.javaClass
-        return type.name.split(".")[2]
+        val type = collection.javaClass.simpleName
+        return type
+        //Работает некорректно с пустой коллекций (Выводит "Тип: ArrayList")
     }
 
     /**
